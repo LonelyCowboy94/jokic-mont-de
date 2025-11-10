@@ -20,7 +20,7 @@ const HandwerkOnlineSection = () => {
        
       </article>    
       <div className={styles.handwerkOnlineSection__svgWrapper}>
-       <Image className={styles.handwerkOnlineSection__svg} fill style={{ objectFit: 'cover' }} src={landkreisGiessen} alt='LandKreis Giessen' />
+       <Image className={styles.handwerkOnlineSection__svg} fill sizes="(max-width: 375px) 375px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1920px" style={{ objectFit: 'cover' }} src={landkreisGiessen} alt='LandKreis Giessen' />
        </div>
     </section>
   )
