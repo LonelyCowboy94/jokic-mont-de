@@ -48,7 +48,9 @@
     transform: translateX(clamp(0rem, -2.7306rem + 11.6505vw, 11.25rem));
     list-style: circle;
     li {
+        color: $color-font-li;
       font-size: clamp(1.125rem, 1.034rem + 0.3883vw, 1.5rem);
+      font-weight: 300;
     }
     li::marker {
       font-size: 20px;
