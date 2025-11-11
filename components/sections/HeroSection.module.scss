@@ -4,7 +4,12 @@
 
 
 .heroVideo {
-  min-width: 1920px;
+  display: flex;
+  flex-shrink: 1;
+  width: 100%;
+  max-width: 1920px;
+  min-height: 500px;
+  aspect-ratio: 1/1;
   object-fit: cover;
 }
 
@@ -12,7 +17,7 @@
   display: flex;
   justify-content: center;
   
-  height: 85vh;
+  max-height: 85vh;
   width: 100%;
   position: sticky;
   top: 60;
