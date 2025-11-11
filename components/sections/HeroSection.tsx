@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import styles from "./HeroSection.module.scss";
 // import HeroSlider from "../HeroSlider";
 
@@ -7,7 +7,7 @@ import styles from "./HeroSection.module.scss";
 const HeroSection = () => {
   return (
     <section className={styles.heroSection}>
-      <video className={styles.heroVideo} src="https://res.cloudinary.com/drohi7opt/video/upload/v1762814654/istockphoto-1468230241-640_adpp_is_qdzo0r.mp4?_s=public-apps" autoPlay loop></video>
+      <video className={styles.heroVideo} src="https://res.cloudinary.com/drohi7opt/video/upload/v1762814654/istockphoto-1468230241-640_adpp_is_qdzo0r.mp4?_s=public-apps" autoPlay loop muted></video>
       {/* <HeroSlider /> */}
       <div className={styles.heroSection__banner}>
         
