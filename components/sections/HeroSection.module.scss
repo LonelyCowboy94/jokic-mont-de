@@ -2,24 +2,21 @@
 @use "../../styles/mixins" as mix;
 @use "../../styles/_animations" as *;
 
+
+.heroVideo {
+  min-width: 1920px;
+  object-fit: cover;
+}
+
 .heroSection {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding-bottom: 50px;
-  height: 78vh;
+  
+  height: 85vh;
   width: 100%;
   position: sticky;
-  top: clamp(2.3125rem, 1.6696rem + 1.0045vw, 2.875rem);
-  animation: moveBg 30s linear infinite;
+  top: 60;
   z-index: -1;
-  &::before {
-    position: absolute;
-    content: '';
-    inset: 0;
-    background-color: rgba(255, 255, 255, 0.35);
-    z-index: 2;
-  }
 
   &__banner {
     display: flex;

@@ -1,15 +1,17 @@
 @use "../../../styles/variables" as *;
+@use "../../../styles/_animations" as *;
 
 .navbar {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
-  padding: clamp(0.3125rem, 0.2367rem + 0.3236vw, 0.625rem);
+  height: 60px;
+  padding-left: clamp(2.5rem, 1.8932rem + 2.589vw, 5rem);
   font-family: var(--font-montserrat);
+  
   font-weight: 300;
-  @media (max-width: 1024px) {
-    padding: 0.2125rem 10px;
-  }
+  
   &__content {
     display: flex;
     align-items: center;
@@ -25,62 +27,42 @@
   &__logoContainer {
     display: flex;
     align-items: center;
-    position: fixed;
-    top: calc(5px - (100vw - 1300px) * (3 / 620));
-    left: clamp(0.9375rem, 0.4066rem + 2.2654vw, 3.125rem);
-    padding: 10px;
-    border-radius: 0 0 5px 5px;
-    transition: transform 0.35s ease;
-    background: #215db6;
-    text-shadow: 2 2 5 rgba(0, 0, 0, 0.452);
-    @media (max-width: 860px) {
-        top: 5px;
-    }
-  }
-
-  &__logoContainer--shrink {
-    transform: scale(0.75) translate(-20px, -10px);
-    background: none;
-    padding: 0;
-    
-  }
-
-  &__logoContainer--shrink:hover {
-    transform: scale(1) translate(10px, 0px);
-    background: #1851a5;
-    padding: 10px;
   }
 
   &__logoImage {
     position: relative;
-    width: clamp(2.5rem, 1.0714rem + 2.2321vw, 3.75rem);
-    height: clamp(2.5rem, 1.0714rem + 2.2321vw, 3.75rem);
-  }
-
-  &__logoText {
-    font-size: clamp(16px, 2vw, 28px);
-    color: $color-font-light;
+    width: 150px;
+    aspect-ratio: 1/1;
   }
 
   &__links {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     transform: translateX(clamp(6.25rem, 7.767rem + -6.4725vw, 0rem));
     font-weight: 500;
-    font-size: clamp(1.25rem, 0.9643rem + 0.4464vw, 1.5rem);
+    font-size: 16px;
     @media (max-width: 1024px) {
       display: none;
     }
   }
 
   &__link {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     transition: opacity 0.2s;
     color: $color-font-light;
+    min-height: 20px;
+    padding: 0 7px;
+    transition: 0.17s;
+
+    &:hover {
+      color: #ffffffad;
+    }
 
     &--active {
-      font-weight: bold;
-      text-decoration: underline;
+      animation: activeLinkBlink 1.35s linear infinite;
+      
     }
   }
 

@@ -67,3 +67,15 @@
     transform: scale(1) translate(0, 0);
   }
 }
+
+@keyframes activeLinkBlink {
+    0% {
+      box-shadow: -4 0 0 0 rgb(170, 228, 34);
+    }
+    40% {
+      box-shadow: -4 0 0 0 rgb(170, 228, 34);
+    }
+    70%, 100% {
+      box-shadow: -4 0 0 rgba(170, 228, 34, 0);
+    }
+}

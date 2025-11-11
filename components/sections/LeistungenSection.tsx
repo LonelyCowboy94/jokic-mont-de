@@ -5,14 +5,7 @@ const LeistungenSection = () => {
   return (
     <section className={styles.leistungenSection}>
       <div className={`${styles.leistungenSection__articleWrapper} flex-wrap`}>
-        <div className={styles.leistungenSection__imageWrapper}>
-          <Image
-            className={styles.leistungenSection__img}
-            fill
-            src="https://res.cloudinary.com/dbhtd4ffm/image/upload/v1762760743/image-960x960_bs1a1b.jpg"
-            alt="Leistungsbereich-img"
-          />
-        </div>
+        
         <article
           className={`${styles.leistungenSection__article} gradient-text`}
         >
@@ -36,6 +29,14 @@ const LeistungenSection = () => {
             <li>Netzwerk / Haustechnik</li>
           </ul>
         </article>
+        <div className={styles.leistungenSection__imageWrapper}>
+          <Image
+            className={styles.leistungenSection__img}
+            fill
+            src="https://res.cloudinary.com/drohi7opt/image/upload/fl_preserve_transparency/v1762809785/IMG_7967_ntjba3.jpg?_s=public-apps"
+            alt="Leistungsbereich-img"
+          />
+        </div>
       </div>
     </section>
   );

@@ -20,26 +20,31 @@
         }
     }
 
-    &__svgWrapper {
-        position: absolute;
-    top: 50px;
-    left: clamp(3.125rem, -11.2864rem + 61.4887vw, 62.5rem);
-    width: 800px;
-    height: 500px;
-    z-index: 1;  
-    }
-    &__svg {
-        top: 20px;
-        width: 100%;
-        height: 100%;
-    }
+&__imageWrapper {
+  position: absolute;
+  overflow: visible; 
+
+  top: 50px;
+  left: clamp(3.125rem, -11.2864rem + 61.4887vw, 62.5rem);
+  width: 700px;
+  height: 680px;
+  z-index: 1;
+  opacity: 0.06;
+}
+
+
+&__image {
+  position: absolute;
+  top: 50px;
+  object-fit: contain;
+  z-index: -1;
+}
     &__title, &__text {
         @include mix.font-kanit;
         color: $color-font-light;
     }
     &__title {
         font-size: $title-font-size;
-        margin-left: $paragraph-font-size;
     }
     &__text {
         padding: 20px 0;

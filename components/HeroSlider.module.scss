@@ -3,14 +3,6 @@
 .slider {
     position: absolute;
     inset: 0;
-    &::before {
-        position: absolute;
-        content: '';
-        inset: 0;
-        background-image: url('https://i.ibb.co/HDFsBNMc/O9FG4X0.jpg" alt="O9FG4X0');
-        opacity: 0.55;
-        z-index: 2;
-    }
 
     &__image {
         animation: heroMotion 30s ease-in-out infinite;
