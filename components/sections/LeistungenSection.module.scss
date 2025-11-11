@@ -14,7 +14,7 @@
     flex: 1;
   }
   &__article {
-    padding: 100px; //===================================
+    padding: clamp(0.9375rem, -0.3519rem + 5.5016vw, 6.25rem);
     padding-right: 70px;
     max-width: 65%;
     color: $color-font-light;
@@ -46,11 +46,11 @@
     gap: 0.2rem;
     column-gap: 3rem;
     padding: clamp(0.3125rem, 0.085rem + 0.9709vw, 1.25rem) clamp(0rem, -2.5789rem + 11.0032vw, 10.625rem) 0;
+    padding-left: clamp(0.9375rem, 0.0273rem + 3.8835vw, 4.6875rem);
     transform: translateX(clamp(0rem, -2.7306rem + 11.6505vw, 11.25rem));
     list-style: circle;
     li {
-
-      font-size: clamp(1.125rem, 1.034rem + 0.3883vw, 1.5rem);
+      font-size: clamp(1rem, 0.8786rem + 0.5178vw, 1.5rem);
       font-weight: 300;
     }
     li::marker {
