@@ -1,70 +1,65 @@
-@keyframes slideLeft {
-  100% {
-    transform: translateX(-50px);
-  }
-  0%,
-  70% {
-    transform: translateX(30px);
-  }
-}
+// @keyframes slideLeft {
+//   100% {
+//     transform: translateX(-50px);
+//   }
+//   0%,
+//   70% {
+//     transform: translateX(30px);
+//   }
+// }
 
-@keyframes slideRight {
-  100% {
-    transform: translateX(90px);
-  }
-  0%,
-  70% {
-    transform: translateX(10px);
-  }
-}
+// @keyframes slideRight {
+//   100% {
+//     transform: translateX(90px);
+//   }
+//   0%,
+//   70% {
+//     transform: translateX(10px);
+//   }
+// }
 
-@keyframes slideUp {
-  0%,
-  70% {
-    transform: translateY(280px);
-  }
+// @keyframes slideUp {
+//   0%,
+//   70% {
+//     transform: translateY(280px);
+//   }
   
-  100% {
-    transform: translateY(0);
-  }
-}
+//   100% {
+//     transform: translateY(0);
+//   }
+// }
 
-@keyframes fadeIn {
-  0%,
-  10% {
-    opacity: 0;
-  }
-  80%,
-  100% {
-    opacity: 1;
-  }
-}
+// @keyframes fadeIn {
+//   0%,
+//   10% {
+//     opacity: 0;
+//   }
+//   80%,
+//   100% {
+//     opacity: 1;
+//   }
+// }
 
-@keyframes fadeInH2 {
-  0%,
-  70% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.7;
-  }
-}
+// @keyframes fadeInH2 {
+//   0%,
+//   70% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 0.7;
+//   }
+// }
 
 @keyframes heroMotion {
   0% {
-    transform: scale(1) translate(0, 0);
+    object-position: top left;
+    width: 150%;
+    height: 150%;
+    object-position: top right;
   }
-  25% {
-    transform: scale(1.15) translate(-15px, -5px);
-  }
-  50% {
-    transform: scale(1.2) translate(10px, 15px);
-  }
-  75% {
-    transform: scale(1.15) translate(-15px, 15px);
-  }
+  
   100% {
-    transform: scale(1) translate(0, 0);
+    object-position: top left;
   }
 }
 
@@ -78,4 +73,13 @@
     70%, 100% {
       box-shadow: -4 0 0 rgba(170, 228, 34, 0);
     }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }

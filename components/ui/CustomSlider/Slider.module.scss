@@ -1,0 +1,18 @@
+@use "../../../styles/_animations" as *;
+
+.slider {
+    &__buttons {
+        @media (max-width: 480px) {
+            display: none;
+        }
+    }
+    &__activeImage {
+
+        animation: heroMotion 10s linear infinite;
+    }
+    &__activeSlide {
+        
+        animation: fadeIn 1s forwards;
+        
+    }
+}

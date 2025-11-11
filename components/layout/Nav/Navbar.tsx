@@ -81,13 +81,14 @@ export default function Navbar() {
           </Link>
         </div>
         <div className={styles.navbar__contactSvgs}>{/*PLACEHOLDER*/}</div>
+        
         {/* HAMBURGER ICON */}
         <button
           className={styles.navbar__hamburger}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          {!menuOpen && <Menu size={28} />}
+          {!menuOpen && <Menu size={32} />}
         </button>
       </div>
 

@@ -5,7 +5,6 @@ const LeistungenSection = () => {
   return (
     <section className={styles.leistungenSection}>
       <div className={`${styles.leistungenSection__articleWrapper} flex-wrap`}>
-        
         <article
           className={`${styles.leistungenSection__article} gradient-text`}
         >
@@ -35,6 +34,10 @@ const LeistungenSection = () => {
             fill
             src="https://res.cloudinary.com/drohi7opt/image/upload/fl_preserve_transparency/v1762809785/IMG_7967_ntjba3.jpg?_s=public-apps"
             alt="Leistungsbereich-img"
+            sizes="(max-width: 375px) 90vw,
+         (max-width: 768px) 45vw,
+         (max-width: 1024px) 30vw,
+         25vw"
           />
         </div>
       </div>
