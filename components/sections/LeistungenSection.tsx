@@ -8,7 +8,7 @@ const LeistungenSection = () => {
         <article
           className={`${styles.leistungenSection__article} gradient-text`}
         >
-          <h3 className={styles.leistungenSection__title}>Leistungsbereich</h3>
+          <h2 className={styles.leistungenSection__title}>Leistungsbereich</h2>
           <p className={styles.leistungenSection__text}>
             Wir bieten sowohl Privatkunden als auch Gewerbetreibenden
             maßgeschneiderte Lösungen.

@@ -18,3 +18,12 @@
   overflow: hidden;
   z-index: 1;
 }
+
+@mixin sectionLayoutLight {
+  position: relative;
+  padding: $padding-section;
+  color: $color-font-md;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
