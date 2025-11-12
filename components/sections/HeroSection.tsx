@@ -1,4 +1,3 @@
-// import Image from "next/image";
 import Slider from "../ui/CustomSlider/Slider";
 import { Slide } from "../ui/CustomSlider/Slider";
 import styles from "./HeroSection.module.scss";
@@ -36,29 +35,6 @@ const HeroSection = () => {
     <section className={styles.heroSection}>
       <div className={styles.heroSection__slider}>
         <Slider slides={slides} />
-        {/* <h1 className={styles.heroSection__title}>
-          <span className={styles.heroSection__name}>JOKIĆ</span>
-          
-          <Image
-            src="/images/logo.webp"
-            alt="logo"
-            fill
-            style={{ objectFit: "contain" }}
-            sizes="(max-width: 375px) 120px, 350px"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            priority
-            className={styles.heroSection__logo}
-          />
-          <span className={styles.heroSection__name}>MONT.</span>
-          <span className={styles.heroSection__spacer}></span>
-        </h1> */}
-        {/* <div>
-          <h2 className={styles.heroSection__subtitle}>
-            HANDWERK <span>+</span>
-          </h2>
-        </div> */}
       </div>
     </section>
   );

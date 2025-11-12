@@ -49,7 +49,9 @@ export default function Navbar() {
             LEISTUNGEN
           </Link>
 
-          <Link href="/#kontakt" className={styles.navbar__link}>
+          <Link href="/kontakt" className={`${styles.navbar__link} ${
+              pathname === "/kontakt" ? styles["navbar__link--active"] : ""
+            }`}>
             KONTAKT
           </Link>
 
@@ -59,7 +61,7 @@ export default function Navbar() {
               pathname === "/karriere" ? styles["navbar__link--active"] : ""
             }`}
           >
-            KARIERE
+            KARRIERE
           </Link>
 
           <Link
@@ -79,6 +81,14 @@ export default function Navbar() {
           >
             IMPRESSUM
           </Link>
+          <Link
+              href="/datenschutzerklaerung"
+              className={`${styles.navbar__link} ${
+              pathname === "/datenschutzerklaerung" ? styles["navbar__link--active"] : ""
+            }`}
+            >
+              DATENSCHUTZERKLÄRUNG
+            </Link>
         </div>
         <div className={styles.navbar__contactSvgs}>{/*PLACEHOLDER*/}</div>
         
@@ -117,12 +127,8 @@ export default function Navbar() {
               Leistungen
             </Link>
 
-            <Link href="/#kontakt" className={styles.navbar__mobileLink}>
+            <Link href="/kontakt" className={styles.navbar__mobileLink}>
               Kontakt
-            </Link>
-
-            <Link href="/aktuell" className={styles.navbar__mobileLink}>
-              Aktuell
             </Link>
 
             <Link href="/karriere" className={styles.navbar__mobileLink}>

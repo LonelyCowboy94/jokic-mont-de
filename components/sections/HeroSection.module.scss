@@ -1,7 +1,5 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as mix;
-@use "../../styles/_animations" as *;
-
 
 .heroSection {
   display: flex;
@@ -15,37 +13,5 @@
     align-items: center;
     z-index: 2;
     @include mix.font-style-primary;
-  }
-  &__title {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 86px;
-    font-weight: 300;
-    opacity: 0.7;
-  }
-  &__subtitle {
-    font-size: 22.5px;
-    font-weight: 200;
-    animation: fadeInH2 7.5s forwards;
-  }
-  &__logo {
-    animation: slideUp 5s forwards, fadeInH2 5.7s forwards;
-  }
-  &__name {
-    position: relative;
-    left: -215px;
-    top: 45px;
-    z-index: 6;
-    color: $color-font-md;
-  }
-  &__name:nth-of-type(1) {
-    animation: slideLeft 4s forwards, fadeIn 8s forwards;
-  }
-  &__name:nth-of-type(2) {
-    animation: slideRight 4s forwards, fadeIn 8s forwards;
   }
 }

@@ -2,32 +2,23 @@
 @use "../../styles/mixins" as mix;
 
 .leistungenSection {
-  position: relative;
-  width: 100%;
-  background-color: $background-light;
-  color: $color-font-md;
-  background: linear-gradient(to right, rgba(67, 94, 115, 1) 0%, rgba(168, 191, 209, 1) 100%);
+  background: $background-linear-gray;
   @include mix.font-kanit;
   &__articleWrapper {
     display: flex;
     justify-content: space-between;
-    flex: 1;
   }
   &__article {
-    padding: clamp(0.9375rem, -0.3519rem + 5.5016vw, 6.25rem);
-    padding-right: 70px;
     max-width: 65%;
-    color: $color-font-light;
-    @media (max-width: 1250px) {
+    @include mix.sectionLayoutDark;
+    @media (max-width: 1024px) {
       max-width: 100%;
-     
     }
   }
   &__title,
   &__text {
-    text-align: right;
-    @media (max-width: 1250px) {
-        text-align: left;
+    @media (min-width: 1024px) {
+      text-align: right;
     }
   }
   &__title {
@@ -43,34 +34,24 @@
   &__list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.2rem;
     column-gap: 3rem;
-    padding: clamp(0.3125rem, 0.085rem + 0.9709vw, 1.25rem) clamp(0rem, -2.5789rem + 11.0032vw, 10.625rem) 0;
-    padding-left: clamp(0.9375rem, 0.0273rem + 3.8835vw, 4.6875rem);
-    transform: translateX(clamp(0rem, -2.7306rem + 11.6505vw, 11.25rem));
-    list-style: circle;
+    padding-left: clamp(0.3125rem, -4.9211rem + 22.3301vw, 21.875rem);
     li {
       font-size: clamp(1rem, 0.8786rem + 0.5178vw, 1.5rem);
       font-weight: 300;
     }
-    li::marker {
-      font-size: 20px;
-    }
   }
   &__imageWrapper {
-  position: relative;
-  width: 25%;
-  aspect-ratio: 1 / 1.1; 
-  overflow: hidden;
-
-  @media (max-width: 1250px) {
-    width: 100%;
-    aspect-ratio: 1/0.5;
-}
-}
-
-&__img {
-  object-fit: cover;
-  object-position: center; 
-}
+    position: relative;
+    width: 30%;
+    @media (max-width: 1024px) {
+      width: 100%;
+      max-height: 400px;
+      aspect-ratio: 1/0.5;
+    }
+  }
+  &__img {
+    object-fit: cover;
+    object-position: center;
+  }
 }

@@ -3,6 +3,11 @@
 $background-header: linear-gradient(to right, rgb(21, 73, 150) 0%, rgb(0, 31, 80) 100%);
 $background-light: #FFFFFF;
 $background-linear-blue: linear-gradient(45deg, rgb(0, 40, 100) 0%, rgb(29, 112, 236) 100%);
+$background-linear-gray: linear-gradient(
+    to right,
+    rgba(67, 94, 115, 1) 0%,
+    rgba(168, 191, 209, 1) 100%
+  );
 
 // Font colors
 $color-font-light: #FFFFFF;
@@ -15,7 +20,7 @@ $paragraph-font-size: clamp(0.3125rem, -0.3701rem + 2.9126vw, 3.125rem);
 $li-font-size: clamp(1.125rem, 3.034rem + 0.3883vw, 1.705rem);
 
 // Padding 
-$padding-section: clamp(3.125rem, 1.608rem + 6.4725vw, 9.375rem)  clamp(1.25rem, 0.7949rem + 1.9417vw, 3.125rem) clamp(4.375rem, 1.6444rem + 11.6505vw, 15.625rem);
+$padding-section: clamp(2.5rem, 1.5898rem + 3.8835vw, 6.25rem) clamp(1.25rem, 0.7949rem + 1.9417vw, 3.125rem) clamp(2.8125rem, 1.8265rem + 4.2071vw, 6.875rem);
 
 // Heights
 $header-height: 60px;

@@ -1,6 +1,7 @@
 @use "../../../styles/_animations" as *;
 
 .slider {
+    height: clamp(31.25rem, 26.699rem + 19.4175vw, 50rem);
     &__buttons {
         @media (max-width: 480px) {
             display: none;
