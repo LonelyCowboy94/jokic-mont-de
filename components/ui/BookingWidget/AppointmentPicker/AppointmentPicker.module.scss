@@ -1,10 +1,13 @@
 .appointmentPicker {
-   
+ 
     &__header {
         color: rgb(104, 103, 103);
         display: flex;
         justify-content: space-between;
         padding: 10px 10px 25px;
+        &:hover {
+            color: rgba(0, 80, 112, 0.616);
+        }
     }
     &__monthButton {
         width: 20px;
@@ -16,5 +19,8 @@
             font-size: 24px;
             color: rgba(0, 80, 112, 0.616);
         }
+    }
+    &__selectionInfo {
+        padding-top: 10px;
     }
 }

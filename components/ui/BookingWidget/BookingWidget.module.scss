@@ -1,4 +1,15 @@
+@use "../../../styles/mixins" as mix;
+
 .bookingWidget {
     user-select: none;
     min-width: 280px;
+    
+    &__submitPanel {
+       display: flex;
+        justify-content: flex-end;
+        padding: 15px 10px;
+    }
+    &__button {
+        @include mix.btnPrimaryGreen
+    }
 }

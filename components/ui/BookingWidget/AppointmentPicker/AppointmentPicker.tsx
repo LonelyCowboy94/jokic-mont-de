@@ -2,7 +2,7 @@
 
 import styles from "./AppointmentPicker.module.scss";
 import Calendar from "./Calendar/Calendar";
-import TimeSelector from "./TimeSelector/TimeSelector";
+
 
 interface AppointmentPickerProps {
   currentMonth: Date;
@@ -19,7 +19,6 @@ const AppointmentPicker = ({
   onPrevMonth,
   onNextMonth,
   onSelectDay,
-  onSelectSlot,
 }: AppointmentPickerProps) => {
   return (
     <section className={styles.appointmentPicker} aria-label="Termin auswählen">
@@ -50,15 +49,13 @@ const AppointmentPicker = ({
         />
       </div>
 
-      <TimeSelector selectedSlot={selectedSlot} onSelectSlot={onSelectSlot} />
-
       {selectedSlot?.time && (
         <div className={styles.appointmentPicker__selectionInfo}>
-          <p>
-            Appointment: {selectedSlot.date.getDate()}.
-            {selectedSlot.date.getMonth() + 1}.{selectedSlot.date.getFullYear()}{" "}
-            from {selectedSlot.time}
-          </p>
+          {/* <p>
+  Ihr Termin wurde für den {selectedSlot.date.getDate()}.
+  {selectedSlot.date.getMonth() + 1}.
+  {selectedSlot.date.getFullYear()} um {selectedSlot.time} Uhr ausgewählt.
+</p> */}
         </div>
       )}
     </section>

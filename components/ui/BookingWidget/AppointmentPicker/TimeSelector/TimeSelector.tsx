@@ -41,6 +41,7 @@ const generateTimes = (startHour: number, endHour: number) => {
 };
 
 const TimeSelector = ({ selectedSlot, onSelectSlot }: HoursProps) => {
+
   return (
     <div className={styles['time-selector']}>
       {PERIODS.map(period => {
@@ -60,7 +61,9 @@ const TimeSelector = ({ selectedSlot, onSelectSlot }: HoursProps) => {
                     className={`${styles['time-selector__slot']} ${
                       selectedSlot.time === slot ? styles['time-selector__slot--selected'] : ''
                     }`}
-                    onClick={() => onSelectSlot(slot)}
+                    onClick={() => { 
+                     onSelectSlot(slot);
+                    }}
                   >
                     {slot}
                   </div>
@@ -80,9 +83,14 @@ const TimeSelector = ({ selectedSlot, onSelectSlot }: HoursProps) => {
                 ))}
               </div>
             </div>
+            
           </div>
+          
         );
       })}
+       <p>
+                Ihr Termin: {selectedSlot.date.toLocaleDateString("de-DE")} um {selectedSlot.time}
+              </p>
     </div>
   );
 };

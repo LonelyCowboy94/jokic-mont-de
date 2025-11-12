@@ -58,8 +58,23 @@
     max-height: 500px;
     height: auto;
     padding: 10px;
-    border: 1px solid rgba(148, 148, 148, 0.582);
     border-radius: 10px;
     overflow-y: auto;
+    &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 8px;
+    margin: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(81, 109, 151, 0.432);
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(29, 112, 236, 0.616);
+  }
   }
 }

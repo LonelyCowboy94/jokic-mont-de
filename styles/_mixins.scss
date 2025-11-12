@@ -1,7 +1,7 @@
 @use "./variables" as *;
 
 @mixin font-style-primary {
-    font-family: var(--font-montserrat);
+  font-family: var(--font-montserrat);
 }
 
 @mixin font-kanit($weight: 400) {
@@ -26,4 +26,21 @@
   width: 100%;
   overflow: hidden;
   z-index: 1;
+}
+
+@mixin btnPrimaryGreen {
+  font-size: 18px;
+  padding: 5px 8px;
+  background-color: #0ebe65;
+  color: #ffffff;
+  border: 1px solid #2eab6d;
+  border-radius: 5px;
+  &:hover {
+    background-color: #12c86e;
+    border-color: #28b974;
+  }
+  &:active {
+    background-color: #0aa354;
+    border-color: #248c55;
+  }
 }

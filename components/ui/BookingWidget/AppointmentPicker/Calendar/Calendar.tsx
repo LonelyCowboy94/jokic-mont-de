@@ -1,11 +1,11 @@
-import styles from './Calendar.module.scss';
+import styles from "./Calendar.module.scss";
 
 const DAYS_GERMAN = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
 
 interface CalendarProps {
   currentMonth: Date;
   selectedSlot: { date: Date; time: string | null } | null;
-  onSelectDay: (day: number, monthOffset?: number) => void; 
+  onSelectDay: (day: number, monthOffset?: number) => void;
 }
 
 interface CalendarDay {
@@ -24,17 +24,14 @@ const Calendar = ({ currentMonth, selectedSlot, onSelectDay }: CalendarProps) =>
 
   const calendarDays: CalendarDay[] = [];
 
-  // Prethodni mesec
   for (let i = firstDayOfWeek - 1; i >= 0; i--) {
     calendarDays.push({ day: prevMonthDays - i, monthOffset: -1 });
   }
 
-  // Trenutni mesec
   for (let day = 1; day <= daysInMonth; day++) {
     calendarDays.push({ day, monthOffset: 0 });
   }
 
-  // Sledeći mesec da popuni nedelje
   const remainingCells = 7 - (calendarDays.length % 7);
   if (remainingCells < 7) {
     for (let day = 1; day <= remainingCells; day++) {
@@ -55,19 +52,20 @@ const Calendar = ({ currentMonth, selectedSlot, onSelectDay }: CalendarProps) =>
     weeks.push(emptyWeek);
   }
 
-  const isPastDay = (day: number, monthOffset: number) => {
-    return monthOffset === 0 &&
-      year === today.getFullYear() &&
-      month === today.getMonth() &&
-      day < today.getDate();
-  };
+  const isPastDay = (day: number, monthOffset: number) =>
+    monthOffset === 0 &&
+    year === today.getFullYear() &&
+    month === today.getMonth() &&
+    day < today.getDate();
 
   return (
     <div className={styles.calendar}>
       {/* Dani u nedelji */}
       <div className={styles.calendar__weekdays}>
-        {DAYS_GERMAN.map(d => (
-          <div key={d} className={styles.calendar__weekday}>{d}</div>
+        {DAYS_GERMAN.map((d) => (
+          <div key={d} className={styles.calendar__weekday}>
+            {d}
+          </div>
         ))}
       </div>
 
@@ -75,7 +73,6 @@ const Calendar = ({ currentMonth, selectedSlot, onSelectDay }: CalendarProps) =>
       <div className={styles.calendar__body}>
         {weeks.flat().map(({ day, monthOffset }, idx) => {
           const displayMonth = month + monthOffset;
-
           const isToday =
             day === today.getDate() &&
             displayMonth === today.getMonth() &&
@@ -88,20 +85,23 @@ const Calendar = ({ currentMonth, selectedSlot, onSelectDay }: CalendarProps) =>
 
           const isPast = isPastDay(day, monthOffset);
           const isEmpty = monthOffset !== 0 || isPast;
+          const isSunday = idx % 7 === 0; // nedelja
 
           const cellClasses = [
             styles.calendar__cell,
-            isEmpty ? styles["calendar__cell--empty"] : '',
-            isToday ? styles["calendar__cell--today"] : '',
-            isSelected ? styles["calendar__cell--selected"] : ''
-          ].join(' ');
+            isEmpty || isSunday ? styles["calendar__cell--empty"] : "",
+            isToday ? styles["calendar__cell--today"] : "",
+            isSelected ? styles["calendar__cell--selected"] : "",
+          ].join(" ");
+
+          const handleClick = () => {
+            if (monthOffset === 0 && !isPast && !isSunday) {
+              onSelectDay(day, monthOffset);
+            }
+          };
 
           return (
-            <div
-              key={idx}
-              className={cellClasses}
-              onClick={() => !isEmpty && onSelectDay(day, monthOffset)}
-            >
+            <div key={idx} className={cellClasses} onClick={handleClick}>
               <span className={styles.calendar__day}>{day}</span>
             </div>
           );
