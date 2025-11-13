@@ -2,6 +2,8 @@
 @use "../../styles/mixins" as mix;
 
 .leistungenSection {
+  position: sticky;
+  top: 60px;
   background: $background-linear-gray;
   @include mix.font-kanit;
   &__articleWrapper {

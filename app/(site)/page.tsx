@@ -3,6 +3,7 @@ import styles from "./page.module.scss";
 import HandwerkOnlineSection from "@/components/sections/HandwerkOnlineSection";
 import LeistungenSection from "@/components/sections/LeistungenSection";
 import OnlineTermineSection from "@/components/sections/OnlineTermineSection";
+import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <HandwerkOnlineSection />
       <LeistungenSection />
       <OnlineTermineSection />
+      <ContactSection />
     </main>
   );
 }
