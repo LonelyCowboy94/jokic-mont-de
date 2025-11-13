@@ -1,31 +1,29 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import dynamic from "next/dynamic";
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import { useInView } from 'react-intersection-observer';
 
-const BookingWidget = dynamic(() => import("./BookingWidget"), {
-  ssr: false,
-});
+// Dinamički import BookingWidget bez SSR
+const BookingWidget = dynamic(
+  () => import('./BookingWidget'),
+  { ssr: false }
+);
 
 export default function LazyBookingWidget() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [show, setShow] = useState(false);
+  const [loadWidget, setLoadWidget] = useState(false);
+  const { ref, inView } = useInView({
+    triggerOnce: true, // učitava samo prvi put kada uđe
+    threshold: 0.1,    // 10% vidljivo
+  });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShow(true);
-          observer.disconnect(); 
-        }
-      },
-      { rootMargin: "200px" }
-    );
+  if (inView && !loadWidget) {
+    setLoadWidget(true);
+  }
 
-    if (ref.current) observer.observe(ref.current);
-
-    return () => observer.disconnect();
-  }, []);
-
-  return <div ref={ref}>{show && <BookingWidget />}</div>;
+  return (
+    <div ref={ref} style={{ minHeight: '400px' }}>
+      {loadWidget ? <BookingWidget /> : <p>Loading Booking Widget...</p>}
+    </div>
+  );
 }

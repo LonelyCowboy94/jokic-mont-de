@@ -15,9 +15,13 @@ html, body {
   flex-wrap: wrap;
 }
 
-// .gradient-text {
-//   background: linear-gradient(-45deg, #2363c4 30%, #063279);
-//   -webkit-background-clip: text;
-//   background-clip: text;
-//   color: transparent; 
-// }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

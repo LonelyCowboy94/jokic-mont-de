@@ -1,0 +1,81 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as mix;
+
+.stepSubmit {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(1rem, -0.8293rem + 7.8049vw, 2rem);
+  background: #ffffff;
+  border-radius: $form-border-radius;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: "Inter", sans-serif;
+
+  &__title {
+    font-size: $subtitle-font-size;
+    font-weight: 700;
+    color: #2563eb;
+    text-align: center;
+  }
+
+  &__selectedInfo {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: $form-border-radius;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+
+    select {
+      margin-top: 0.5rem;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border-radius: $form-border-radius;
+      border: 1px solid #d1d5db;
+      outline: none;
+      transition: all 0.2s ease;
+
+      &:focus {
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 3px #2564eb27;
+      }
+
+      option:disabled {
+        color: #9ca3af;
+      }
+    }
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    padding: clamp(0.4rem, -0.3317rem + 3.122vw, 0.8rem) clamp(0.5rem, -0.4146rem + 3.9024vw, 1rem);
+    border-radius: $form-border-radius;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+
+    &:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px #2564eb27;
+    }
+  }
+
+  &__textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .stepSubmit__backButton {
+    @include mix.btnPrimaryBlueTransparent;
+  }
+
+  &__button {
+    @include mix.btnPrimaryBlue;
+  }
+}

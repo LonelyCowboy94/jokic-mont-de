@@ -1,15 +1,17 @@
 @use "./variables" as *;
 
+
+// Fonts layout
 @mixin font-style-primary {
   font-family: var(--font-montserrat);
 }
-
 @mixin font-kanit($weight: 400) {
   font-family: var(--font-kanit);
   font-weight: $weight;
   line-height: 1.15;
 }
 
+// Sections layout
 @mixin sectionLayoutDark {
   position: relative;
   padding: $padding-section;
@@ -18,7 +20,6 @@
   overflow: hidden;
   z-index: 1;
 }
-
 @mixin sectionLayoutLight {
   position: relative;
   padding: $padding-section;
@@ -28,19 +29,77 @@
   z-index: 1;
 }
 
-@mixin btnPrimaryGreen {
-  font-size: 18px;
-  padding: 5px 8px;
-  background-color: #0ebe65;
-  color: #ffffff;
-  border: 1px solid #2eab6d;
-  border-radius: 5px;
+// Buttons layout
+@mixin btnPrimaryPurple {
+  padding: 0.9rem 2rem;
+    border-radius: $form-border-radius;
+    background: #4f46e5;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    &:hover {
+      background: #4338ca;
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+    }
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+}
+@mixin btnPrimaryPurpleTransparent {
+  background: transparent;
+    border: 2px solid #d1d5db;
+    border-radius: $form-border-radius;
+    padding: 0.7rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #f3f4f6;
+      border-color: #4f46e5;
+      color: #4f46e5;
+    }
+}
+
+@mixin btnPrimaryBlue {
+  padding: 0.9rem 2rem;
+  border-radius: $form-border-radius;
+  background: #2563eb; 
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+
   &:hover {
-    background-color: #12c86e;
-    border-color: #28b974;
+    background: #1d4ed8; 
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4); 
   }
-  &:active {
-    background-color: #0aa354;
-    border-color: #248c55;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 }
+
+@mixin btnPrimaryBlueTransparent {
+  background: transparent;
+  border: 2px solid #93c5fd; 
+  border-radius: $form-border-radius;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #eff6ff; 
+    border-color: #2563eb; 
+    color: #2563eb; 
+  }
+}
+
