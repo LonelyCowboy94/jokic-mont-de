@@ -68,43 +68,6 @@
       display: none;
     }
   }
-
-  &__hamburger {
-    padding: 10px;
-    background: transparent;
-    border: none;
-    color: $color-font-light;
-    @media (min-width: 1025px) {
-      display: none;
-    }
-  }
-
-  &__overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-  }
-
-  &__mobileMenu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 75%;
-    height: 100vh;
-    background: white;
-    padding: 2rem;
-  }
-
-  &__closeBtn {
-    background: transparent;
-    border: none;
-    position: fixed;
-    top: 3px;
-    right: 10px;
-  }
-
-  &__mobileLink {
-    display: block;
-    padding: 1rem 2rem;
-  }
 }
+
+
