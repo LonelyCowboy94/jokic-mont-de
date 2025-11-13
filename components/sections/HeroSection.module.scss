@@ -2,14 +2,14 @@
 @use "../../styles/mixins" as mix;
 
 .heroSection {
-  position: fixed;
-  top: 0;
+  position: sticky;
+  top: 60px;
   margin-top: 60px;
   display: flex;
   justify-content: center;
   max-height: 86.5vh;
   width: 100%;
- z-index: -1;
+ z-index: 1;
   &__slider {
     display: flex;
     flex-direction: column;

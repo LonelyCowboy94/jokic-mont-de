@@ -6,6 +6,7 @@
   top: 60px;
   background: $background-linear-gray;
   @include mix.font-kanit;
+  z-index: 2;
   &__articleWrapper {
     display: flex;
     justify-content: space-between;

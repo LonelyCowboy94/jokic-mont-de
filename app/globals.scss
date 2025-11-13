@@ -50,3 +50,11 @@ html, body {
     border-radius: 2px;
   }
 }
+
+.contact-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.contact-links a:hover {
+  text-decoration: underline;
+}

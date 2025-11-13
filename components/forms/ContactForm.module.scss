@@ -42,8 +42,8 @@
 
   &__checkboxLabel {
     display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 0.8rem;
     font-size: clamp(0.875rem, 0.9vw, 1rem);
     line-height: 1.4;
     cursor: pointer;

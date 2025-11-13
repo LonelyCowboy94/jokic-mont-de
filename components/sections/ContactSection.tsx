@@ -1,3 +1,4 @@
+
 import ContactForm from "../forms/ContactForm";
 import styles from "./ContactSection.module.scss";
 
@@ -15,17 +16,18 @@ const ContactSection = () => {
         ></iframe>
       </div>
       <div className={styles.contactSection__formWrapper}>
-        <div className={styles.contactSection__info}>
-          <div>
-            <p>
+        <ContactForm />
+        <div className={`${styles.contactSection__info} flex-wrap`}>
+          <div className={styles.contactSection__contactInfo}>
+            <p className='contact-links'>
               Telefon: <a href="tel:+4964469228174">+4964469228174</a>
             </p>
-            <p>
+            <p className='contact-links'>
               Email: <a href="mailto:jdmw-info@jdmw.de">jdmw-info@jdmw.de</a>
             </p>
-            <p>Addresse: Am Stein 3, Biebertal, 35444, Hessen, Deutschland</p>
+            <p>Addresse: Am Stein 3, Biebertal, 35444, <br /> Hessen, Deutschland</p>
           </div>
-          <div>
+          <div className={styles.contactSection__openingHours}>
             <h3>Geschäftszeiten</h3>
             <p>
               Mo – Fr<span>07:00 am – 06:00 pm</span>
@@ -36,7 +38,7 @@ const ContactSection = () => {
             <p>Sonntag<span>Geschlossen</span></p>
           </div>
         </div>
-        <ContactForm />
+        
       </div>
     </section>
   );

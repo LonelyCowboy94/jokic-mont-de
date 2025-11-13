@@ -2,7 +2,6 @@
 @use "../../styles/mixins" as mix;
 
 .handwerkOnlineSection {
-  margin-top: clamp(30.9375rem, 25.628rem + 22.6537vw, 52.8125rem);
   background: $background-linear-blue;
   @include mix.sectionLayoutDark;
   &__article {
