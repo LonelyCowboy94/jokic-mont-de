@@ -24,19 +24,52 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
   }));
 };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    const { name, email, subject, message, consent } = formData;
-    if (!name || !email || !subject || !message || !consent) {
-      setError('Bitte füllen Sie alle erforderlichen Felder aus.');
+  const { name, email, subject, message, consent } = formData;
+
+  if (!name || !email || !subject || !message || !consent) {
+    setError("Bitte füllen Sie alle erforderlichen Felder aus.");
+    return;
+  }
+
+  setError("");
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!res.ok) {
+      setError("Fehler beim Senden ❌");
       return;
     }
 
-    setError('');
-    // ovde ide logika za slanje mejla
-    console.log('Form submitted:', formData);
-  };
+    const data = await res.json();
+
+    if (!data.success) {
+      setError(data.error || "Fehler beim Senden ❌");
+      return;
+    }
+
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+      consent: false,
+    });
+
+  } catch (error) {
+    console.log(error);
+    setError(error instanceof Error ? error.message : "Unknown error");
+  }
+};
 
   return (
     <form className={styles.contactForm} onSubmit={handleSubmit}>
