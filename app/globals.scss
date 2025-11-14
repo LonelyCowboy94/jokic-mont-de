@@ -31,11 +31,12 @@ html, body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 30px;
+  height: clamp(2.5rem, 1.9583rem + 2.3112vw, 3.4375rem);
   width: 100px;
-  padding: 5px 8px;
-  clip-path: path('M0,0 L100,0 L80,100 Q50,120 20,100 Z');
-  border-radius: 0 0 70px 70px;
+  padding: clamp(0.9375rem, 0.5764rem + 1.5408vw, 1.5625rem) 8px 3px;
+  // clip-path: path('M0,0 L100,0 L80,100 Q50,120 20,100 Z');
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+  border-radius: 0 0 20px 20px;
   position: absolute;
   top: 0;
   left: 50%;

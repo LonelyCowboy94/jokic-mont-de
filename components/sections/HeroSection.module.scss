@@ -3,13 +3,13 @@
 
 .heroSection {
   position: sticky;
-  top: 60px;
-  margin-top: 60px;
+  top: clamp(1.875rem, 1.4199rem + 1.9417vw, 3.75rem);
+  margin-top: clamp(1.875rem, 1.4199rem + 1.9417vw, 3.75rem);
   display: flex;
   justify-content: center;
   max-height: 86.5vh;
   width: 100%;
- z-index: 1;
+  z-index: 1;
   &__slider {
     display: flex;
     flex-direction: column;

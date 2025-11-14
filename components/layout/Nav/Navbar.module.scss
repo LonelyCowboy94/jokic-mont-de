@@ -8,10 +8,11 @@
   position: relative;
   font-family: var(--font-montserrat);
   font-weight: 300;
-  padding-left: clamp(2.5rem, 1.8932rem + 2.589vw, 5rem);
+  padding-left: clamp(1.25rem, 0.1666rem + 4.6225vw, 3.125rem);
+ 
 
   &__content {
-    height: $header-height;
+    height: clamp(1.875rem, 1.4199rem + 1.9417vw, 3.75rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,7 +31,7 @@
 
   &__logoImage {
     position: relative;
-    width: 150px;
+    width: clamp(6.25rem, 5.4915rem + 3.2362vw, 9.375rem);
     height: $header-height;
   }
 
