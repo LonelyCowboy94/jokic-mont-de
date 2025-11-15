@@ -1,0 +1,10 @@
+@use "../../../styles/mixins" as mix;
+
+.stepResult {
+   text-align: center;
+    min-height: 50%;
+    &__button {
+        margin-top: 45px;
+@include mix.btnPrimaryBlue;
+    }
+}

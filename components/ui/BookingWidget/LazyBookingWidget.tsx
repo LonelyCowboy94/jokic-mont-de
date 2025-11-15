@@ -21,7 +21,7 @@ export default function LazyBookingWidget() {
   }
 
   return (
-    <div ref={ref} style={{ minHeight: '400px' }}>
+    <div ref={ref} style={{width: '100%'}}>
       {loadWidget ? <BookingWidget /> : <p>Loading Booking Widget...</p>}
     </div>
   );

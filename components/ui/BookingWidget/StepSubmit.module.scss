@@ -2,8 +2,8 @@
 @use "../../../styles/mixins" as mix;
 
 .stepSubmit {
-  max-width: 500px;
-  width: 100%;
+  min-width: 100%;
+
   margin: 0 auto;
   padding: clamp(1rem, -0.8293rem + 7.8049vw, 2rem);
   background: #ffffff;
