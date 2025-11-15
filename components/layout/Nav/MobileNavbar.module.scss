@@ -20,8 +20,8 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: calc(50% - 50px); 
-  height: 3px;             
+  width: calc(50% - 60px); 
+  height: 5px;             
   background: linear-gradient(transparent, rgba(24, 25, 80, 0.705));
 }
   &::before {
@@ -29,9 +29,9 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: calc(50% - 50px);
-  height: 3px;
-  background: linear-gradient(transparent, rgba(24, 25, 80, 0.705));
+  width: calc(50% - 60px);
+  height: 5px;
+  background: linear-gradient(transparent, rgb(11, 12, 70));
   
 }
   @media (min-width: 1025px) {
@@ -42,37 +42,32 @@
     z-index: 5;
   }
   &__hamburgerBtn {
-    background: linear-gradient(to right, #0d3a7c 0%, #082f6a 100%);
+    background: linear-gradient(to right, #0e3a7d 0%, #072e69 100%);
     border: none;
     top: 547.5px;
     z-index: 1;
-    box-shadow: inset 0 -2px 2px 0 rgba(12, 12, 41, 0.74);
+    box-shadow: inset 0 -3px 2px 0 rgba(37, 37, 88, 0.74);
   }
   &__hamburgerBtn::after {
   content: '';
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 10px; 
+  width: 12px; 
   height: 100%;             
-  transform: skew(-18deg);             
-  background: linear-gradient(100deg, transparent, rgba(12, 12, 41, 0.74));
+  transform: skew(-24deg);             
+  background: linear-gradient(100deg, transparent, rgb(12, 12, 41));
 }
 &__hamburgerBtn::before{
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 10px; 
+  width: 12px; 
   height: 100%;
-  transform: skew(21deg);             
-  background: linear-gradient(100deg, transparent, rgba(24, 25, 80, 0.705));
+  transform: skew(24deg);             
+  background: linear-gradient(100deg, transparent, rgba(64, 75, 124, 0.671));
 }
-  &__overlay--active {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-  }
 
   &__mobileLink {
     display: block;
@@ -96,7 +91,7 @@
   &--active {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(10, 20, 10, 0.781);
     z-index: 4;
   }
 }
