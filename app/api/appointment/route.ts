@@ -104,11 +104,10 @@ export async function POST(req: Request) {
       // Mail to Admin
       const now = new Date();
 const submitTime = `${now.getDate().toString().padStart(2,'0')}.${(now.getMonth()+1).toString().padStart(2,'0')}.${now.getFullYear()} ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
-const adminEmails = [process.env.ADMIN_EMAIL, process.env.ADMIN2_EMAIL].filter(Boolean) as string[];
 
 await transporter.sendMail({
   from: process.env.SMTP_USER,
-  to: adminEmails,
+  to: process.env.ADMIN_EMAIL,
   subject: `Neuer Termin-Antrag eingegangen`,
   html: `
 <div style="max-width: 600px; margin: 0 auto; padding: 20px;
