@@ -12,9 +12,11 @@ export async function POST(req: Request) {
       );
     }
 
+    const adminEmails = [process.env.ADMIN_EMAIL, process.env.ADMIN2_EMAIL].filter(Boolean) as string[];
+
     await transporter.sendMail({
       from: process.env.SMTP_USER,
-      to: process.env.ADMIN_EMAIL,
+      to: adminEmails,
       replyTo: email,
       subject: `Jokic-Mont kontakt form: ${subject}`,
       html: `
