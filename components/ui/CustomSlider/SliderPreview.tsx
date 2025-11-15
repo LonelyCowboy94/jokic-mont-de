@@ -4,7 +4,6 @@ import Image from "next/image";
 import styles from "./Slider.module.scss";
 import { Slide } from "./Slider";
 
-
 type SliderPreviewProps = {
   slides: Slide[];
   active: number;
@@ -44,18 +43,18 @@ const SliderPreview = ({
               style={{ position: "relative", width: "100%", height: "100%" }}
             >
               <Image
-                className={index === active ? styles.slider__activeImage : ""}
+                key={index}
                 src={item.src}
-                alt=""
+                alt='slider-image'
                 width={1920}
                 height={1080}
                 draggable={false}
-                priority={index === 0}
+                priority={index === active} 
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 375px) 375px,
-                       (max-width: 768px) 768px,
-                       (max-width: 1024px) 1024px,
-                       100vw"
+           (max-width: 768px) 768px,
+           (max-width: 1024px) 1024px,
+           100vw"
               />
             </div>
           )}
