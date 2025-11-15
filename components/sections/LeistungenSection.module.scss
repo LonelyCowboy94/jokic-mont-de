@@ -3,7 +3,7 @@
 
 .leistungenSection {
   position: sticky;
-  top: 60px;
+  top: clamp(-0.625rem, -1.6869rem + 4.5307vw, 3.75rem);
   background: $background-linear-gray;
   @include mix.font-kanit;
   z-index: 2;

@@ -6,6 +6,15 @@ import styles from "./Navbar.module.scss";
 export default function Navbar() {
   const pathname = usePathname();
 
+const links = [
+    { href: "/", label: "STARTSEITE" },
+    { href: "/leistungen", label: "LEISTUNGEN" },
+    { href: "/kontakt", label: "KONTAKT" },
+    { href: "/karriere", label: "KARRIERE" },
+    { href: "/galerie", label: "GALERIE" },
+    { href: "/impressum", label: "IMPRESSUM" },
+  ];
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar__content}>
@@ -26,69 +35,20 @@ export default function Navbar() {
         </Link>
 
         {/* DESKTOP NAV LINKS */}
+       
         <div className={styles.navbar__links}>
-          <Link
-            href="/"
-            className={`${styles.navbar__link} ${
-              pathname === "/" ? styles["navbar__link--active"] : ""
+          
+             {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`${styles.navbar__link} ${
+              pathname === link.href ? styles["navbar__link--active"] : ""
             }`}
-          >
-            STARTSEITE
-          </Link>
-          <Link
-            href="/leistungen"
-            className={`${styles.navbar__link} ${
-              pathname === "/leistungen" ? styles["navbar__link--active"] : ""
-            }`}
-          >
-            LEISTUNGEN
-          </Link>
-
-          <Link
-            href="/kontakt"
-            className={`${styles.navbar__link} ${
-              pathname === "/kontakt" ? styles["navbar__link--active"] : ""
-            }`}
-          >
-            KONTAKT
-          </Link>
-
-          <Link
-            href="/karriere"
-            className={`${styles.navbar__link} ${
-              pathname === "/karriere" ? styles["navbar__link--active"] : ""
-            }`}
-          >
-            KARRIERE
-          </Link>
-
-          <Link
-            href="/galerie"
-            className={`${styles.navbar__link} ${
-              pathname === "/galerie" ? styles["navbar__link--active"] : ""
-            }`}
-          >
-            GALERIE
-          </Link>
-
-          <Link
-            href="/impressum"
-            className={`${styles.navbar__link} ${
-              pathname === "/impressum" ? styles["navbar__link--active"] : ""
-            }`}
-          >
-            IMPRESSUM
-          </Link>
-          {/* <Link
-            href="/datenschutzerklaerung"
-            className={`${styles.navbar__link} ${
-              pathname === "/datenschutzerklaerung"
-                ? styles["navbar__link--active"]
-                : ""
-            }`}
-          >
-            DATENSCHUTZERKLÄRUNG
-          </Link> */}
+              >
+                {link.label}
+              </Link>
+            ))}
         </div>
         <div className={styles.navbar__contactSvgs}>{/*PLACEHOLDER*/}</div>
       </div>

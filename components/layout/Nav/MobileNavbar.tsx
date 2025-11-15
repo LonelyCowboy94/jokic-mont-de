@@ -10,6 +10,19 @@ const MobileNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  const closedY = -550;
+  const openY = -50;
+
+  const links = [
+    { href: "/", label: "STARTSEITE" },
+    { href: "/leistungen", label: "LEISTUNGEN" },
+    { href: "/kontakt", label: "KONTAKT" },
+    { href: "/karriere", label: "KARRIERE" },
+    { href: "/galerie", label: "GALERIE" },
+    { href: "/impressum", label: "IMPRESSUM" },
+    { href: "/datenschutzerklaerung", label: "DATENSCHUTZERKLÄRUNG" },
+  ];
+
   return (
     <>
       <motion.div
@@ -17,94 +30,31 @@ const MobileNavbar = () => {
           menuOpen ? styles["mobileMenu--open"] : ""
         }`}
         drag="y"
-        dragConstraints={{ top: -80, bottom: 0 }}
+        dragConstraints={{ top: closedY, bottom: openY }}
         dragElastic={0.2}
+        animate={{ y: menuOpen ? openY : closedY }}
         transition={{ type: "spring", stiffness: 250, damping: 25 }}
-
         onDragEnd={(event, info) => {
-          if (info.offset.y > 30) {
-            setMenuOpen(true);   
-          } else if (info.offset.y < -30) {
-            setMenuOpen(false); 
-          }
+          if (info.offset.y > 30) setMenuOpen(true);
+          else if (info.offset.y < -30) setMenuOpen(false);
         }}
       >
         {menuOpen && (
           <>
-            <Link
-              href="/"
-              className={`${styles.mobileMenu__mobileLink} ${
-                pathname === "/" ? styles["mobileMenu__mobileLink--active"] : ""
-              }`}
-            >
-              STARTSEITE
-            </Link>
-
-            <Link
-              href="/leistungen"
-              className={`${styles.mobileMenu__mobileLink} ${
-                pathname === "/leistungen"
-                  ? styles["mobileMenu__mobileLink--active"]
-                  : ""
-              }`}
-            >
-              LEISTUNGEN
-            </Link>
-
-            <Link
-              href="/kontakt"
-              className={`${styles.mobileMenu__mobileLink} ${
-                pathname === "/kontakt"
-                  ? styles["mobileMenu__mobileLink--active"]
-                  : ""
-              }`}
-            >
-              KONTAKT
-            </Link>
-
-            <Link
-              href="/karriere"
-              className={`${styles.mobileMenu__mobileLink} ${
-                pathname === "/karriere"
-                  ? styles["mobileMenu__mobileLink--active"]
-                  : ""
-              }`}
-            >
-              KARRIERE
-            </Link>
-
-            <Link
-              href="/galerie"
-              className={`${styles.mobileMenu__mobileLink} ${
-                pathname === "/galerie"
-                  ? styles["mobileMenu__mobileLink--active"]
-                  : ""
-              }`}
-            >
-              GALERIE
-            </Link>
-
-            <Link
-              href="/impressum"
-              className={`${styles.mobileMenu__mobileLink} ${
-                pathname === "/impressum"
-                  ? styles["mobileMenu__mobileLink--active"]
-                  : ""
-              }`}
-            >
-              IMPRESSUM
-            </Link>
-
-            <Link
-              href="/datenschutzerklaerung"
-              className={`${styles.mobileMenu__mobileLink} ${
-                pathname === "/datenschutzerklaerung"
-                  ? styles["mobileMenu__mobileLink--active"]
-                  : ""
-              }`}
-            >
-              DATENSCHUTZERKLÄRUNG
-            </Link>
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`${styles.mobileMenu__mobileLink} ${
+                  pathname === link.href
+                    ? styles["mobileMenu__mobileLink--active"]
+                    : ""
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
           </>
         )}
 
@@ -121,7 +71,6 @@ const MobileNavbar = () => {
         </button>
       </motion.div>
 
-      {/* OVERLAY */}
       <div
         className={`${styles.overlay} ${
           menuOpen ? styles["overlay--active"] : ""

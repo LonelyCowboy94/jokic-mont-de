@@ -33,7 +33,7 @@ html, body {
   align-items: center;
   height: clamp(2.5rem, 1.9583rem + 2.3112vw, 3.4375rem);
   width: 100px;
-  padding: clamp(0.9375rem, 0.5764rem + 1.5408vw, 1.5625rem) 8px 3px;
+  padding: clamp(0.9375rem, 0.5764rem + 1.5408vw, 1.5625rem) 8px 10px;
   // clip-path: path('M0,0 L100,0 L80,100 Q50,120 20,100 Z');
   clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
   border-radius: 0 0 20px 20px;
@@ -45,9 +45,10 @@ html, body {
   
   span {
     display: block;
-    background-color: #FFF;
+    background-color: #ffffff77;
     width: 50%;
     height: 2px;
+    border: 1px solid rgba(63, 45, 45, 0.37);
     border-radius: 2px;
   }
 }
