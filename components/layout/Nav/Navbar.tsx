@@ -20,10 +20,31 @@ const links = [
       <div className={styles.navbar__content}>
         {/* NAV LOGO */}
         <Link href="/" className={styles.navbar__logo}>
-          <div className={styles.navbar__logoContainer}>
-            <div className={styles.navbar__logoImage}>
+        <div className={styles.logoContainer}></div>
+          <div className={styles.navbar__logoImage}>
+            <div className={styles["navbar__logoImage--left"]}>
               <Image
-                src="/images/logo-link-white.webp"
+                src="/images/logo-link-left.webp"
+                fill
+                style={{ objectFit: "contain" }}
+                sizes="(max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+                alt="logo"
+                loading="eager"
+              />
+            </div>
+            <div className={styles["navbar__logoImage--mid"]}>
+              <Image
+                src="/images/logo-link-mid.webp"
+                fill
+                style={{ objectFit: "contain" }}
+                sizes="(max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"
+                alt="logo"
+                loading="eager"
+              />
+            </div>
+            <div className={styles["navbar__logoImage--right"]}>
+              <Image
+                src="/images/logo-link-right.webp"
                 fill
                 style={{ objectFit: "contain" }}
                 sizes="(max-width: 768px) 120px, (max-width: 1200px) 150px, 200px"

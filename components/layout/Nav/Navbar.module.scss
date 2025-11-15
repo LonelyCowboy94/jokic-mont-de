@@ -8,7 +8,7 @@
   position: relative;
   font-family: var(--font-montserrat);
   font-weight: 300;
-  padding-left: clamp(1rem, -0.2279rem + 5.2388vw, 3.125rem);
+  padding-left: clamp(0rem, -1.3204rem + 5.6338vw, 3.75rem);
 
   &__content {
     height: clamp(1.875rem, 1.4199rem + 1.9417vw, 3.75rem);
@@ -29,9 +29,32 @@
   }
 
   &__logoImage {
+    display: flex;
+    justify-content: center;
+    width: clamp(8.125rem, 6.7597rem + 5.8252vw, 13.75rem);
     position: relative;
-    width: clamp(6.25rem, 5.4915rem + 3.2362vw, 9.375rem);
-    height: $header-height;
+    &--left {
+      position: relative;
+      width: clamp(5rem, 5.3034rem + -1.2945vw, 3.75rem);
+    aspect-ratio: 4.462 / 1;
+    left: -4px;
+    animation: slideLeft 2s linear forwards, fadeInLogo 3.3s forwards;
+    }
+    &--mid {
+      position: relative;
+      width: clamp(3.75rem, 3.4466rem + 1.2945vw, 5rem);
+      opacity: 0;
+    aspect-ratio: 1.701 / 1;
+    animation: fadeInLogo 5s linear forwards, slideUp 4s forwards;
+    }
+    &--right {
+      position: relative;
+      width: clamp(5rem, 5.3034rem + -1.2945vw, 3.75rem);
+      left: 22px;
+      top: 0.8px;
+      aspect-ratio: 4.462 / 1;
+      animation: slideRight 2s linear forwards, fadeInLogo 3.3s forwards;
+    }
   }
 
   &__links {

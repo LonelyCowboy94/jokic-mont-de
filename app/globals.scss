@@ -9,6 +9,26 @@ html, body {
     overflow-x: hidden;
 }
 
+body {
+   &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 8px;
+    margin: 5px;
+    background-color: #7efc2a57;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgb(0, 29, 71);
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(29, 112, 236);
+  }
+}
+
 .flex-wrap {
   display: flex;
   flex-direction: row;
@@ -44,10 +64,9 @@ html, body {
   
   span {
     display: block;
-    background-color: #ffffff77;
+    background-color: #ffffffc5;
     width: 50%;
     height: 2px;
-    border: 1px solid rgba(63, 45, 45, 0.37);
     border-radius: 2px;
   }
 }
