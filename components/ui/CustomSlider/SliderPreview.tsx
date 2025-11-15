@@ -63,7 +63,7 @@ const SliderPreview = ({
               autoPlay
               playsInline
               loop
-              preload={index === active ? "auto" : "none"}
+              preload={index === 0 ? "auto" : "metadata"}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           )}
