@@ -3,7 +3,7 @@
 import Image from "next/image";
 import styles from "./Slider.module.scss";
 import { Slide } from "./Slider";
-import { metadata } from "framer-motion/client";
+
 
 type SliderPreviewProps = {
   slides: Slide[];
