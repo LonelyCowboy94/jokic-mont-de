@@ -36,25 +36,42 @@ export default function StepSubmit({
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsLoading(true);
 
-    try {
-      const res = await fetch("/api/appointment", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, date, time }),
-      });
+  try {
+ 
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    const formattedDate = `${day}.${month}.${year}`;
 
-      if (res.ok) onSubmit("success");
-      else onSubmit("error");
-    } catch {
+    const res = await fetch("/api/appointment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...form,
+        date: formattedDate, 
+        time,     
+        note: form.message 
+      }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) onSubmit("success");
+    else {
+      console.error("Backend error:", data);
       onSubmit("error");
-    } finally {
-      setIsLoading(false);
     }
-  };
+  } catch (err) {
+    console.error("Fetch error:", err);
+    onSubmit("error");
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <form className={styles.stepSubmit} onSubmit={handleSubmit}>
