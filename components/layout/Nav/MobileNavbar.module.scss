@@ -83,8 +83,8 @@
     line-height: 16px;
     animation: fadeInLinks 1.5s forwards;
     &--active {
-      animation: activeLinkBlink 1.35s linear infinite,
-        fadeInLinks 2.5s forwards;
+      animation: activeLinkBlink 1.35s linear 1s infinite,
+        fadeInLinks 1.5s forwards;
     }
     &:hover {
       color: #ffffffad;

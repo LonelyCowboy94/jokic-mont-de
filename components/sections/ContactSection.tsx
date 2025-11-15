@@ -1,6 +1,6 @@
-
-import ContactForm from "../forms/ContactForm";
+import LazyContactForm from "../forms/lazyContactForm";
 import styles from "./ContactSection.module.scss";
+
 
 const ContactSection = () => {
   return (
@@ -16,7 +16,7 @@ const ContactSection = () => {
         ></iframe>
       </div>
       <div className={styles.contactSection__formWrapper}>
-        <ContactForm />
+        <LazyContactForm />
         <div className={`${styles.contactSection__info} flex-wrap`}>
           <div className={styles.contactSection__contactInfo}>
             <p className='contact-links'>
