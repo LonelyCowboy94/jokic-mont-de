@@ -3,6 +3,7 @@
 import Image from "next/image";
 import styles from "./Slider.module.scss";
 import { Slide } from "./Slider";
+import { metadata } from "framer-motion/client";
 
 type SliderPreviewProps = {
   slides: Slide[];
@@ -48,6 +49,8 @@ const SliderPreview = ({
                 alt=""
                 fill
                 draggable={false}
+                fetchPriority="high"
+                priority={index === 0}
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 375px) 375px,
                        (max-width: 768px) 768px,
