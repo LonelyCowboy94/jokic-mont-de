@@ -47,9 +47,9 @@ const SliderPreview = ({
                 className={index === active ? styles.slider__activeImage : ""}
                 src={item.src}
                 alt=""
-                fill
+                width={1920}
+                height={1080}
                 draggable={false}
-                fetchPriority="high"
                 priority={index === 0}
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 375px) 375px,
