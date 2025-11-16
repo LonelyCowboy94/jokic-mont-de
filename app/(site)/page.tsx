@@ -5,6 +5,7 @@ import LeistungenSection from "@/components/sections/LeistungenSection";
 // import OnlineTermineSection from "@/components/sections/OnlineTermineSection";
 import ContactSection from "@/components/sections/ContactSection";
 import dynamic from "next/dynamic";
+import Footer from "@/components/layout/Footer/Footer";
 
 
 const OnlineTermineSection = dynamic(() => import("@/components/sections/OnlineTermineSection"), {
@@ -19,6 +20,7 @@ export default function Home() {
       <LeistungenSection />
       <OnlineTermineSection />
       <ContactSection />
+      <Footer />
     </main>
   );
 }

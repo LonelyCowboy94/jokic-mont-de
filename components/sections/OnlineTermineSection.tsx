@@ -3,7 +3,7 @@ import styles from "./OnlineTermineSection.module.scss";
 
 const OnlineTermineSection = () => {
   return (
-    <section className={`${styles.onlineTermineSection} flex-wrap`}>
+    <section id='onlineTermineSection' className={`${styles.onlineTermineSection} flex-wrap`}>
       <article className={styles.onlineTermineSection__article}>
         <h2 className={styles.onlineTermineSection__title}>Online Termine</h2>
         <h3 className={styles.onlineTermineSection__subtitle}>

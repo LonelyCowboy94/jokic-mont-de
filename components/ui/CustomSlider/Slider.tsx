@@ -19,46 +19,6 @@ export type OverlayData = {
   className?: string;           
 };
 
-export const overlays: OverlayData[] = [
-  {
-    text: <p>PPRVI SLIDE S DESNA</p>,
-    position: { bottom: "10%", right: "0%" },
-    animateFrom: "right",
-    className: "overlayFirst",   
-  },
-  {
-    text: <p>DRUGI SLIDE S LEVA</p>,
-    position: { top: "50%", left: "0%" },
-    animateFrom: "left",
-    className: "overlaySecond",
-  },
-  {
-    text: <p>TRECI SLIDE S LEVA</p>,
-    position: { top: "10%", left: "0%" },
-    animateFrom: "left",
-    className: "overlayThird",
-  },
-  {
-    text: <p>CETVRTI SLIDE S DESNA</p>,
-    position: { top: "50%", right: "0%" },
-    animateFrom: "right",
-    className: "overlayFourth",
-  },
-  {
-    text: <p>PETI SLIDE ODOZDO</p>,
-    position: { bottom: "0%", left: "50%" },
-    animateFrom: "bottom",
-    className: "overlayFifth",
-  },
-  {
-    text: <p>SESTI SLIDE ODOZGO</p>,
-    position: { top: "0%", left: "5%" },
-    animateFrom: "top",
-    className: "overlaySixth",
-  },
-];
-
-
 export default function Slider({ slides }: { slides: Slide[] }) {
   const [active, setActive] = useState(slides.length); // Starting position
   const [isTransitioning, setIsTransitioning] = useState(true);
@@ -138,7 +98,7 @@ export default function Slider({ slides }: { slides: Slide[] }) {
         isTransitioning={isTransitioning}
         onTransitionEnd={handleTransitionEnd}
       />
-      <SliderOverlay active={active} overlays={overlays} />
+      <SliderOverlay active={active} />
       <SliderButtons onSelect={handleSlideChange} />
     </div>
   );

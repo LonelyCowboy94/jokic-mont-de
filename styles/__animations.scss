@@ -1,5 +1,6 @@
 @keyframes slideLeft {
-  0%, 70% {
+  0%,
+  70% {
     transform: translateX(30px);
   }
   100% {
@@ -8,7 +9,8 @@
 }
 
 @keyframes slideRight {
-    0%, 70% {
+  0%,
+  70% {
     transform: translateX(-50px);
   }
   100% {
@@ -20,14 +22,15 @@
   0% {
     transform: translateY(60px);
   }
-  
+
   100% {
     transform: translateY(0);
   }
 }
 
 @keyframes fadeInLogo {
-  0%, 40% {
+  0%,
+  40% {
     opacity: 0;
   }
   100% {
@@ -35,39 +38,31 @@
   }
 }
 
-// @keyframes fadeInH2 {
-//   0%,
-//   70% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 0.7;
-//   }
-// }
-
 @keyframes heroMotion {
   0% {
     object-position: top left;
-    width: 150%;
-    height: 150%;
-    object-position: top right;
   }
-  
+
+  50% {
+    object-position: center;
+  }
+
   100% {
-    object-position: top left;
+    object-position: bottom right;
   }
 }
 
 @keyframes activeLinkBlink {
-    0% {
-      box-shadow: -4 0 0 0 rgb(170, 228, 34);
-    }
-    40% {
-      box-shadow: -4 0 0 0 rgb(170, 228, 34);
-    }
-    70%, 100% {
-      box-shadow: -4 0 0 rgba(170, 228, 34, 0);
-    }
+  0% {
+    box-shadow: -4 0 0 0 rgb(170, 228, 34);
+  }
+  40% {
+    box-shadow: -4 0 0 0 rgb(170, 228, 34);
+  }
+  70%,
+  100% {
+    box-shadow: -4 0 0 rgba(170, 228, 34, 0);
+  }
 }
 
 @keyframes fadeIn {
@@ -80,7 +75,8 @@
 }
 
 @keyframes fadeInLinks {
-  0%, 18% {
+  0%,
+  18% {
     opacity: 0;
   }
   100% {
@@ -88,4 +84,14 @@
   }
 }
 
-
+@keyframes slideFade {
+  
+  0%, 10% {
+     opacity: 0;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(var(--translateX, 0px));
+  }
+}

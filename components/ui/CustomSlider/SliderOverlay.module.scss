@@ -1,11 +1,129 @@
-.overlay {
-    font-size: clamp(1.75rem, 1.2646rem + 2.0712vw, 3.75rem);
-    padding: clamp(1.25rem, 0.7949rem + 1.9417vw, 3.125rem);
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.397);
-        z-index: - 1;
+@use "../../../styles/mixins" as mix;
+@use "../../../styles/_animations" as *;
+
+.slideOverlay {
+  height: 100%;
+  position: absolute;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.329);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & div {
+    max-width: clamp(13.75rem, -1.1165rem + 63.4304vw, 75rem);
+    min-width: 300px;
+    background: rgba(0, 0, 0, 0.699);
+    padding: clamp(1.25rem, 0.8708rem + 1.6181vw, 2.8125rem);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.9375rem, 0.7858rem + 0.6472vw, 1.5625rem);
+    animation: slideFade 9s ease forwards;
+  }
+  & p:last-of-type {
+    font-size: clamp(1rem, 0.5073rem + 1.0356vw, 1.75rem);
+  }
+  & p:first-of-type {
+    font-size: clamp(1.525rem, 0.4879rem + 2.7184vw, 3.75rem);
+  }
+
+  & a {
+    @include mix.btnPrimaryBlueTransparent;
+    color: #fff;
+    font-size: clamp(0.875rem, 0.784rem + 0.3883vw, 1.25rem);
+    padding: clamp(0.3125rem, 0.085rem + 0.9709vw, 1.25rem);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.397);
+    z-index: -1;
+  }
+}
+
+.overlayFirst {
+    --translateXRaw: clamp(1.5rem, 0.5rem + 14vw, 18.75rem);
+    --translateX: calc(var(--translateXRaw) * -1);
+   padding-bottom: 150px;
+   width: clamp(13.75rem, 4.9515rem + 37.5405vw, 50rem);
+}
+
+.overlaySecond {
+    background: rgba(24, 36, 139, 0.329);
+    padding-top: 300px;
+    --translateX: clamp(3.125rem, -0.6675rem + 16.1812vw, 18.75rem);
+    text-align: end;
+    width: clamp(13.75rem, 6.165rem + 32.3625vw, 45rem);
+}
+
+.overlayThird {
+    background: rgba(95, 121, 4, 0.329);
+    text-align: end;
+    --translateX: clamp(3.125rem, -0.6675rem + 16.1812vw, 18.75rem);
+    padding-bottom: clamp(6.25rem, 3.9745rem + 9.7087vw, 15.625rem);
+    width: clamp(15.625rem, 4.2476rem + 48.5437vw, 62.5rem);
+     
+}
+.thirdOverlayButton {
+  align-self: flex-end;
+}
+
+.overlayFourth {
+    background: rgba(24, 90, 79, 0.329);
+    padding-top: 150px;
+  text-align: flex-end;
+  width: clamp(13.75rem, 4.9515rem + 37.5405vw, 50rem);
+ 
+    --translateXRaw: clamp(1.5rem, 0.5rem + 14vw, 18.75rem);
+    --translateX: calc(var(--translateXRaw) * -1);
+ 
+    & div {
+        min-width: 260px;
     }
+  
+}
+.fourthOverlayButton {
+  align-self: flex-start;
+  
+}
+
+.overlayFifth {
+ background: rgba(18, 59, 15, 0.329);
+     --translateXRaw: clamp(1.5rem, 0.5rem + 14vw, 18.75rem);
+    --translateX: calc(var(--translateXRaw) * -1);
+    width: clamp(15.625rem, 9.557rem + 25.89vw, 40.625rem);
+    & div {
+        min-width: 280px;
+    }
+
+}
+.fifthOverlayButton {
+  align-self: flex-start;
+}
+
+.overlaySixth {
+    background: rgba(14, 7, 54, 0.397);
+    --translateX: clamp(3.125rem, -0.6675rem + 16.1812vw, 18.75rem);
+  text-align: end;
+  width: clamp(15.9375rem, 3.1189rem + 54.6926vw, 68.75rem);
+}
+.sixthOverlayButton {
+  align-self: flex-end;
+}
+
+.overlaySeventh {
+    --translateX: clamp(3.125rem, -0.6675rem + 16.1812vw, 18.75rem);
+    text-align: end;
+}
+.seventhOverlayButton {
+    align-self: flex-end;
+}
+
+.overlayEighth {
+    --translateX: clamp(3.125rem, -0.6675rem + 16.1812vw, 18.75rem);
+    text-align: end;
 }

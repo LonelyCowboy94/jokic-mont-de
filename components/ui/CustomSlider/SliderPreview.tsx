@@ -43,18 +43,19 @@ const SliderPreview = ({
               style={{ position: "relative", width: "100%", height: "100%" }}
             >
               <Image
-                key={index}
+                className={styles[`slider__preview--activeImg`]}
+                key={`${index}-${active}`}
                 src={item.src}
-                alt='slider-image'
+                alt="slider-image"
                 width={1920}
                 height={1080}
                 draggable={false}
-                priority={index === active} 
+                priority={index === active}
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 375px) 375px,
-           (max-width: 768px) 768px,
-           (max-width: 1024px) 1024px,
-           100vw"
+          (max-width: 768px) 768px,
+          (max-width: 1024px) 1024px,
+          100vw"
               />
             </div>
           )}

@@ -15,7 +15,7 @@ const montserrat = Montserrat({
 const kanit = Kanit({
   subsets: ["latin"],
   variable: "--font-kanit",
-  weight: ["400"],
+  weight: ["200", "300", "400"],
   preload: false, 
 })
 

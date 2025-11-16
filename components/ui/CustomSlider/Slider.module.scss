@@ -7,13 +7,13 @@
             display: none;
         }
     }
-    &__activeImage {
-
-        animation: heroMotion 10s linear infinite;
-    }
     &__activeSlide {
         
         animation: fadeIn 1s forwards;
         
     }
+}
+
+.slider__preview--activeImg {
+    animation: heroMotion 10s linear infinite;
 }
