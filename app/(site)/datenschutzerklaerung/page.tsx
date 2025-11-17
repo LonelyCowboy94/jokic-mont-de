@@ -2,8 +2,10 @@ import styles from "./page.module.scss";
 
 const page = () => {
   return (
-    <div>DATENSCHUTZERKLÄRUNG</div>
-  )
-}
+    <main>
+      <div>DATENSCHUTZERKLÄRUNG</div>
+    </main>
+  );
+};
 
-export default page
+export default page;

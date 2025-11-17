@@ -1,6 +1,5 @@
-import LazyContactForm from "../forms/lazyContactForm";
+import LazyContactForm from "../../forms/lazyContactForm";
 import styles from "./ContactSection.module.scss";
-
 
 const ContactSection = () => {
   return (
@@ -19,13 +18,15 @@ const ContactSection = () => {
         <LazyContactForm />
         <div className={`${styles.contactSection__info} flex-wrap`}>
           <div className={styles.contactSection__contactInfo}>
-            <p className='contact-links'>
+            <p className="contact-links">
               Telefon: <a href="tel:+4964469228174">+4964469228174</a>
             </p>
-            <p className='contact-links'>
+            <p className="contact-links">
               Email: <a href="mailto:jdmw-info@jdmw.de">jdmw-info@jdmw.de</a>
             </p>
-            <p>Addresse: Am Stein 3, Biebertal, 35444, <br /> Hessen, Deutschland</p>
+            <p>
+              Addresse: Am Stein 3, Biebertal, 35444, <br /> Hessen, Deutschland
+            </p>
           </div>
           <div className={styles.contactSection__openingHours}>
             <h3>Geschäftszeiten</h3>
@@ -35,10 +36,11 @@ const ContactSection = () => {
             <p>
               Samstag<span>07:00 am – 12:30 pm</span>
             </p>
-            <p>Sonntag<span>Geschlossen</span></p>
+            <p>
+              Sonntag<span>Geschlossen</span>
+            </p>
           </div>
         </div>
-        
       </div>
     </section>
   );

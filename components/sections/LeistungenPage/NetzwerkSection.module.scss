@@ -1,0 +1,45 @@
+@use "../../../styles/mixins" as mix;
+@use "../../../styles/variables" as *;
+
+.netzwerkSection {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  @include mix.sectionLayoutDark;
+  background: $background-linear-blue;
+  &__textContent {
+    position: relative;
+    flex: 2;
+    min-width: 370px;
+    padding-bottom: clamp(2.5rem, 1.1347rem + 5.8252vw, 8.125rem);
+    padding-right: 50px;
+    & h3 {
+        font-size: $title-font-size;
+    }
+    & h5 {
+        font-size: $subtitle-font-size;
+        padding-bottom: 20px;
+    }
+    & p {
+        font-size: $paragraph-font-size; 
+        padding-bottom: 10px;
+        padding-left: 20px;
+       }
+  }
+  &__imageWrapper {
+    flex: 1;
+    position: relative;
+    max-width: 380px;
+    min-width: 234px;
+     aspect-ratio: 1/1;
+    @media (min-width: 480px) {
+        width: clamp(21.25rem, 19.5813rem + 7.1197vw, 28.125rem);
+        aspect-ratio: 1/1;
+    }
+
+    & img {
+      border-radius: 50%;
+    }
+  }
+}

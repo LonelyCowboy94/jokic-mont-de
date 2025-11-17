@@ -1,0 +1,58 @@
+.gallery {
+  display: flex;
+  height: 90vh;
+  overflow: hidden;
+  @media (max-width: 1024px) {
+    display: none;
+  }
+  &_modalWrapper {
+    display: absolute !important;
+    top: 20px !important;
+    left: 50px !important;
+  }
+  &__column {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__card {
+    position: relative;
+    flex: 1 0 auto;
+    cursor: pointer;
+    aspect-ratio: 1/1;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__cardTitle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    .gallery__card:hover & {
+      opacity: 1;
+    }
+  }
+}
+
+.gallerySmall {
+  display: flex;
+  height: 90vh;
+  overflow: hidden;
+   @media (min-width: 1024px) {
+    display: none;
+  }
+}

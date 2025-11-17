@@ -1,5 +1,5 @@
-import Slider from "../ui/CustomSlider/Slider";
-import { Slide } from "../ui/CustomSlider/Slider";
+import Slider from "../../ui/CustomSlider/Slider";
+import { Slide } from "../../ui/CustomSlider/Slider";
 import styles from "./HeroSection.module.scss";
 
 const HeroSection = () => {

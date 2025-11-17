@@ -22,7 +22,7 @@ export type OverlayData = {
 export default function Slider({ slides }: { slides: Slide[] }) {
   const [active, setActive] = useState(slides.length); // starting at middle for infinite loop
   const [isTransitioning, setIsTransitioning] = useState(true);
-  const [slideDuration] = useState(9000);
+  const [slideDuration] = useState(9000); //ms
   const startX = useRef(0);
   const intervalRef = useRef<number | null>(null);
 

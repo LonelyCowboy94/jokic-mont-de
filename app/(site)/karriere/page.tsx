@@ -2,8 +2,10 @@ import styles from "./page.module.scss";
 
 const page = () => {
   return (
-    <div>KARRIERE</div>
-  )
-}
+    <main>
+      <div>KARRIERE</div>
+    </main>
+  );
+};
 
-export default page
+export default page;
