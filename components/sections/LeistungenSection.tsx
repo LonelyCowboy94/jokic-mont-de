@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./LeistungenSection.module.scss";
 
 const LeistungenSection = () => {
@@ -27,6 +28,7 @@ const LeistungenSection = () => {
             <li>Montagearbeiten / Rohbau</li>
             <li>Netzwerk / Haustechnik</li>
           </ul>
+          <Link href="/leistungen">Zu unseren Leistungen</Link>
         </article>
         <div className={styles.leistungenSection__imageWrapper}>
           <Image

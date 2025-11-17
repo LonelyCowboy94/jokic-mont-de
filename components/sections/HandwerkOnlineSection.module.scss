@@ -18,10 +18,11 @@
   &__imageWrapper {
     position: absolute;
     overflow: visible;
-    top: 50px;
+    top: 30px;
     left: clamp(3.125rem, -11.2864rem + 61.4887vw, 62.5rem);
     width: 700px;
-    height: 680px;
+    aspect-ratio: 1.163/1;
+    
     z-index: 1;
     opacity: 0.06;
   }

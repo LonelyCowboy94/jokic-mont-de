@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { OverlayData } from "./Slider";
+import Link from "next/link";
 import styles from "./SliderOverlay.module.scss";
 
 type SliderOverlayProps = {
   active: number;
   enterDelay?: number;
   exitDelay?: number;
+  slideDuration: number;
 };
 
 const overlays: OverlayData[] = [
@@ -41,9 +43,9 @@ const overlays: OverlayData[] = [
         <p>
           Entdecken Sie unsere Leistungen – Renovierung, Innenausbau und Außenbau.
         </p>
-        <a href="#leistungenSection" className={styles.thirdOverlayButton}>
+        <Link href="/leistungen" className={styles.thirdOverlayButton}>
         Jetzt Leistungen ansehen
-      </a>
+      </Link>
       </div>
       
     
@@ -80,9 +82,9 @@ const overlays: OverlayData[] = [
         <p>
           Vertrauen, Zukunft und Qualität, die bleibt.
         </p>
-        <a href="#kontaktSection" className={styles.fifthOverlayButton}>
+        <Link href="/kontakt" className={styles.fifthOverlayButton}> 
         Kontakt aufnehmen
-      </a>
+      </Link>
       </div>
       
     
@@ -110,7 +112,7 @@ const overlays: OverlayData[] = [
     
   ),
     position: { top: "0%", left: "0%" },
-    animateFrom: "top",
+    animateFrom: "left",
     className: "overlaySixth",
   },
   {
@@ -151,8 +153,9 @@ const overlays: OverlayData[] = [
 
 const SliderOverlay = ({
   active,
+  slideDuration,
   enterDelay = 1500,
-  exitDelay = 8000,
+  exitDelay = slideDuration - 1000,
 }: SliderOverlayProps) => {
   const slideOverlay = overlays[active % overlays.length];
   const [visible, setVisible] = useState(false);

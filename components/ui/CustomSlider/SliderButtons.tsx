@@ -13,36 +13,33 @@ const SliderButtons = ({ onSelect }: ButtonsProps) => {
         onClick={() => onSelect("left")}
         style={{
           position: "absolute",
-          top: "50%",
-          left: 10,
+          top: "90%",
           transform: "translateY(-50%)",
           color: "#fff",
-          background: "rgba(0,0,0,0.4)",
           border: "none",
           padding: "8px 12px",
           cursor: "pointer",
           zIndex: 10,
         }}
       >
-        ◀
+      
       </button>
 
       <button
         onClick={() => onSelect("right")}
         style={{
           position: "absolute",
-          top: "50%",
-          right: 10,
+          top: "90%",
           transform: "translateY(-50%)",
           color: "#fff",
-          background: "rgba(0,0,0,0.4)",
           border: "none",
           padding: "8px 12px",
           cursor: "pointer",
           zIndex: 10,
+          
         }}
       >
-        ▶
+      
       </button>
     </div>
   );

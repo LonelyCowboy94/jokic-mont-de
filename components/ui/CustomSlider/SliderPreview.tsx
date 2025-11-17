@@ -9,6 +9,7 @@ type SliderPreviewProps = {
   active: number;
   isTransitioning: boolean;
   onTransitionEnd: () => void;
+  slideDuration: number;
 };
 
 const SliderPreview = ({
@@ -16,11 +17,20 @@ const SliderPreview = ({
   active,
   isTransitioning,
   onTransitionEnd,
+  slideDuration,
 }: SliderPreviewProps) => {
   const extendedSlides = [...slides, ...slides, ...slides];
+  const timerDuration = slideDuration / 1000 + "s";
 
   return (
     <div className={styles.slider__preview}>
+      <div
+        key={`timer-${active}`}
+        className={styles.sliderTimer}
+        style={{
+          animation: `slideDurationTimer ${timerDuration} linear forwards`,
+        }}
+      ></div>
       {extendedSlides.map((item, index) => (
         <div
           key={index}
@@ -42,33 +52,37 @@ const SliderPreview = ({
             <div
               style={{ position: "relative", width: "100%", height: "100%" }}
             >
-              <Image
-                className={styles[`slider__preview--activeImg`]}
-                key={`${index}-${active}`}
-                src={item.src}
-                alt="slider-image"
-                width={1920}
-                height={1080}
-                draggable={false}
-                priority={index === active}
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 375px) 375px,
+              <>
+                <Image
+                  className={styles[`slider__preview--activeImg`]}
+                  key={`${index}-${active}`}
+                  src={item.src}
+                  alt="slider-image"
+                  fill
+                  object-fit="cover"
+                  draggable={false}
+                  priority={index === active}
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 375px) 375px,
           (max-width: 768px) 768px,
           (max-width: 1024px) 1024px,
           100vw"
-              />
+                />
+              </>
             </div>
           )}
           {item.type === "video" && (
-            <video
-              src={item.src}
-              muted
-              autoPlay
-              playsInline
-              loop
-              preload={index === 0 ? "auto" : "metadata"}
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
+            <>
+              <video
+                src={item.src}
+                muted
+                autoPlay
+                playsInline
+                loop
+                preload={index === 0 ? "auto" : "metadata"}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </>
           )}
         </div>
       ))}

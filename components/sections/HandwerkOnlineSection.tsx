@@ -19,7 +19,7 @@ const HandwerkOnlineSection = () => {
        
       </article>    
       <div className={styles.handwerkOnlineSection__imageWrapper}>
-       <Image className={styles.handwerkOnlineSection__image} fill sizes="(max-width: 375px) 375px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1920px" src='/images/logo-white.webp' alt='LandKreis Giessen' />
+       <Image className={styles.handwerkOnlineSection__image} fill sizes="(max-width: 375px) 375px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1920px" src='/images/logo-white_v2.webp' alt='Jokic Mont - logo' />
        </div>
     </section>
   )

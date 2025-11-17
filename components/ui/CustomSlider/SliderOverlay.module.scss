@@ -32,8 +32,6 @@
   & a {
     @include mix.btnPrimaryBlueTransparent;
     color: #fff;
-    font-size: clamp(0.875rem, 0.784rem + 0.3883vw, 1.25rem);
-    padding: clamp(0.3125rem, 0.085rem + 0.9709vw, 1.25rem);
   }
 
   &::before {
@@ -47,15 +45,17 @@
 
 .overlayFirst {
     --translateXRaw: clamp(1.5rem, 0.5rem + 14vw, 18.75rem);
-    --translateX: calc(var(--translateXRaw) * -1);
+    --translateX: calc(var(--translateXRaw) * -0.5);
    padding-bottom: 150px;
-   width: clamp(13.75rem, 4.9515rem + 37.5405vw, 50rem);
+   width: clamp(18rem, 10.233rem + 33.1392vw, 50rem);
 }
 
 .overlaySecond {
     background: rgba(24, 36, 139, 0.329);
     padding-top: 300px;
-    --translateX: clamp(3.125rem, -0.6675rem + 16.1812vw, 18.75rem);
+    --translateX: clamp(3.125rem, 2.3665rem + 3.2362vw, 6.25rem);
+
+
     text-align: end;
     width: clamp(13.75rem, 6.165rem + 32.3625vw, 45rem);
 }
@@ -63,7 +63,7 @@
 .overlayThird {
     background: rgba(95, 121, 4, 0.329);
     text-align: end;
-    --translateX: clamp(3.125rem, -0.6675rem + 16.1812vw, 18.75rem);
+    --translateX: clamp(1.5rem, 0.3471rem + 4.9191vw, 6.25rem);
     padding-bottom: clamp(6.25rem, 3.9745rem + 9.7087vw, 15.625rem);
     width: clamp(15.625rem, 4.2476rem + 48.5437vw, 62.5rem);
      
@@ -76,10 +76,10 @@
     background: rgba(24, 90, 79, 0.329);
     padding-top: 150px;
   text-align: flex-end;
-  width: clamp(13.75rem, 4.9515rem + 37.5405vw, 50rem);
+  width: clamp(16rem, 7.7476rem + 35.2104vw, 50rem);
  
     --translateXRaw: clamp(1.5rem, 0.5rem + 14vw, 18.75rem);
-    --translateX: calc(var(--translateXRaw) * -1);
+    --translateX: calc(var(--translateXRaw) * -0.5);
  
     & div {
         min-width: 260px;
@@ -94,7 +94,7 @@
 .overlayFifth {
  background: rgba(18, 59, 15, 0.329);
      --translateXRaw: clamp(1.5rem, 0.5rem + 14vw, 18.75rem);
-    --translateX: calc(var(--translateXRaw) * -1);
+    --translateX: calc(var(--translateXRaw) * -0.5);
     width: clamp(15.625rem, 9.557rem + 25.89vw, 40.625rem);
     & div {
         min-width: 280px;
@@ -107,7 +107,7 @@
 
 .overlaySixth {
     background: rgba(14, 7, 54, 0.397);
-    --translateX: clamp(3.125rem, -0.6675rem + 16.1812vw, 18.75rem);
+    --translateX: clamp(2.1875rem, 1.2015rem + 4.2071vw, 6.25rem);
   text-align: end;
   width: clamp(15.9375rem, 3.1189rem + 54.6926vw, 68.75rem);
 }
@@ -116,7 +116,7 @@
 }
 
 .overlaySeventh {
-    --translateX: clamp(3.125rem, -0.6675rem + 16.1812vw, 18.75rem);
+    --translateX: clamp(2.1875rem, 1.2015rem + 4.2071vw, 6.25rem);
     text-align: end;
 }
 .seventhOverlayButton {
@@ -124,6 +124,6 @@
 }
 
 .overlayEighth {
-    --translateX: clamp(3.125rem, -0.6675rem + 16.1812vw, 18.75rem);
+    --translateX: clamp(2.1875rem, 1.2015rem + 4.2071vw, 6.25rem);
     text-align: end;
 }

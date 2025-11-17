@@ -22,6 +22,7 @@ export type OverlayData = {
 export default function Slider({ slides }: { slides: Slide[] }) {
   const [active, setActive] = useState(slides.length); // Starting position
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const [slideDuration] = useState(9000);
   const startX = useRef(0);
   const intervalRef = useRef<number | null>(null);
 
@@ -54,7 +55,7 @@ export default function Slider({ slides }: { slides: Slide[] }) {
     if (intervalRef.current !== null) clearInterval(intervalRef.current);
     intervalRef.current = window.setInterval(() => {
       setActive((prev) => prev + 1);
-    }, 9000); // Slider timer
+    }, slideDuration); // Slider timer
   };
 
   useEffect(() => {
@@ -62,6 +63,7 @@ export default function Slider({ slides }: { slides: Slide[] }) {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Handle loop transitions
@@ -97,8 +99,9 @@ export default function Slider({ slides }: { slides: Slide[] }) {
         active={active}
         isTransitioning={isTransitioning}
         onTransitionEnd={handleTransitionEnd}
+        slideDuration={slideDuration}
       />
-      <SliderOverlay active={active} />
+      <SliderOverlay active={active} slideDuration={slideDuration} />
       <SliderButtons onSelect={handleSlideChange} />
     </div>
   );

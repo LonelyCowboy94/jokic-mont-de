@@ -1,4 +1,5 @@
 import styles from "./Footer.module.scss";
+import Link from "next/link";
 
 const Footer = () => {
   const now = new Date();
@@ -15,9 +16,9 @@ const Footer = () => {
           </div>
           <div className={styles.footerSection__article}>
             <h6>Network</h6>
-            <a href="">LikendIn</a>
-            <a href="">WhatsUp</a>
-            <a href="">Facebook</a>
+            <a href="https://www.linkedin.com/in/dusan-jokic-7b74b713b/?originalSubdomain=de" target="_blank">LikendIn</a>
+            <a href="https://wa.me/4964469228174?text=Hallo%2C%20ich%20habe%20eine%20Frage." target="_blank">WhatsUp</a>
+            <a href="https://www.facebook.com/dusan.jokic.50" target="_blank">Facebook</a>
             <a href="">Instagram</a>
           </div>
         </div>
@@ -27,12 +28,12 @@ const Footer = () => {
             <a href="#">Renovierung</a>
             <a href="#">Innenausbau</a>
             <a href="#">Außenbau</a>
-            <a href="/galerie">Galerie</a>
+            <Link href="/galerie">Galerie</Link>
           </div>
           <div className={styles.footerSection__article}>
            <h6>Rechtliches</h6>
-            <a href="#">Impressum</a>
-            <a href="#">Datenschutzerklärung</a> <a href="#">AGB</a>{" "}
+            <Link href="/impressum">Impressum</Link>
+            <a href="/datenschutzerklaerung">Datenschutzerklärung</a> <a href="#">AGB</a>{" "}
             <a href="#">Cookie-Richtlinie</a>
           </div>
         </div>

@@ -12,10 +12,21 @@
     justify-content: space-between;
   }
   &__article {
+    display: flex;
+    flex-direction: column;
     max-width: 65%;
     @include mix.sectionLayoutDark;
     @media (max-width: 1024px) {
       max-width: 100%;
+    }
+    & a {
+      margin-top: 30px;
+      @include mix.btnPrimaryBlueTransparent;
+      color: #FFF;
+      align-self: flex-end;
+      @media (max-width: 1024px) {
+        align-self: center;
+      }
     }
   }
   &__title,

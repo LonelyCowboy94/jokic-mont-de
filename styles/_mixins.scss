@@ -66,12 +66,13 @@
 }
 
 @mixin btnPrimaryBlue {
-  padding: 0.9rem 2rem;
+  font-size: clamp(0.875rem, 0.784rem + 0.3883vw, 1.25rem);
+    padding: clamp(0.3125rem, 0.085rem + 0.9709vw, 1.25rem);
   border-radius: $form-border-radius;
   background: #2563eb; 
   color: white;
   font-weight: 600;
-  font-size: 1rem;
+  
   cursor: pointer;
   border: none;
   transition: all 0.2s ease;
@@ -91,7 +92,8 @@
   background: transparent;
   border: 2px solid #93c5fd; 
   border-radius: $form-border-radius;
-  padding: 0.7rem 1.5rem;
+  font-size: clamp(0.875rem, 0.784rem + 0.3883vw, 1.25rem);
+    padding: clamp(0.3125rem, 0.085rem + 0.9709vw, 1.25rem);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;

@@ -1,3 +1,5 @@
+@use "../styles/_animations" as *;
+
 * {
     margin: 0;
     padding: 0;
@@ -28,6 +30,10 @@ body {
   &::-webkit-scrollbar-thumb:hover {
     background: rgb(29, 112, 236);
   }
+}
+
+main { 
+  padding-top: clamp(1.875rem, 1.4199rem + 1.9417vw, 3.75rem);
 }
 
 .flex-wrap {

@@ -2,7 +2,11 @@ import styles from "./page.module.scss";
 
 const page = () => {
   return (
-    <div>LEISTUNGEN</div>
+    
+      <main className={styles.leistungen}>
+        <h1>Leistungen</h1>
+      </main>
+   
   )
 }
 
