@@ -20,7 +20,7 @@ export type OverlayData = {
 };
 
 export default function Slider({ slides }: { slides: Slide[] }) {
-  const [active, setActive] = useState(slides.length); // Starting position
+  const [active, setActive] = useState(slides.length); // starting at middle for infinite loop
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [slideDuration] = useState(9000);
   const startX = useRef(0);
@@ -32,10 +32,7 @@ export default function Slider({ slides }: { slides: Slide[] }) {
   const handleSlideChange = (direction: "left" | "right") => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     startAutoplay();
-
-    setActive((prev) =>
-      direction === "left" ? prev - 1 : prev + 1
-    );
+    setActive((prev) => (direction === "left" ? prev - 1 : prev + 1));
   };
 
   // Touch events
@@ -43,9 +40,7 @@ export default function Slider({ slides }: { slides: Slide[] }) {
     startX.current = e.touches[0].clientX;
   };
   const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
-    const endX = e.changedTouches[0].clientX;
-    const diff = startX.current - endX;
-
+    const diff = startX.current - e.changedTouches[0].clientX;
     if (diff > 50) handleSlideChange("right");
     if (diff < -50) handleSlideChange("left");
   };
@@ -55,7 +50,7 @@ export default function Slider({ slides }: { slides: Slide[] }) {
     if (intervalRef.current !== null) clearInterval(intervalRef.current);
     intervalRef.current = window.setInterval(() => {
       setActive((prev) => prev + 1);
-    }, slideDuration); // Slider timer
+    }, slideDuration);
   };
 
   useEffect(() => {
@@ -63,10 +58,9 @@ export default function Slider({ slides }: { slides: Slide[] }) {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Handle loop transitions
+  // Loop transitions
   const handleTransitionEnd = () => {
     if (active >= slideCount * 2) {
       setIsTransitioning(false);

@@ -59,10 +59,10 @@ const SliderPreview = ({
                   src={item.src}
                   alt="slider-image"
                   fill
-                  object-fit="cover"
                   draggable={false}
-                  priority={index === active}
-                  style={{ objectFit: "cover" }}
+                  priority={true}
+                  style={{ objectFit: "cover", animation: `heroMotion ${slideDuration / 1000}s linear infinite`,
+    willChange: "transform", }}
                   sizes="(max-width: 375px) 375px,
           (max-width: 768px) 768px,
           (max-width: 1024px) 1024px,
