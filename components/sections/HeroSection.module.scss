@@ -3,7 +3,7 @@
 
 .heroSection {
   position: sticky;
-  top: 0;
+  top: clamp(1.875rem, 1.4199rem + 1.9417vw, 3.75rem);
   display: flex;
   justify-content: center;
   max-height: 86.5vh;
