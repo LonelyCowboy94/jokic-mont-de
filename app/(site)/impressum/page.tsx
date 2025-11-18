@@ -11,7 +11,7 @@ export const metadata = {
 export default function ImpressumPage() {
   return (
     <section className={styles.impressum}>
-      <div className={styles["impressum__container"]}>
+      {/* <div className={styles["impressum__container"]}>
         <h1 className={styles["impressum__title"]}>Impressum</h1>
 
         <div className={styles["impressum__block"]}>
@@ -76,7 +76,7 @@ export default function ImpressumPage() {
         <p className={styles["impressum__footer"]}>
           © {new Date().getFullYear()} Dusan Jokic – Alle Rechte vorbehalten.
         </p>
-      </div>
+      </div> */}
     </section>
   );
 }
