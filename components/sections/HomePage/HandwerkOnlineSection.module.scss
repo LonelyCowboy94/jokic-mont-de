@@ -2,6 +2,7 @@
 @use "../../../styles/mixins" as mix;
 
 .handwerkOnlineSection {
+  user-select: none;
   background: $background-linear-blue;
   @include mix.sectionLayoutDark;
   &__article {

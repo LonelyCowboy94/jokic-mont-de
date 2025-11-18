@@ -2,6 +2,7 @@
 @use "../../../styles/mixins" as mix;
 
 .leistungenSection {
+  user-select: none;
   position: sticky;
   top: clamp(-0.625rem, -1.6869rem + 4.5307vw, 3.75rem);
   background: $background-linear-gray;

@@ -2,6 +2,7 @@
 @use "../../../styles/mixins" as mix;
 
 .onlineTermineSection {
+  user-select: none;
   justify-content: space-between;
   gap: clamp(3.125rem, 2.6699rem + 1.9417vw, 5rem);
   background-color: #ffffff;

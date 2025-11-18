@@ -2,6 +2,10 @@ import styles from "./page.module.scss";
 
 export const metadata = {
   title: "Impressum | Jokić Mont",
+  description: "Rechtliche Informationen und Kontaktdaten von Jokić Mont im Bau- und Renovierungsbereich.",
+  alternates: {
+    canonical: "https://www.jokic-mont.de/impressum",
+  },
 };
 
 export default function ImpressumPage() {

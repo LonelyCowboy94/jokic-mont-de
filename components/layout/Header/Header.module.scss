@@ -1,6 +1,7 @@
 @use '../../../styles/variables' as *;
 
 .header {
+    user-select: none;
     position: fixed;
     top: 0;
     width: 100%;

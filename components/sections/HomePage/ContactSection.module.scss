@@ -2,6 +2,7 @@
 @use "../../../styles/mixins" as mix;
 
 .contactSection {
+  user-select: none;
   @include mix.sectionLayoutDark;
   padding: 0;
   gap: 50px;
