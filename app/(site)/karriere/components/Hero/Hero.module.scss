@@ -1,0 +1,26 @@
+@use "../../../../../styles/variables" as *;
+@use "../../../../../styles/mixins" as *;
+
+
+.hero {
+    user-select: none;
+  @include sectionLayoutDark;
+  background: $background-linear-blue;
+
+  &__content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__title {
+    @include font-kanit(600);
+    font-size: $title-font-size;
+  }
+
+  &__subtitle {
+    font-size: $subtitle-font-size;
+    opacity: 0.9;
+    margin-top: 1rem;
+  }
+}

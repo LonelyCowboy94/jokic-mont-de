@@ -1,0 +1,26 @@
+@use "../../../../../styles/variables" as *;
+@use "../../../../../styles/mixins" as *;
+
+.cta {
+  @include sectionLayoutDark;
+  background: $background-linear-blue;
+  text-align: center;
+
+  &__title {
+    @include font-kanit(600);
+    font-size: $subtitle-font-size;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+  }
+
+  &__btn {
+    @include btnPrimaryBlueTransparent;
+    color: #FFF;
+    font-size: 1.2rem;
+  }
+}

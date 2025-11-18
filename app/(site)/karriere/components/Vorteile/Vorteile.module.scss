@@ -1,0 +1,27 @@
+@use "../../../../../styles/variables" as *;
+@use "../../../../../styles/mixins" as *;
+
+
+.vorteile {
+    user-select: none;
+  @include sectionLayoutLight;
+
+  &__title {
+    @include font-kanit(600);
+    font-size: $title-font-size;
+    margin-bottom: 2rem;
+  }
+
+  &__list {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  &__item {
+    font-size: $li-font-size;
+    background: $background-linear-gray;
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    color: $color-font-light;
+  }
+}
