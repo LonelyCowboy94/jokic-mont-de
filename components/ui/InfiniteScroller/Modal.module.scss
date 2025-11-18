@@ -11,6 +11,16 @@
     width: clamp(22.5rem, 12.7913rem + 41.4239vw, 62.5rem);
     height: 80%;
     z-index: 4;
+    &::before {
+      position: absolute;
+      content: "";
+      inset: 0;
+      min-width: 200vw;
+      min-height: 200vh;
+      transform: translate(-23%, -10%);
+      background: rgba(0, 0, 0, 0.808);
+      z-index: -1;
+    }
   }
 
   &__close {
