@@ -2,7 +2,7 @@
 
 .gallery {
   display: flex;
-  height: 90vh;
+  height: clamp(37.5rem, 35.2245rem + 9.7087vw, 46.875rem);
   overflow: hidden;
   @media (max-width: 1024px) {
     display: none;
@@ -16,6 +16,10 @@
     flex: 1;
     overflow: hidden;
     position: relative;
+    border-left: clamp(0.125rem, 0.0947rem + 0.1294vw, 0.25rem) solid
+      rgba(0, 0, 0, 0.267);
+    border-right: clamp(0.125rem, 0.0947rem + 0.1294vw, 0.25rem) solid
+      rgba(0, 0, 0, 0.267);
   }
 
   &__inner {
@@ -32,6 +36,24 @@
     aspect-ratio: 1/1;
     background-size: cover;
     background-position: center;
+    border-top: clamp(0.125rem, 0.0947rem + 0.1294vw, 0.25rem) solid
+      rgba(0, 0, 0, 0.267);
+    border-bottom: clamp(0.125rem, 0.0947rem + 0.1294vw, 0.25rem) solid
+      rgba(0, 0, 0, 0.267);
+      ::before {
+        position: absolute;
+        inset: 0;
+        content: '';
+        background: rgba(33, 48, 250, 0.171);
+      }
+      &:hover {
+        ::before {
+        position: absolute;
+        inset: 0;
+        content: '';
+        background: rgba(255, 255, 255, 0);
+      }
+      }
   }
 
   &__cardTitle {
@@ -48,7 +70,7 @@
     @media (max-width: 768px) {
       opacity: 1;
     }
-    
+
     .gallery__card:hover & {
       opacity: 1;
     }
@@ -57,9 +79,9 @@
 
 .gallerySmall {
   display: flex;
-  height: 90vh;
+  height: clamp(25rem, 20.449rem + 19.4175vw, 43.75rem);
   overflow: hidden;
-   @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     display: none;
   }
 }

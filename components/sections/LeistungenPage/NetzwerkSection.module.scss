@@ -14,10 +14,11 @@
     min-width: 370px;
     padding-bottom: clamp(2.5rem, 1.1347rem + 5.8252vw, 8.125rem);
     padding-right: 50px;
+    padding-left: 20px;
     & h3 {
         font-size: $title-font-size;
     }
-    & h5 {
+    & h4 {
         font-size: $subtitle-font-size;
         padding-bottom: 20px;
     }

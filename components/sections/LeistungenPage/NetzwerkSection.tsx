@@ -6,9 +6,9 @@ const NetzwerkSection = () => {
     <section className={styles.netzwerkSection}>
         <div className={styles.netzwerkSection__textContent}>
             <h3>Unser Netzwerk. Ihr Vorteil.</h3>
-      <h5>
+      <h4>
         Ein starkes Partner-Netzwerk und exzellente Lieferantenbeziehungen
-      </h5>
+      </h4>
       <p>
         <span className="indent"></span>-Unser Fachnetzwerk ermöglicht uns, auch komplexe und unvorhergesehene
         Herausforderungen schnell zu lösen
