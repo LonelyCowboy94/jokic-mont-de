@@ -1,0 +1,43 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.impressum {
+  @include sectionLayoutLight;
+
+  &__container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    @include font-kanit(600);
+    font-size: $title-font-size;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: $color-font-md;
+  }
+
+  &__block {
+    margin-bottom: 2.5rem;
+  }
+
+  &__subtitle {
+    @include font-kanit(500);
+    font-size: $subtitle-font-size;
+    margin-bottom: 0.8rem;
+    color: $color-font-li;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: $color-font-md;
+  }
+
+  &__footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 1rem;
+    opacity: 0.7;
+  }
+}
