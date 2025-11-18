@@ -30,7 +30,7 @@ export default function Modal({ card, setActiveCard }: ModalProps) {
           src={card.image}
           alt={card.title}
           fill
-          style={{objectFit: 'cover'
+          style={{objectFit: 'cover',
           }}
           className={styles.modal__image}
         />

@@ -8,7 +8,7 @@
     background: #fff;
     border: 4px solid rgba(0, 0, 0, 0.685);
     border-radius: 8px;
-    width: clamp(23.4375rem, 13.9563rem + 40.4531vw, 62.5rem);
+    width: clamp(22.5rem, 12.7913rem + 41.4239vw, 62.5rem);
     height: 80%;
     z-index: 4;
   }
@@ -40,6 +40,7 @@
     left: 0;
     height: 40%;
     padding: 20px;
+    overflow-y: auto;
   }
 
   &__title {

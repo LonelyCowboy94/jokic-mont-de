@@ -1,3 +1,5 @@
+@use "../../../styles/variables" as *;
+
 .gallery {
   display: flex;
   height: 90vh;
@@ -6,9 +8,9 @@
     display: none;
   }
   &_modalWrapper {
-    display: absolute !important;
-    top: 20px !important;
-    left: 50px !important;
+    display: absolute;
+    top: 20px;
+    left: 50px;
   }
   &__column {
     flex: 1;
@@ -23,6 +25,7 @@
   }
 
   &__card {
+    overflow: hidden;
     position: relative;
     flex: 1 0 auto;
     cursor: pointer;
@@ -37,11 +40,15 @@
     left: 0;
     right: 0;
     padding: 10px 15px;
+    font-size: $paragraph-font-size;
     background: rgba(0, 0, 0, 0.4);
     color: #fff;
     opacity: 0;
     transition: opacity 0.3s;
-
+    @media (max-width: 768px) {
+      opacity: 1;
+    }
+    
     .gallery__card:hover & {
       opacity: 1;
     }

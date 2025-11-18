@@ -42,19 +42,18 @@ export default function Column({
       onMouseLeave={() => setIsPaused(false)}
     >
       <motion.div
-        className={styles.gallery__columnInner}
-        animate={{ y: animateY }}
-        transition={{
-          y: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: totalHeight / speed,
-            ease: "linear" as const,
-          },
-        }}
-        style={{ y: 0 }}
-        {...(isPaused ? { animate: { y: animateY[0] } } : {})}
-      >
+  className={styles.gallery__columnInner}
+  animate={{ y: isPaused ? animateY[0] : animateY }}
+  transition={{
+    y: {
+      repeat: Infinity,
+      repeatType: "loop",
+      duration: totalHeight / speed,
+      ease: "linear" as const,
+    },
+  }}
+  style={{ y: -10 }}
+>
         {loopItems.map((item, index) => (
           <div
             key={item.id + "-" + item.offset + index}
@@ -66,7 +65,7 @@ export default function Column({
   src={item.image}
   alt={item.title}
   fill
-  style={{ objectFit: "cover" }}
+  style={{ objectFit: "cover", }}
   className={styles.gallery__cardImage}
   sizes="
     (max-width: 480px) 100vw,
