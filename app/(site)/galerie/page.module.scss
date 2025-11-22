@@ -1,0 +1,7 @@
+@use "../../../styles/mixins" as mix;
+@use "../../../styles/variables" as *;
+
+.heroSection {
+    @include mix.sectionLayoutDark;
+    background: $background-linear-blue;
+}
