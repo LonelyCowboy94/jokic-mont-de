@@ -9,8 +9,14 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     z-index: 2;
     max-width: 70%;
+    h3 {
+      font-size: $subtitle-font-size;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
     @media (max-width: 1024px) {
       max-width: 100%;
     }
@@ -39,4 +45,5 @@
     font-size: clamp(1.5rem, 1.318rem + 0.7767vw, 2.25rem);
     line-height: clamp(2rem, 1.7876rem + 0.9061vw, 2.875rem);
   }
+
 }

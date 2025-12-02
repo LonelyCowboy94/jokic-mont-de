@@ -8,14 +8,13 @@ const HandwerkOnlineSection = () => {
         <h2 className={styles.handwerkOnlineSection__title}>
           <strong>Handwerk Online</strong>
         </h2>
+        
+        <h3>Bau.Logistik.Handel.Digital Solutions</h3>
+        
         <p className={styles.handwerkOnlineSection__text}>
-          Unser Unternehmen wurde 2017 gegründet und baut auf einer langjährigen
-          Handwerkstradition auf, die seit 1988 in dritter Generation
-          fortgeführt wird. Mit modernster Technik, professioneller Ausrüstung
-          und unsere langjährige Erfahrung im nationalen und internationalen
-          Bausektor unterstützen wir Sie zuverlässig bei der Umsetzung Ihrer
-          Bauvorhaben.
+          Unser Unternehmen wurde 2017 gegründet und baut auf einer langjährigen Handwerkstradition auf, die seit 1988 in dritter Generation fortgeführt wird. Mit modernster Technik, professioneller Ausrüstung und unsere langjährige Erfahrung im nationalen und internationalen Bausektor unterstützen wir Sie zuverlässig, fachgerecht und sicher.
         </p>
+        
        
       </article>    
       <div className={styles.handwerkOnlineSection__imageWrapper}>

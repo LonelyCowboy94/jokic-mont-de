@@ -10,7 +10,7 @@ const SliderButtons = ({ onSelect }: ButtonsProps) => {
   return (
     <div className={styles.slider__buttons}>
       <button
-        onClick={() => onSelect("left")}
+        onClick={() => onSelect("right")}
         style={{
           position: "absolute",
           top: "90%",
@@ -26,7 +26,7 @@ const SliderButtons = ({ onSelect }: ButtonsProps) => {
       </button>
 
       <button
-        onClick={() => onSelect("right")}
+        onClick={() => onSelect("left")}
         style={{
           position: "absolute",
           top: "90%",

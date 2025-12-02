@@ -67,7 +67,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
 
   } catch (error) {
     console.log(error);
-    setError(error instanceof Error ? error.message : "Unknown error");
+    setError(error instanceof Error ? error.message : "<U></U>nknown error");
   }
 };
 

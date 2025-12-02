@@ -1,0 +1,87 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as mix;
+
+.leistungenSection {
+  user-select: none;
+  position: sticky;
+  top: clamp(-0.625rem, -1.6869rem + 4.5307vw, 3.75rem);
+  background: $background-linear-gray;
+  @include mix.font-kanit;
+  z-index: 2;
+  &__articleWrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__article {
+    display: flex;
+    flex-direction: column;
+    max-width: 65%;
+    @include mix.sectionLayoutDark;
+    @media (max-width: 1024px) {
+      max-width: 100%;
+    }
+    & a {
+      margin-top: 30px;
+      @include mix.btnPrimaryBlueTransparent;
+      color: #FFF;
+      align-self: flex-end;
+      @media (max-width: 1024px) {
+        align-self: center;
+      }
+    }
+    .jokicDevLink {
+        border: none;
+        &:hover {
+            background: none;
+        }
+    }
+  }
+  &__title,
+  &__text {
+    @media (min-width: 1024px) {
+      text-align: right;
+    }
+  }
+  &__title {
+    font-size: $title-font-size;
+    text-align: left;
+  }
+  &__text {
+    font-size: $paragraph-font-size;
+    padding: 0 0 clamp(0.9375rem, 0.7858rem + 0.6472vw, 1.5625rem)
+ 0;
+    text-align: left;
+    @media (max-width: 1024) {
+      font-size: 24px;
+    }
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3rem;
+    row-gap: 0.5rem;
+    padding-left: clamp(1rem, 0.0857rem + 1.4286vw, 1.8rem);
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      column-gap: 0;
+    }
+    li {
+      font-size: clamp(1rem, 0.8786rem + 0.5178vw, 1.5rem);
+      font-weight: 300;
+      min-width: 260px;
+    }
+  }
+  &__imageWrapper {
+    position: relative;
+    width: 30%;
+    @media (max-width: 1024px) {
+      width: 100%;
+      max-height: 400px;
+      aspect-ratio: 1/0.5;
+    }
+  }
+  &__img {
+    object-fit: cover;
+    object-position: center;
+  }
+}

@@ -1,7 +1,8 @@
 import HeroSection from "@/components/sections/HomePage/HeroSection";
 import styles from "./page.module.scss";
 import HandwerkOnlineSection from "@/components/sections/HomePage/HandwerkOnlineSection";
-import LeistungenSection from "@/components/sections/HomePage/LeistungenSection";
+// import LeistungenSection from "@/components/sections/HomePage/LeistungenSection";
+import HandwerkPlusSection from "@/components/sections/HomePage/HandwerkPlusSection";
 // import OnlineTermineSection from "@/components/sections/OnlineTermineSection";
 import ContactSection from "@/components/sections/HomePage/ContactSection";
 import dynamic from "next/dynamic";
@@ -19,7 +20,7 @@ export default function Home() {
     <main className={styles.homePage}>
       <HeroSection />
       <HandwerkOnlineSection />
-      <LeistungenSection />
+      <HandwerkPlusSection />
       <OnlineTermineSection />
       <ContactSection />
       <Footer />

@@ -15,10 +15,10 @@ $color-font-md: #333;
 $color-font-li: #2363c4;
 
 // Font sizes
-$title-font-size: clamp(2rem, 1.7573rem + 1.0356vw, 3rem);
-$subtitle-font-size: clamp(1.6rem, 1.4058rem + 0.8285vw, 2.4rem);
-$paragraph-font-size: clamp(1.155rem, -0.3701rem + 2.9126vw, 3.125rem);
-$li-font-size: clamp(1.125rem, 3.034rem + 0.3883vw, 1.705rem);
+$title-font-size: clamp(1.7rem, 1.4937rem + 0.8803vw, 2.55rem);
+$subtitle-font-size: clamp(1.36rem, 1.19493rem + 0.704225vw, 2.04rem);
+$paragraph-font-size: clamp(0.98175rem, -0.314585rem + 2.47571vw, 2.65625rem);
+$li-font-size: clamp(0.95625rem, 2.579rem + 0.330055vw, 1.44925rem);
 
 // Padding 
 $padding-section: clamp(2.5rem, 1.5898rem + 3.8835vw, 6.25rem) clamp(1.25rem, 0.7949rem + 1.9417vw, 3.125rem) clamp(2.8125rem, 1.8265rem + 4.2071vw, 6.875rem);

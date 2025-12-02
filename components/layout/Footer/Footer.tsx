@@ -15,7 +15,7 @@ const Footer = () => {
             <a href="tel:+4964469228174">+4964469228174</a>
           </div>
           <div className={styles.footerSection__article}>
-            <h6>Network</h6>
+            <h6>Social Network</h6>
             <a href="https://www.linkedin.com/in/dusan-jokic-7b74b713b/?originalSubdomain=de" target="_blank">LikendIn</a>
             <a href="https://wa.me/4964469228174?text=Hallo%2C%20ich%20habe%20eine%20Frage." target="_blank">WhatsUp</a>
             <a href="https://www.facebook.com/dusan.jokic.50" target="_blank">Facebook</a>
@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
         <div className={styles.footerSection__wrapper}>
           <div className={styles.footerSection__article}>
-            <h6>Leistungen</h6>
+            <h6>Navigation</h6>
             <a href="#">Renovierung</a>
             <a href="#">Innenausbau</a>
             <a href="#">Außenbau</a>

@@ -17,8 +17,8 @@ const overlays: OverlayData[] = [
   {
     text: (
       <div>
-        <p>Wir realisieren Ihre Vision.</p>
-        <p>Qualität, auf die Sie bauen können.</p>
+        <p>Handwerk Online</p>
+        <p>Bau. Logistik. Handel. Digital Solutions.</p>
       </div>
     ),
     position: { top: "0%", right: "0%" },
@@ -29,7 +29,10 @@ const overlays: OverlayData[] = [
     text: (
       <div>
         <p>HANDWERK +</p>
-        <p>Alles im Blick – digital, effizient, zuverlässig.</p>
+        <p>Digital Solutions</p>
+        <Link href="/" className={styles.thirdOverlayButton}>
+        Mehr erfahren
+      </Link>
       </div>
     ),
     position: { top: "0%", left: "0%" },
@@ -41,8 +44,9 @@ const overlays: OverlayData[] = [
   
       <div className={styles.overlayContent}>
         <p>
-          Entdecken Sie unsere Leistungen – Renovierung, Innenausbau und Außenbau.
+          Unsere Leistungen im Überblick
         </p>
+        <p>Fachgerecht, Pünktlich, Sicher</p>
         <Link href="/leistungen" className={styles.thirdOverlayButton}>
         Jetzt Leistungen ansehen
       </Link>
@@ -59,8 +63,9 @@ const overlays: OverlayData[] = [
       
         <div className={styles.overlayContent}>
           <p>
-            Online-Termine rund um die Uhr – Ihre Buchung, sofort bestätigt.
+            Online-Termine rund um die Uhr
           </p>
+          <p>Ihre Buchung, sofort bestätigt.</p>
           <a href="#onlineTermineSection" className={styles.fourthOverlayButton}>
           Jetzt Termin buchen
         </a>
@@ -77,10 +82,10 @@ const overlays: OverlayData[] = [
  
       <div className={styles.overlayContent}>
         <p>
-          Gemeinsam sorgenfrei – Ihre Projekte in sicheren Händen.
+          Gemeinsam stark
         </p>
         <p>
-          Vertrauen, Zukunft und Qualität, die bleibt.
+          Lösungen, die Zukunft schaffen
         </p>
         <Link href="/kontakt" className={styles.fifthOverlayButton}> 
         Kontakt aufnehmen
@@ -98,11 +103,7 @@ const overlays: OverlayData[] = [
     
       <div className={styles.overlayContent}>
         <p>
-          Unser Netzwerk verbindet Sie mit modernster Technologie.
-        </p>
-        <p>
-          Sicherer Serverzugriff, effiziente Firmensoftware und digitale
-          Lösungen für Ihr Unternehmen.
+          Unser Netzwerk. Ihr Vorteil.
         </p>
         <a href="#networkSection" className={styles.sixthOverlayButton}>
         Mehr erfahren
@@ -118,10 +119,9 @@ const overlays: OverlayData[] = [
   {
   text: (
     <div className={styles.overlayContent}>
-      <p>Online-Shop – bald verfügbar.</p>
+      <p>Aktuell … Online Shop</p>
       <p>
-        Hochwertige Produkte für Bau, Renovierung und Ausstattung – bequem online bestellen.
-        Unser Shop befindet sich aktuell im Aufbau.
+        Coming soon
       </p>
       <a className={styles.seventhOverlayButton}>
         Zum Shop – Coming Soon
@@ -135,14 +135,13 @@ const overlays: OverlayData[] = [
   {
     text: (
   <div className={styles.overlayContent}>
-    <p>Jokić Logistics – bald verfügbar.</p>
+    <p>Jokić Logistik</p>
     <p>
-      Zuverlässiger Transport, Paketdienst und flexible Logistiklösungen.
-      Unser Logistikservice befindet sich aktuell in Vorbereitung.
+     Wir liefern
     </p>
-    <a className={styles.seventhOverlayButton}>
-      Jokić Logistics – Coming Soon
-    </a>
+    <Link href="/kontakt" className={styles.fifthOverlayButton}> 
+        Kontakt aufnehmen
+      </Link>
   </div>
 ),
     position: { top: "0%", left: "0%" },

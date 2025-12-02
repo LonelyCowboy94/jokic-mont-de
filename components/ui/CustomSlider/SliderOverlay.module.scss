@@ -23,7 +23,7 @@
     animation: slideFade 9s ease forwards;
   }
   & p:last-of-type {
-    font-size: clamp(1rem, 0.5073rem + 1.0356vw, 1.75rem);
+    font-size: clamp(1.2rem, 0.9573rem + 1.0356vw, 2.2rem);
   }
   & p:first-of-type {
     font-size: clamp(1.525rem, 0.4879rem + 2.7184vw, 3.75rem);
@@ -102,7 +102,7 @@
 
 }
 .fifthOverlayButton {
-  align-self: flex-start;
+  align-self: flex-end;
 }
 
 .overlaySixth {
@@ -127,3 +127,4 @@
     --translateX: clamp(2.1875rem, 1.2015rem + 4.2071vw, 6.25rem);
     text-align: end;
 }
+

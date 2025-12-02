@@ -4,30 +4,81 @@
   height: clamp(31.25rem, 26.699rem + 19.4175vw, 50rem);
 
   &__buttons {
+    
     & button:first-of-type {
-      clip-path: polygon(0% 50%, 50% 0%, 50% 25%, 75% 25%, 75% 75%, 50% 75%, 50% 100%);
-      left: clamp(8.125rem, -2.7973rem + 46.6019vw, 53.125rem);
-      background: rgba(0, 0, 0, 0.3);
-      width: 80px;
-      height: 80px;
+      opacity: 0.4;
       &:hover {
-        background: rgba(0, 0, 0, 0.6);
+        opacity: 1;
+      }
+      width: 100px;
+      background: transparent;
+      height: 18px;
+      position: relative;
+      right: 100px;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: rgb(255, 255, 255);
+        transform: translateY(-50%);
+       
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid rgb(255, 255, 255);
+        border-right: 2px solid rgb(255, 255, 255);
+        transform: translateY(-50%) rotate(45deg);
+        
       }
     }
     & button:last-of-type {
-      clip-path: polygon(50% 25%, 50% 0%, 100% 50%, 50% 100%, 50% 75%, 25% 75%, 25% 25%);
-      right: clamp(8.125rem, -2.7973rem + 46.6019vw, 53.125rem);
-      background: rgba(0, 0, 0, 0.3);
-      width: 80px;
-      height: 80px;
+      opacity: 0.4;
       &:hover {
-        background: rgba(0, 0, 0, 0.6);
+        opacity: 1;
       }
+      background: transparent;
+      width: 100px;
+      height: 18px;
+      position: relative;
+      left: 100px;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: rgb(255, 255, 255);
+        transform: translateY(-50%);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid rgb(255, 255, 255);
+        border-left: 2px solid rgb(255, 255, 255); // razlika
+        transform: translateY(-50%) rotate(-45deg); // razlika
+      }
+      
     }
 
     @media (max-width: 480px) {
       display: none;
     }
+    transition: opacity 0.2s ease-in-out;
+    
   }
 
   &__activeSlide {
@@ -40,6 +91,6 @@
   top: 0;
   left: 0;
   height: clamp(0.3125rem, 0.2822rem + 0.1294vw, 0.4375rem);
-  background-color: rgba(59, 253, 0, 0.301);
-  z-index: 1;
+  background-color: rgba(254, 255, 253, 0.493);
+  z-index: 999;
 }
