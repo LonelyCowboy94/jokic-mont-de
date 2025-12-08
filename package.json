@@ -9,13 +9,15 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
     "@studio-freight/lenis": "^1.0.42",
+    "bcrypt": "^6.0.0",
     "framer-motion": "^12.23.24",
     "keen-slider": "^6.8.6",
     "lucide-react": "^0.553.0",
     "mongo": "^0.1.0",
     "mongoose": "^8.19.4",
-    "next": "16.0.1",
+    "next": "^16.0.7",
     "nodemailer": "^7.0.10",
     "react": "19.2.0",
     "react-dom": "19.2.0",
@@ -24,6 +26,7 @@
     "swiper": "^12.0.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/node": "^20",
     "@types/nodemailer": "^7.0.3",
     "@types/react": "^19",

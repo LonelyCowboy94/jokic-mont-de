@@ -1,61 +1,37 @@
-import { NextResponse } from "next/server";
-import connectMongo from "@/lib/mongodb";
-import Termin from "@/models/Termin";
+import { NextRequest, NextResponse } from "next/server";
+import { sql } from "@/lib/db";
 import { transporter } from "@/lib/mailer";
 
 export const runtime = "nodejs";
 
-export async function POST(req: Request) {
-  try {
-    const { name, lastname, email, phone, note, date, time } = await req.json();
+export async function POST(req: NextRequest) {
+try {
+const { name, email, note, date, time } = await req.json();
 
-    // ✅ Validacija obaveznih polja
-    if (!name || !email || !date || !time) {
-      return new Response(
-        JSON.stringify({ error: "Name, email, date, and time are required" }),
-        { status: 400 }
-      );
-    }
 
-    // ✅ Parsiranje datuma "dd.mm.yyyy"
-    const [day, month, year] = date.split(".");
-    const dateObj = new Date(`${year}-${month}-${day}`);
-    if (isNaN(dateObj.getTime())) {
-      return new Response(JSON.stringify({ error: "Invalid date format" }), {
-        status: 400,
-      });
-    }
+if (!name || !email || !date || !time) {
+  return NextResponse.json(
+    { success: false, error: "Missing fields" },
+    { status: 400 }
+  );
+}
 
-    // ✅ Datum u prošlosti
-    const now = new Date();
-    now.setHours(0, 0, 0, 0);
-    if (dateObj < now) {
-      return new Response(
-        JSON.stringify({ error: "Date cannot be in the past" }),
-        { status: 400 }
-      );
-    }
+const [appointment] = await sql`
+  INSERT INTO appointments (name, email, note, date, time)
+  VALUES (${name}, ${email}, ${note}, ${date}, ${time})
+  RETURNING id, name, email, note, date, time, confirmed;
+`;
 
-    // ✅ MongoDB konekcija i kreiranje termina
-    await connectMongo();
-    const appointment = await Termin.create({
-      name,
-      lastname,
-      email,
-      phone,
-      note,
-      date: dateObj,
-      time,
-    });
+// const formattedDate = new Date(date);
+// const dateStr = `${formattedDate.getDate().toString().padStart(2,"0")}/${(formattedDate.getMonth()+1).toString().padStart(2,"0")}/${formattedDate.getFullYear()}`;
+// const timeStr = `${time.split(":")[0].padStart(2,"0")}:${time.split(":")[1].padStart(2,"0")}`;
+const submitTime = new Date().toLocaleString("de-DE");
 
-    try {
-
-      // Mail to Client
-      await transporter.sendMail({
+/* ---------------------- MAIL KUPCU ---------------------- */
+await transporter.sendMail({
   from: process.env.SMTP_USER,
-  replyTo: process.env.ADMIN_EMAIL,
-  to: email,
-  subject: `Termin-Anfrage erhalten`,
+  to: `${email}`,
+  subject: "Bestätigung Ihrer Terminanfrage",
   html: `
 <div style="max-width: 600px; margin: 0 auto; padding: 20px;
             background: #f7f7f7; border-radius: 8px;
@@ -101,16 +77,14 @@ export async function POST(req: Request) {
 });
 
 
-      // Mail to Admin
-      const now = new Date();
-const submitTime = `${now.getDate().toString().padStart(2,'0')}.${(now.getMonth()+1).toString().padStart(2,'0')}.${now.getFullYear()} ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
-
+/* ---------------------- MAIL ADMINU ---------------------- */
 const adminEmails = [process.env.ADMIN_EMAIL, process.env.ADMIN2_EMAIL].filter(Boolean) as string[];
+
 
 await transporter.sendMail({
   from: process.env.SMTP_USER,
   to: adminEmails,
-  subject: `Neuer Termin-Antrag eingegangen`,
+  subject: "Neuer Termin eingegangen",
   html: `
 <div style="max-width: 600px; margin: 0 auto; padding: 20px;
             background: #f7f7f7; border-radius: 8px;
@@ -163,16 +137,15 @@ await transporter.sendMail({
 `
 });
 
-    } catch (mailErr) {
-      console.error("Mail sending failed:", mailErr);
-    }
 
-    return NextResponse.json({ success: true, appointment });
-  } catch (err) {
-    console.error(err);
-    return NextResponse.json({
-      success: false,
-      error: (err as Error).message,
-    });
-  }
+return NextResponse.json({ success: true, appointment });
+
+
+} catch (err) {
+console.error(err);
+return NextResponse.json(
+{ success: false, error: (err as Error).message },
+{ status: 500 }
+);
+}
 }

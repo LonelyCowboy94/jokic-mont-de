@@ -1,5 +1,5 @@
-"use client";
 
+"use client";
 import { useState } from "react";
 import { generateTimeOptions } from "./utils/timeOptions";
 import styles from "./StepSubmit.module.scss";
@@ -12,66 +12,55 @@ interface StepSubmitProps {
   onBack: () => void;
 }
 
-export default function StepSubmit({
-  date,
-  time,
-  onTimeChange,
-  onSubmit,
-  onBack,
-}: StepSubmitProps) {
+export default function StepSubmit({ date, time, onTimeChange, onSubmit, onBack }: StepSubmitProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const timeOptions = generateTimeOptions();
 
   const formattedDate = date.toLocaleDateString("de-DE", {
-    weekday: "long",
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
+    weekday: "long", day: "2-digit", month: "2-digit", year: "numeric",
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
- const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsLoading(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
 
-  try {
- 
-    const day = date.getDate().toString().padStart(2, "0");
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const year = date.getFullYear();
-    const formattedDate = `${day}.${month}.${year}`;
+    try {
 
-    const res = await fetch("/api/appointment", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...form,
-        date: formattedDate, 
-        time,     
-        note: form.message 
-      }),
-    });
+      
+      const formattedDate = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2,'0')}-${date.getDate().toString().padStart(2,'0')}`;
+const res = await fetch("/api/appointment", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+ body: JSON.stringify({
+  name: form.name,
+  email: form.email,
+  note: form.message,
+  date: formattedDate,
+  time,
+}),
+});
 
-    const data = await res.json();
+const data = await res.json();  // SAMO JEDAN PUT
+console.log("Received body:", data);
 
-    if (res.ok) onSubmit("success");
-    else {
-      console.error("Backend error:", data);
+if (res.ok) onSubmit("success");
+else {
+  console.error("Backend error:", data);
+  onSubmit("error");
+}
+
+    } catch (err) {
+      console.error("Fetch error:", err);
       onSubmit("error");
+    } finally {
+      setIsLoading(false);
     }
-  } catch (err) {
-    console.error("Fetch error:", err);
-    onSubmit("error");
-  } finally {
-    setIsLoading(false);
-  }
-};
+  };
 
   return (
     <form className={styles.stepSubmit} onSubmit={handleSubmit}>

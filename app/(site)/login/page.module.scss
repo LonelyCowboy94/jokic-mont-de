@@ -1,0 +1,38 @@
+@use "../../../styles/mixins" as mix;
+@use "../../../styles/variables" as *;
+
+.loginPage {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    @include mix.sectionLayoutDark;
+    background: $background-linear-gray;
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 300px;
+        background: rgba(202, 202, 202, 0.315);
+        padding: 20px 30px;
+        border-radius: 10px;
+        & input {
+            background: none;
+            border: none;
+            background-color: rgb(209, 209, 209);
+            font-size: 20px;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin-bottom: 5px;
+            color: rgb(80, 80, 80);
+            &:focus {
+                outline: none;
+            }
+           
+        }
+         & button {
+                @include mix.btnPrimaryBlue;
+            }
+    }
+}

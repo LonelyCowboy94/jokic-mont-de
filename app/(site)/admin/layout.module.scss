@@ -1,0 +1,33 @@
+@use "../../../styles/mixins" as mix;
+
+.adminLayout {
+  &__sidemenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90vh;
+    position: fixed;
+    top: 60px;
+  }
+  & nav {
+    padding-top: 20px;
+    
+  }
+}
+.adminLayout nav a,
+.adminLayout__logoutBtn {
+    
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.171);
+  border-radius: 15px;
+  padding: 10px;
+  background-color: transparent;
+  color: #ffffff93 !important;
+  width: 170px;
+  font-size: 20px;
+  &:hover {
+    border: 1px solid rgba(255, 255, 255, 0.678);
+    color: #FFF !important;
+  }
+}
+
