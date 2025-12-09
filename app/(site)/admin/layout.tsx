@@ -31,6 +31,7 @@ export default function AdminLayout({ children }: Props) {
           <Link href="/admin" style={{ color: "#fff" }}>Dashboard</Link>
           <Link href="/admin/termine" style={{ color: "#fff" }}>Termine</Link>
           <Link href="/admin/calendar" style={{ color: "#fff" }}>Calendar</Link>
+          <Link href="/admin/aktuell" style={{ color: "#fff" }}>Aktuell</Link>
           <Link href="/admin/analytics" style={{ color: "#fff" }}>Analitics</Link>
         </nav>
         <form action={logoutAdmin}>

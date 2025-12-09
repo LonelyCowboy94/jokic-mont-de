@@ -13,6 +13,8 @@ export default function AdminTable({ appointments }: Props) {
   const [loadingId, setLoadingId] = useState<number | null>(null);
 
   const handleConfirm = async (id: number) => {
+    if (!window.confirm("Bist du sicher, dass du diesen Termin bestätigen willst?")) return;
+
     try {
       setLoadingId(id);
       const res = await fetch("/api/appointment/confirm", {
@@ -31,6 +33,8 @@ export default function AdminTable({ appointments }: Props) {
   };
 
   const handleReject = async (id: number) => {
+    if (!window.confirm("Bist du sicher, dass du diesen Termin ablehnen willst?")) return;
+
     try {
       setLoadingId(id);
       const res = await fetch("/api/appointment/reject", {
@@ -49,6 +53,8 @@ export default function AdminTable({ appointments }: Props) {
   };
 
   const handleDelete = async (id: number) => {
+    if (!window.confirm("Bist du sicher, dass du diesen Termin löschen willst?")) return;
+
     try {
       setLoadingId(id);
       const res = await fetch("/api/appointment/delete", {

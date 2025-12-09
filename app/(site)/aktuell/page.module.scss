@@ -1,0 +1,111 @@
+@use "../../../styles/variables" as *;
+
+.container {
+  position: relative;
+  padding: 80px clamp(0.625rem, -5.2913rem + 25.2427vw, 25rem);
+  font-family: 'Inter', sans-serif;
+  color: #fff; // tekst kontrastan na gradient
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-height: 100vh;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    z-index: -1;
+    background: $background-linear-gray;
+  }
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
+  padding: 2rem;
+}
+
+.heroTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.heroExcerpt {
+  font-size: 1.2rem;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background-color: #f8fafc;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.cardImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: 1rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.cardExcerpt {
+  font-size: 1rem;
+  color: #4b5563; // tamno siva
+}
+
+.cardButton {
+  margin-top: 1rem;
+  display: inline-block;
+  color: #3b82f6;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.cardButton:hover {
+  color: #2563eb;
+}

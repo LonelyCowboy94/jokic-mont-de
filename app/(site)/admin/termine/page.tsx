@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { getAppointments } from "@/app/actions";
-import { Appointment } from "@/types";
 import AdminTable from "./AdminTable";
 
 const page = async () => {

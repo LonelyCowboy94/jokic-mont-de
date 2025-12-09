@@ -18,7 +18,7 @@ const MobileNavbar = () => {
     { href: "/leistungen", label: "LEISTUNGEN" },
     { href: "/kontakt", label: "KONTAKT" },
     { href: "/karriere", label: "KARRIERE" },
-    { href: "/galerie", label: "GALERIE" },
+    { href: "/aktuell", label: "AKTUELL" },
     { href: "/impressum", label: "IMPRESSUM" },
     { href: "/datenschutzerklaerung", label: "DATENSCHUTZERKLÄRUNG" },
   ];
