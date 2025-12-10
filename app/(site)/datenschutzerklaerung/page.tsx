@@ -4,7 +4,7 @@ import styles from "./page.module.scss";
 export default function DatenschutzPage() {
 return (
   <>
-<main className={styles.datenschutz}>
+{/* <main className={styles.datenschutz}>
 <section className={styles.datenschutz__section}>
 <h1 className={styles.datenschutz__title}>Datenschutzerklärung</h1>
 
@@ -126,7 +126,7 @@ Sie uns jederzeit unter jdmw-info@jdmw.com kontaktieren.
           © {new Date().getFullYear()} Dusan Jokic – Alle Rechte vorbehalten.
         </p>
 </section>
-</main>
+</main> */}
 <Footer />
 </>
 );
