@@ -8,7 +8,6 @@
 @mixin font-kanit($weight: 400) {
   font-family: var(--font-kanit);
   font-weight: $weight;
-  line-height: 1.15;
 }
 
 // Sections layout

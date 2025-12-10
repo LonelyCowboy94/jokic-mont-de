@@ -1,37 +1,42 @@
 import Link from "next/link";
 import styles from "./OffeneStellen.module.scss";
 
-const positions = [
-  {
-    title: "Fliesenleger (m/w/d)",
-    text: "Erfahrung im Bereich Boden- und Wandfliesen. Selbstständige und zuverlässige Arbeitsweise."
-  },
-  {
-    title: "Trockenbauer (m/w/d)",
-    text: "Montage von Gipskartonwänden, Decken und Akustiksystemen. Führerschein Klasse B von Vorteil."
-  },
-  {
-    title: "Maler & Lackierer (m/w/d)",
-    text: "Innen- und Außenanstriche, Spachtel- & Schleifarbeiten. Qualitätsorientierte Arbeitsweise."
-  }
-];
+export interface Position {
+  id: string;           
+  title: string;       
+  description: string;  
+  created_at?: string;  
+}
 
-const OffeneStellen = () => {
+async function loadPositions() {
+  const res = await fetch("http://localhost:3000/api/karriere", { cache: "no-store" });
+
+  return res.json();
+}
+
+export default async function OffeneStellen() {
+  const positions = await loadPositions();
+
   return (
     <section className={styles.stellen}>
       <h2 className={styles["stellen__title"]}>Aktuelle Stellenangebote</h2>
 
       <div className={styles["stellen__grid"]}>
-        {positions.map((p, i) => (
-          <div className={styles["stellen__card"]} key={i}>
-            <h3 className={styles["stellen__card-title"]}>{p.title}</h3>
-            <p className={styles["stellen__card-text"]}>{p.text}</p>
-            <Link href='/kontakt' className={styles["stellen__btn"]}>Jetzt Bewerben</Link>
-          </div>
-        ))}
+  {positions && positions.length > 0 ? (
+    positions.map((p: Position) => (
+      <div className={styles["stellen__card"]} key={p.id}>
+        <h3 className={styles["stellen__card-title"]}>{p.title}</h3>
+        <p className={styles["stellen__card-text"]}>{p.description}</p>
+        <Link href="/kontakt" className={styles["stellen__btn"]}>
+          Jetzt Bewerben
+        </Link>
       </div>
+    ))
+  ) : (
+    <p className={styles.stellen_empty}>Zurzeit haben wir keine offenen Stellenangebote.</p>
+
+  )}
+</div>
     </section>
   );
-};
-
-export default OffeneStellen;
+}

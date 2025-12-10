@@ -1,13 +1,20 @@
+@use "../../../../styles/variables" as *;
+@use "../../../../styles/mixins" as *;
+
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: clamp(1rem, 2vw + 0.5rem, 3rem);
   font-family: 'Inter', sans-serif;
   color: #1f2937;
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 }
 
 .title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
   font-weight: 700;
   margin-bottom: 1.5rem;
 }
@@ -25,25 +32,37 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  label {
+    font-weight: 500;
+  }
 }
 
-.input, .textarea {
+.input,
+.textarea {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid #cbd5e1;
   border-radius: 0.5rem;
   font-size: 1rem;
   transition: border-color 0.2s, box-shadow 0.2s;
-}
 
-.input:focus, .textarea:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  &:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
 }
 
 .checkboxWrapper {
   display: flex;
+  flex-direction: row !important;
   align-items: center;
   gap: 0.5rem;
   font-weight: 500;
@@ -59,20 +78,21 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
-}
+  align-self: flex-start;
 
-.button:hover:not(:disabled) {
-  background-color: #2563eb;
-  transform: translateY(-1px);
-}
+  &:hover:not(:disabled) {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+  }
 
-.button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 1.5vw + 1rem, 1.5rem);
   font-weight: 600;
   margin-top: 3rem;
   margin-bottom: 1rem;
@@ -86,22 +106,39 @@
 
 .newsItem {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   padding: 1rem;
   background-color: #f3f4f6;
   border-radius: 0.5rem;
   transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #e5e7eb;
+  }
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  > div:first-child {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    @media (max-width: 639px) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
 }
 
-.newsItem:hover {
-  background-color: #e5e7eb;
-}
-
-.newsItem > div:first-child {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.newsImage {
+  border-radius: 0.25rem;
+  object-fit: cover;
+  width: 80px;
+  height: 80px;
 }
 
 .topBadge {
@@ -112,44 +149,50 @@
   padding: 0.2rem 0.5rem;
   border-radius: 0.25rem;
   font-weight: 600;
+  margin-left: 0.5rem;
 }
 
 .actions {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.5rem;
-}
+  margin-top: 0.5rem;
 
-.actions button {
- padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  border-radius: 0.25rem;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.2s, transform 0.1s;
-  width: 120px; /* iste širine */
-  text-align: center;
-}
+  @media (min-width: 640px) {
+    margin-top: 0;
+  }
 
-.actions button:hover {
-  transform: translateY(-1px);
-}
+  button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 120px;
+    text-align: center;
+    @media (max-width: 480px) {
+      height: 50px;
+    }
+  }
 
-.actions button:first-child {
-  background-color: #f59e0b;
-  color: white;
-}
+  .topButton {
+    background-color: #f59e0b;
+    color: white;
 
-.actions button:first-child:hover {
-  background-color: #d97706;
-}
+    &:hover {
+      background-color: #d97706;
+    }
+  }
 
-.deleteButton {
-  background-color: #ef4444;
-  color: white;
-}
+  .deleteButton {
+    background-color: #ef4444;
+    color: white;
 
-.deleteButton:hover {
-  background-color: #b91c1c;
+    &:hover {
+      background-color: #b91c1c;
+    }
+  }
 }

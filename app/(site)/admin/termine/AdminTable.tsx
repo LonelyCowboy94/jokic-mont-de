@@ -13,7 +13,12 @@ export default function AdminTable({ appointments }: Props) {
   const [loadingId, setLoadingId] = useState<number | null>(null);
 
   const handleConfirm = async (id: number) => {
-    if (!window.confirm("Bist du sicher, dass du diesen Termin bestätigen willst?")) return;
+    if (
+      !window.confirm(
+        "Bist du sicher, dass du diesen Termin bestätigen willst?"
+      )
+    )
+      return;
 
     try {
       setLoadingId(id);
@@ -23,7 +28,9 @@ export default function AdminTable({ appointments }: Props) {
         body: JSON.stringify({ id }),
       });
       if (!res.ok) throw new Error("Failed to confirm");
-      setTerms(prev => prev.map(t => (t.id === id ? { ...t, confirmed: true } : t)));
+      setTerms((prev) =>
+        prev.map((t) => (t.id === id ? { ...t, confirmed: true } : t))
+      );
     } catch (err) {
       console.error(err);
       alert("Fehler beim Bestätigen");
@@ -33,7 +40,10 @@ export default function AdminTable({ appointments }: Props) {
   };
 
   const handleReject = async (id: number) => {
-    if (!window.confirm("Bist du sicher, dass du diesen Termin ablehnen willst?")) return;
+    if (
+      !window.confirm("Bist du sicher, dass du diesen Termin ablehnen willst?")
+    )
+      return;
 
     try {
       setLoadingId(id);
@@ -43,7 +53,7 @@ export default function AdminTable({ appointments }: Props) {
         body: JSON.stringify({ id }),
       });
       if (!res.ok) throw new Error("Failed to reject");
-      setTerms(prev => prev.filter(t => t.id !== id));
+      setTerms((prev) => prev.filter((t) => t.id !== id));
     } catch (err) {
       console.error(err);
       alert("Fehler beim Ablehnen");
@@ -53,7 +63,10 @@ export default function AdminTable({ appointments }: Props) {
   };
 
   const handleDelete = async (id: number) => {
-    if (!window.confirm("Bist du sicher, dass du diesen Termin löschen willst?")) return;
+    if (
+      !window.confirm("Bist du sicher, dass du diesen Termin löschen willst?")
+    )
+      return;
 
     try {
       setLoadingId(id);
@@ -63,7 +76,7 @@ export default function AdminTable({ appointments }: Props) {
         body: JSON.stringify({ id }),
       });
       if (!res.ok) throw new Error("Failed to delete");
-      setTerms(prev => prev.filter(t => t.id !== id));
+      setTerms((prev) => prev.filter((t) => t.id !== id));
     } catch (err) {
       console.error(err);
       alert("Fehler beim Löschen");
@@ -72,8 +85,8 @@ export default function AdminTable({ appointments }: Props) {
     }
   };
 
-  const waiting = terms.filter(t => !t.confirmed);
-  const confirmed = terms.filter(t => t.confirmed);
+  const waiting = terms.filter((t) => !t.confirmed);
+  const confirmed = terms.filter((t) => t.confirmed);
 
   return (
     <div className={styles.adminTableWrapper}>
@@ -90,28 +103,41 @@ export default function AdminTable({ appointments }: Props) {
           </tr>
         </thead>
         <tbody>
-          {waiting.map(t => (
-            <tr key={t.id} className={`${styles.tbodyTr} ${styles.tbodyTrHover}`}>
-              <td className={styles.td}>{t.name}</td>
-              <td className={styles.td}>{t.email}</td>
-              <td className={styles.td}>{t.note || "(Keine Notiz)"}</td>
-              <td className={styles.td}>{new Date(t.date).toLocaleDateString("de-DE")}</td>
-              <td className={styles.td}>{t.time}</td>
-              <td className={styles.td}>
-                <button
-                  className={`${styles.button} ${styles.buttonConfirm}`}
-                  onClick={() => handleConfirm(t.id)}
-                  disabled={loadingId === t.id}
-                >
-                  {loadingId === t.id ? "..." : "Bestätigen"}
-                </button>
-                <button
-                  className={`${styles.button} ${styles.buttonReject}`}
-                  onClick={() => handleReject(t.id)}
-                  disabled={loadingId === t.id}
-                >
-                  {loadingId === t.id ? "..." : "Ablehnen"}
-                </button>
+          {waiting.map((t) => (
+            <tr
+              key={t.id}
+              className={`${styles.tbodyTr} ${styles.tbodyTrHover}`}
+            >
+              <td className={styles.td} data-label="Name">
+                {t.name}
+              </td>
+              <td className={styles.td} data-label="Email">
+                {t.email}
+              </td>
+              <td className={styles.td} data-label="Notiz">
+                {t.note || "(Keine Notiz)"}
+              </td>
+              <td className={styles.td} data-label="Datum">
+                {new Date(t.date).toLocaleDateString("de-DE")}
+              </td>
+              <td className={styles.td} data-label="Uhrzeit">
+                {t.time}
+              </td>
+              <td className={`${styles.td}`} data-label="Aktionen">
+                <div className={styles.actionBtnWrapper}>
+                  <button
+                    className={`${styles.button} ${styles.buttonConfirm}`}
+                    onClick={() => handleConfirm(t.id)}
+                  >
+                    Bestätigen
+                  </button>
+                  <button
+                    className={`${styles.button} ${styles.buttonReject}`}
+                    onClick={() => handleReject(t.id)}
+                  >
+                    Ablehnen
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
@@ -131,14 +157,27 @@ export default function AdminTable({ appointments }: Props) {
           </tr>
         </thead>
         <tbody>
-          {confirmed.map(t => (
-            <tr key={t.id}>
-              <td className={styles.td}>{t.name}</td>
-              <td className={styles.td}>{t.email}</td>
-              <td className={styles.td}>{t.note || "(Keine Notiz)"}</td>
-              <td className={styles.td}>{new Date(t.date).toLocaleDateString("de-DE")}</td>
-              <td className={styles.td}>{t.time}</td>
-              <td className={styles.td}>
+          {confirmed.map((t) => (
+            <tr
+              key={t.id}
+              className={`${styles.tbodyTr} ${styles.tbodyTrHover}`}
+            >
+              <td className={styles.td} data-label="Name">
+                {t.name}
+              </td>
+              <td className={styles.td} data-label="Email">
+                {t.email}
+              </td>
+              <td className={styles.td} data-label="Notiz">
+                {t.note || "(Keine Notiz)"}
+              </td>
+              <td className={styles.td} data-label="Datum">
+                {new Date(t.date).toLocaleDateString("de-DE")}
+              </td>
+              <td className={styles.td} data-label="Uhrzeit">
+                {t.time}
+              </td>
+              <td className={styles.td} data-label="Löschen">
                 <button
                   className={`${styles.button} ${styles.buttonDelete}`}
                   onClick={() => handleDelete(t.id)}

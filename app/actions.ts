@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
 import { Appointment, NewAppointment } from "@/types";
+import { NewsItem } from "@/types";
 
 // FETCH users
 export async function getData() {
@@ -43,6 +44,16 @@ export async function getAppointments(): Promise<Appointment[]> {
     ORDER BY date DESC;
   `;
   return rows as Appointment[];
+}
+
+// GET NEWS
+export async function getNews(): Promise<NewsItem[]> {
+  const rows = await sql`
+    SELECT id, title, content, created_at, image_url
+    FROM news
+    ORDER BY created_at DESC;
+  `;
+  return rows as NewsItem[];
 }
 
 // LOGIN

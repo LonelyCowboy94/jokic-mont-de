@@ -9,13 +9,19 @@ const OnlineTermineSection = () => {
     >
       <article className={styles.onlineTermineSection__article}>
         <h2 className={styles.onlineTermineSection__title}>Online Termine</h2>
-        <h3 className={styles.onlineTermineSection__subtitle}>
-          Online Termine sind wieder aktiv.
-        </h3>
-        <p className={styles.onlineTermineSection__text}>
-          Hier können Sie jederzeit und von überall Ihren Termin buchen. Unser
-          Online-Kalender steht Ihnen wie gewohnt rund um die Uhr zur Verfügung.
-        </p>
+<h3 className={styles.onlineTermineSection__subtitle}>
+  Terminbuchung – jederzeit verfügbar.
+</h3>
+<p className={styles.onlineTermineSection__text}>
+  Unser Online-Kalender steht Ihnen rund um die Uhr zur Verfügung und ermöglicht 
+  eine einfache, schnelle und transparente Buchung Ihres Wunschtermins – egal ob 
+  vom Computer, Tablet oder Smartphone.  
+  <br /><br />
+  Sie erhalten sofortige Bestätigung, volle Übersicht über verfügbare Zeiten und 
+  maximale Flexibilität bei der Planung. Der gesamte Prozess ist klar strukturiert, 
+  intuitiv gestaltet und für alle Nutzer problemlos zugänglich – ganz ohne 
+  überflüssige Schritte.
+</p>
       </article>
       <div className={styles.onlineTermineSection__bookingWrapper}>
         <LazyBookingWidget />

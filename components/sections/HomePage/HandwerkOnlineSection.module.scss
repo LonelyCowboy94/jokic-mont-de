@@ -42,7 +42,7 @@
   }
   &__text {
     padding: 20px 0;
-    font-size: clamp(1.5rem, 1.318rem + 0.7767vw, 2.25rem);
+    font-size: $paragraph-font-size;
     line-height: clamp(2rem, 1.7876rem + 0.9061vw, 2.875rem);
   }
 

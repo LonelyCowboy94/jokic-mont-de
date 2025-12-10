@@ -1,0 +1,67 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+
+.datenschutz {
+@include sectionLayoutLight;
+
+
+&__section {
+max-width: 900px;
+margin: 0 auto;
+padding-top: 1rem;
+}
+
+
+&__title {
+@include font-kanit(600);
+font-size: $title-font-size;
+color: $color-font-md;
+margin-bottom: 2.5rem;
+}
+
+
+&__subtitle {
+@include font-kanit(500);
+font-size: $subtitle-font-size;
+margin-top: 3rem;
+margin-bottom: 1.2rem;
+color: $color-font-li;
+}
+
+
+&__subsubtitle {
+@include font-kanit(500);
+font-size: 1.25rem;
+margin-top: 2rem;
+margin-bottom: 0.6rem;
+}
+
+
+&__text {
+@include font-style-primary;
+font-size: $paragraph-font-size;
+line-height: 1.7;
+margin-bottom: 1.2rem;
+color: $color-font-md;
+}
+
+
+&__list {
+padding-left: 1.8rem;
+margin-bottom: 1.5rem;
+
+
+li {
+font-size: $li-font-size;
+margin-bottom: 0.6rem;
+color: $color-font-md;
+}
+}
+&__footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 1rem;
+    opacity: 0.7;
+  }
+}

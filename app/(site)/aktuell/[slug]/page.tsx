@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import Footer from "../../../../components/layout/Footer/Footer"
 import Image from "next/image";
 import styles from "./page.module.scss";
 
@@ -40,6 +41,7 @@ export default function NewsDetailPage() {
   if (!news) return <p className={styles.notFound}>Nachricht nicht gefunden</p>;
 
   return (
+    <>
     <div className={styles.container}>
       {news.image_url && (
         <Image
@@ -57,5 +59,7 @@ export default function NewsDetailPage() {
         dangerouslySetInnerHTML={{ __html: news.content }}
       ></div>
     </div>
+    <Footer />
+    </>
   );
 }

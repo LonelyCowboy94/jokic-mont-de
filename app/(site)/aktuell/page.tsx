@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import Footer from "@/components/layout/Footer/Footer";
 
 interface NewsItem {
   id: string;
@@ -39,6 +40,7 @@ export default function AktuellPage() {
 }, []);
 
   return (
+    <>
     <div className={styles.container}>
       {topNews && (
         <div className={styles.hero}>
@@ -77,6 +79,9 @@ export default function AktuellPage() {
           </Link>
         ))}
       </div>
+     
     </div>
+     <Footer />
+     </>
   );
 }
