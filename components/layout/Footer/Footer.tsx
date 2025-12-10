@@ -2,7 +2,6 @@ import { SiFacebook, SiInstagram, SiYoutube, SiWhatsapp, SiLinkedin } from "reac
 import { FiPhone, FiMail } from "react-icons/fi";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { MdComputer } from "react-icons/md";
-import { FlagIcon } from 'react-flag-kit';
 
 
 import styles from "./Footer.module.scss";
@@ -60,7 +59,7 @@ const Footer = () => {
       </div>
       <div className={styles.footerSection__footer}>
         <p className="flex-center">
-JOKIC MONT &copy; {currentYear}&nbsp;<FlagIcon code="DE" size={24} height={14} /></p>
+JOKIC MONT &copy; {currentYear}</p>
         <div className="flex-wrap" style={{flexDirection: 'column', alignItems: 'center'}}>
           <p>Proudly created with next.js 16+</p>
           <a href="#">www.jokic.dev</a>
