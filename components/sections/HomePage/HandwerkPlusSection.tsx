@@ -3,7 +3,7 @@ import styles from "./HandwerkPlusSection.module.scss";
 
 const LeistungenSection = () => {
   return (
-    <section className={styles.leistungenSection}>
+    <section id='handwerk-plus' className={styles.leistungenSection}>
       <div className={`${styles.leistungenSection__articleWrapper} flex-wrap`}>
         <article
           className={`${styles.leistungenSection__article} gradient-text`}

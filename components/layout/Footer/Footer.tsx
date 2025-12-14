@@ -19,7 +19,7 @@ const Footer = () => {
             <a className="flex-center" href="mailto:jdmw-info@jdmw.de">jdmw-info@jdmw.de &nbsp; <FiMail /></a>
             <p>Am Stein 3, Biebertal, 35444</p>
             <a className="flex-center" href="tel:+4964469228174">+4964469228174 &nbsp; <FiPhone /></a>
-            <Link className="flex-center" href="/kontakt">Kontakt From&nbsp;<MdComputer /></Link>
+            <Link className="flex-center" href="/#kontakt-absenden">Kontakt From&nbsp;<MdComputer /></Link>
           </div>
           <div className={styles.footerSection__article}>
             <h6>Social Network</h6>
@@ -47,7 +47,7 @@ const Footer = () => {
             <Link href="/aktuell">Aktuell</Link>
             <Link href="/karriere">Karriere</Link>
             <Link href="/leistungen">Leistungen</Link>
-            <Link className="flex-center" href="/kontakt#onlineTermineSection">Online Termine &nbsp; <AiOutlineCalendar /></Link>
+            <Link className="flex-center" href="/#termin-vereinbaren">Online Termine &nbsp; <AiOutlineCalendar /></Link>
           </div>
           <div className={styles.footerSection__article}>
            <h6>Rechtliches</h6>

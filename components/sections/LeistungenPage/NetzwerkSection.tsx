@@ -2,7 +2,7 @@ import styles from "./NetzwerkSection.module.scss";
 
 const NetzwerkSection = () => {
   return (
-    <section className={styles.netzwerkSection}>
+    <section id='unser-netzwerk' className={styles.netzwerkSection}>
   <div className={styles.netzwerkSection__textContent}>
     <h3>Unser Netzwerk. Ihr Vorteil.</h3>
     <h4>Kompetente Partner. Verlässliche Lösungen. Effiziente Abläufe.</h4>

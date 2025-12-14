@@ -30,9 +30,9 @@ const overlays: OverlayData[] = [
       <div>
         <p>HANDWERK +</p>
         <p>Digital Solutions</p>
-        <Link href="/" className={styles.thirdOverlayButton}>
+        <a href="#handwerk-plus" className={styles.thirdOverlayButton}>
         Mehr erfahren
-      </Link>
+      </a>
       </div>
     ),
     position: { top: "0%", left: "0%" },
@@ -66,7 +66,7 @@ const overlays: OverlayData[] = [
             Online-Termine rund um die Uhr
           </p>
           <p>Ihre Buchung, sofort bestätigt.</p>
-          <a href="#onlineTermineSection" className={styles.fourthOverlayButton}>
+          <a href="#termin-vereinbaren" className={styles.fourthOverlayButton}>
           Jetzt Termin buchen
         </a>
         </div>
@@ -87,9 +87,9 @@ const overlays: OverlayData[] = [
         <p>
           Lösungen, die Zukunft schaffen
         </p>
-        <Link href="/kontakt" className={styles.fifthOverlayButton}> 
+        <a href="#kontakt-absenden" className={styles.fifthOverlayButton}> 
         Kontakt aufnehmen
-      </Link>
+      </a>
       </div>
       
     
@@ -105,7 +105,7 @@ const overlays: OverlayData[] = [
         <p>
           Unser Netzwerk. Ihr Vorteil.
         </p>
-        <a href="#networkSection" className={styles.sixthOverlayButton}>
+        <a href="/leistungen#unser-netzwerk" className={styles.sixthOverlayButton}>
         Mehr erfahren
       </a>
       </div>
@@ -139,7 +139,7 @@ const overlays: OverlayData[] = [
     <p>
      Wir liefern
     </p>
-    <Link href="/kontakt" className={styles.fifthOverlayButton}> 
+    <Link href="#kontakt-absenden" className={styles.fifthOverlayButton}> 
         Kontakt aufnehmen
       </Link>
   </div>
