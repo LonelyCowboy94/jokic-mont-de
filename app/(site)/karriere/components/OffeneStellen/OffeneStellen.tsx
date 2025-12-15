@@ -13,9 +13,9 @@ export default async function OffeneStellen() {
         {positions.length > 0 ? (
           positions.map((p) => (
             <div className={styles["stellen__card"]} key={p.id}>
-              <h3>{p.title}</h3>
-              <p>{p.description}</p>
-              <Link href="/kontakt">Jetzt Bewerben</Link>
+              <h3 className={styles["stellen__card-title"]}>{p.title}</h3>
+              <p className={styles["stellen__card-text"]}>{p.description}</p>
+              <Link className={styles["stellen__btn"]} href="/kontakt">Jetzt Bewerben</Link>
             </div>
           ))
         ) : (
