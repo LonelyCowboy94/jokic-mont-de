@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Montserrat, Kanit } from "next/font/google";
 import "./globals.scss";
 import Header from "@/components/layout/Header/Header";
+import { ConsentProvider } from "@/components/privacy/ConsentContext";
+import CookieConsent from "@/components/privacy/CookiesConsent";
+
 
 
 
@@ -60,6 +63,7 @@ export const metadata: Metadata = {
 };
 
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -71,8 +75,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" />
       </head>
       <body>
-        <Header />
-        {children}
+     <ConsentProvider>
+  <Header />
+  {children}
+  <CookieConsent />
+  </ConsentProvider>
       </body>
     </html>
   );

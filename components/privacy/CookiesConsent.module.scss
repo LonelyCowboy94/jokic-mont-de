@@ -1,0 +1,34 @@
+@use "../../styles/_animations" as *;
+
+.wrapper {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #111111d8;
+    color: #fff;
+    padding: 1.5rem;
+    z-index: 9999;
+    animation: slideUp2 1.3s ease forwards, fadeIn 1.8s ease forwards;
+}
+.slideDown {
+    animation: slideDown 0.5s ease forwards, fadeOut 0.5s ease forwards;
+}
+.buttons {
+    margin-top: 0.8rem;
+    display: flex;
+    gap: 1rem;
+  
+}
+.button {
+    padding: 0.5rem 1rem;
+      cursor: pointer;
+}
+.link {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #fff;
+    margin-left: auto;
+    &:hover {
+        text-decoration: underline;
+    }
+}

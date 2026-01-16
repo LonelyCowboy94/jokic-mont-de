@@ -1,4 +1,4 @@
-import { SiFacebook, SiInstagram, SiYoutube, SiWhatsapp, SiLinkedin } from "react-icons/si";
+import { SiFacebook, SiInstagram, SiWhatsapp, SiLinkedin } from "react-icons/si";
 import { FiPhone, FiMail } from "react-icons/fi";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { MdComputer } from "react-icons/md";
@@ -53,7 +53,7 @@ const Footer = () => {
            <h6>Rechtliches</h6>
             <Link href="/impressum">Impressum</Link>
             <a href="/datenschutzerklaerung">Datenschutzerklärung</a> <a href="#">AGB</a>{" "}
-            <a href="#">Cookie-Richtlinie</a>
+            <a href="/cookierichtlinie">Cookie-Richtlinie</a>
           </div>
         </div>
       </div>

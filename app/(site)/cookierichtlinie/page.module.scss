@@ -1,0 +1,77 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as mix;
+@use "../../../styles/_animations" as *;
+
+.cookiesPage {
+  @include mix.sectionLayoutLight;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: clamp(2.5rem, 1.165rem + 5.6958vw, 8rem);
+  
+  &__content {
+    max-width: 800px;
+    width: 100%;
+    padding: 0 0.8rem; 
+  }
+
+  &__title {
+    @include mix.font-kanit(600);
+    font-size: clamp(1.6rem, 1.2rem + 0.8vw, 2.4rem); 
+    margin-bottom: 0.8rem;
+    color: $color-font-md;
+  }
+
+  &__subtitle {
+    @include mix.font-kanit(500);
+    font-size: clamp(1.2rem, 0.96rem + 0.64vw, 1.6rem); 
+    margin-top: 1.6rem;
+    margin-bottom: 0.8rem;
+    color: $color-font-md;
+  }
+
+  &__text {
+    @include mix.font-kanit;
+    font-size: calc($paragraph-font-size * 0.8); 
+    line-height: 1.44; 
+    margin-bottom: 0.8rem;
+    color: $color-font-md;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem; 
+    margin-top: 10rem;
+  }
+
+  &__btn {
+    @include mix.btnPrimaryBlue;
+    font-size: clamp(0.9rem, 0.63rem + 0.31vw, 1rem); 
+    padding: clamp(0.7rem, 0.07rem + 0.78vw, 1rem); 
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+     @media screen and (max-width: 500px) {
+      min-width: 260px;
+    }
+  }
+
+  &__btnReset {
+    @include mix.btnPrimaryBlueTransparent;
+    font-size: clamp(0.9rem, 0.63rem + 0.31vw, 1rem); 
+    padding: clamp(0.7rem, 0.07rem + 0.78vw, 1rem); 
+    color: rgb(128, 164, 241);
+     @media screen and (max-width: 500px) {
+      min-width: 260px;
+    }
+  }
+
+  &__resetInfo {
+    margin-top: 0.8rem;
+    font-style: italic;
+    color: $color-font-md;
+    text-align: center;
+  }
+}

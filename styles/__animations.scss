@@ -28,6 +28,25 @@
   }
 }
 
+@keyframes slideUp2 {
+  0% {
+    transform: translateY(150px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(150px);
+  }
+}
+
 @keyframes fadeInLogo {
   0%,
   40% {
