@@ -9,10 +9,16 @@ export interface Position {
 
 export async function getPositions() {
   const rows = await sql`
-    SELECT * FROM offene_stellen
+    SELECT id, title, description, created_at
+    FROM offene_stellen
     ORDER BY created_at DESC
   `;
-  return rows;
+  return rows.map((r) => ({
+    id: r.id,
+    title: r.title,
+    description: r.description,
+    created_at: r.created_at?.toISOString(),
+  }));
 }
 
 export async function createPosition(title: string, description: string) {
@@ -23,5 +29,7 @@ export async function createPosition(title: string, description: string) {
 }
 
 export async function deletePosition(id: string) {
-  await sql`DELETE FROM offene_stellen WHERE id = ${id}`;
+  await sql`
+    DELETE FROM offene_stellen WHERE id = ${id}
+  `;
 }
