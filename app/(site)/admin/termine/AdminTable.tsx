@@ -2,6 +2,7 @@ import styles from "./AdminTable.module.scss";
 import { revalidatePath } from "next/cache";
 import { sql } from "@/lib/db";
 
+// === TYPE
 export type Appointment = {
   id: string;
   name: string;
@@ -14,7 +15,7 @@ export type Appointment = {
 };
 
 // === FETCH SERVER-SIDE
-async function getAppointments(): Promise<Appointment[]> {
+export async function getAppointments(): Promise<Appointment[]> {
   const rows = await sql`
     SELECT id, name, email, note, date, time, confirmed, created_at
     FROM appointments
@@ -78,9 +79,11 @@ export async function deleteAppointment(formData: FormData) {
 }
 
 // === SERVER COMPONENT
-export default async function AdminTable() {
-  const appointments = await getAppointments();
+interface AdminTableProps {
+  appointments: Appointment[];
+}
 
+export default function AdminTable({ appointments }: AdminTableProps) {
   const waiting = appointments.filter((t) => !t.confirmed);
   const confirmed = appointments.filter((t) => t.confirmed);
 
@@ -88,79 +91,80 @@ export default async function AdminTable() {
     <div className={styles.adminTableWrapper}>
       <h2 className={styles.title}>Wartende Termine</h2>
       <div className={styles.tableWrapper}>
-      <table className={styles.table}>
-        <thead className={styles.thead}>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Notiz</th>
-            <th>Datum</th>
-            <th>Uhrzeit</th>
-            <th className={styles.action}>Aktionen</th>
-          </tr>
-        </thead>
-        <tbody>
-          {waiting.map((t) => (
-            <tr key={t.id} className={`${styles.tbodyTr} ${styles.tbodyTrHover}`}>
-              <td className={styles.td} data-label="Name">{t.name}</td>
-              <td className={styles.td} data-label="Email">{t.email}</td>
-              <td className={styles.td} data-label="Notiz">{t.note || "(Keine Notiz)"}</td>
-              <td className={styles.td} data-label="Datum">{new Date(t.date).toLocaleDateString("de-DE")}</td>
-              <td className={styles.td} data-label="Uhrzeit">{t.time}</td>
-              <td className={`${styles.td} ${styles.action}`} data-label="Aktionen">
-                <div className={styles.actionBtnWrapper}>
-                  <form action={confirmAppointment}>
-                    <input type="hidden" name="id" value={t.id} />
-                    <button className={`${styles.button} ${styles.buttonConfirm}`} type="submit">
-                      Bestätigen
-                    </button>
-                  </form>
-                  <form action={rejectAppointment}>
-                    <input type="hidden" name="id" value={t.id} />
-                    <button className={`${styles.button} ${styles.buttonReject}`} type="submit">
-                      Ablehnen
-                    </button>
-                  </form>
-                </div>
-              </td>
+        <table className={styles.table}>
+          <thead className={styles.thead}>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Notiz</th>
+              <th>Datum</th>
+              <th>Uhrzeit</th>
+              <th className={styles.action}>Aktionen</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-</div>
+          </thead>
+          <tbody>
+            {waiting.map((t) => (
+              <tr key={t.id} className={`${styles.tbodyTr} ${styles.tbodyTrHover}`}>
+                <td className={styles.td}>{t.name}</td>
+                <td className={styles.td}>{t.email}</td>
+                <td className={styles.td}>{t.note || "(Keine Notiz)"}</td>
+                <td className={styles.td}>{new Date(t.date).toLocaleDateString("de-DE")}</td>
+                <td className={styles.td}>{t.time}</td>
+                <td className={`${styles.td} ${styles.action}`}>
+                  <div className={styles.actionBtnWrapper}>
+                    <form action={confirmAppointment}>
+                      <input type="hidden" name="id" value={t.id} />
+                      <button className={`${styles.button} ${styles.buttonConfirm}`} type="submit">
+                        Bestätigen
+                      </button>
+                    </form>
+                    <form action={rejectAppointment}>
+                      <input type="hidden" name="id" value={t.id} />
+                      <button className={`${styles.button} ${styles.buttonReject}`} type="submit">
+                        Ablehnen
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
       <h2 className={styles.title}>Bestätigte Termine</h2>
       <div className={styles.tableWrapper}>
-      <table className={styles.table}>
-        <thead className={styles.thead}>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Notiz</th>
-            <th>Datum</th>
-            <th>Uhrzeit</th>
-            <th>Löschen</th>
-          </tr>
-        </thead>
-        <tbody>
-          {confirmed.map((t) => (
-            <tr key={t.id} className={`${styles.tbodyTr} ${styles.tbodyTrHover}`}>
-              <td className={styles.td} data-label="Name">{t.name}</td>
-              <td className={styles.td} data-label="Email">{t.email}</td>
-              <td className={styles.td} data-label="Notiz">{t.note || "(Keine Notiz)"}</td>
-              <td className={styles.td} data-label="Datum">{new Date(t.date).toLocaleDateString("de-DE")}</td>
-              <td className={styles.td} data-label="Uhrzeit">{t.time}</td>
-              <td className={styles.td} data-label="Löschen">
-                <form action={deleteAppointment}>
-                  <input type="hidden" name="id" value={t.id} />
-                  <button className={`${styles.button} ${styles.buttonDelete}`} type="submit">
-                    Löschen
-                  </button>
-                </form>
-              </td>
+        <table className={styles.table}>
+          <thead className={styles.thead}>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Notiz</th>
+              <th>Datum</th>
+              <th>Uhrzeit</th>
+              <th>Löschen</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {confirmed.map((t) => (
+              <tr key={t.id} className={`${styles.tbodyTr} ${styles.tbodyTrHover}`}>
+                <td className={styles.td}>{t.name}</td>
+                <td className={styles.td}>{t.email}</td>
+                <td className={styles.td}>{t.note || "(Keine Notiz)"}</td>
+                <td className={styles.td}>{new Date(t.date).toLocaleDateString("de-DE")}</td>
+                <td className={styles.td}>{t.time}</td>
+                <td className={styles.td}>
+                  <form action={deleteAppointment}>
+                    <input type="hidden" name="id" value={t.id} />
+                    <button className={`${styles.button} ${styles.buttonDelete}`} type="submit">
+                      Löschen
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

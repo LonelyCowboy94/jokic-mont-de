@@ -12,7 +12,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   async function handleLogout() {
-    await logoutWrapper(); // server action pozvan iz client side-a
+    await logoutWrapper();
   }
 
   useEffect(() => {
