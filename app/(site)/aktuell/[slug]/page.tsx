@@ -43,6 +43,7 @@ export default function NewsDetailPage() {
   return (
     <>
     <div className={styles.container}>
+      <div className={styles.container__wrapper}>
       {news.image_url && (
         <Image
           src={news.image_url || "/default-news.jpg"}
@@ -53,11 +54,13 @@ export default function NewsDetailPage() {
         />
       )}
       <h1 className={styles.title}>{news.title}</h1>
+      
       <p className={styles.excerpt}>{news.excerpt}</p>
       <div
         className={styles.content}
         dangerouslySetInnerHTML={{ __html: news.content }}
       ></div>
+      </div>
     </div>
     <Footer />
     </>

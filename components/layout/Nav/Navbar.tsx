@@ -12,7 +12,6 @@ const links = [
     { href: "/kontakt", label: "KONTAKT" },
     { href: "/karriere", label: "KARRIERE" },
     { href: "/aktuell", label: "AKTUELL" },
-    { href: "/impressum", label: "IMPRESSUM" },
   ];
 
   return (

@@ -2,7 +2,7 @@
 
 .gallery {
   display: flex;
-  height: clamp(37.5rem, 35.2245rem + 9.7087vw, 46.875rem);
+  height: clamp(37.5rem, 35.2245rem + 9.7087vw, 35.875rem);
   overflow: hidden;
   @media (max-width: 1024px) {
     display: none;
@@ -44,7 +44,7 @@
         position: absolute;
         inset: 0;
         content: '';
-        background: rgba(33, 48, 250, 0.171);
+        background: rgba(0, 2, 31, 0.308);
       }
       &:hover {
         ::before {
@@ -65,15 +65,6 @@
     font-size: $paragraph-font-size;
     background: rgba(0, 0, 0, 0.4);
     color: #fff;
-    opacity: 0;
-    transition: opacity 0.3s;
-    @media (max-width: 768px) {
-      opacity: 1;
-    }
-
-    .gallery__card:hover & {
-      opacity: 1;
-    }
   }
 }
 

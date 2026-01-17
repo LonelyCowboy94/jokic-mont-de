@@ -23,12 +23,11 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   }
   &__subtitle {
     font-size: $subtitle-font-size;
+    font-weight: normal;
+    margin-bottom: 15px;
   }
   &__text {
     font-size: $paragraph-font-size;
-    @media (max-width: 1024px) {
-      font-size: 20px;
-    }
   }
   &__bookingWrapper {
     display: flex;

@@ -30,78 +30,314 @@
 
 // Buttons layout
 @mixin btnPrimaryPurple {
-  padding: 0.9rem 2rem;
-    border-radius: $form-border-radius;
-    background: #4f46e5;
-    color: white;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    border: none;
-    transition: all 0.2s ease;
-    &:hover {
-      background: #4338ca;
-      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
-    }
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-}
-@mixin btnPrimaryPurpleTransparent {
-  background: transparent;
-    border: 2px solid #d1d5db;
-    border-radius: $form-border-radius;
-    padding: 0.7rem 1.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    &:hover {
-      background: #f3f4f6;
-      border-color: #4f46e5;
-      color: #4f46e5;
-    }
-}
-
-@mixin btnPrimaryBlue {
-  font-size: clamp(0.875rem, 0.784rem + 0.3883vw, 1.25rem);
-    padding: clamp(0.3125rem, 0.085rem + 0.9709vw, 1.25rem);
+  padding: 0.75rem 1.75rem;
   border-radius: $form-border-radius;
-  background: #2563eb; 
-  color: white;
+
+  background-color: #4f46e5;
+  color: #ffffff;
+
+  font-size: 0.95rem;
   font-weight: 600;
-  
-  cursor: pointer;
+  line-height: 1;
+
   border: none;
-  transition: all 0.2s ease;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
 
   &:hover {
-    background: #1d4ed8; 
-    box-shadow: 0 2px 15px rgba(37, 99, 235, 0.4); 
+    background-color: #4338ca;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.35);
   }
 
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.55;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+
+@mixin btnPrimaryPurpleTransparent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.7rem 1.6rem;
+  border-radius: $form-border-radius;
+
+  background-color: transparent;
+  color: #4f46e5;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+
+  border: 1.5px solid #d1d5db;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    background-color: #f9fafb;
+    border-color: #4f46e5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.55;
     cursor: not-allowed;
   }
 }
 
-@mixin btnPrimaryBlueTransparent {
-  background: transparent;
-  border: 2px solid #93c5fd; 
+@mixin btnPrimaryBlue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.75rem 1.75rem;
   border-radius: $form-border-radius;
-  font-size: clamp(0.875rem, 0.784rem + 0.3883vw, 1.25rem);
-    padding: clamp(0.3125rem, 0.085rem + 0.9709vw, 1.25rem);
+
+  background-color: #2563eb;
+  color: #ffffff;
+
+  font-size: 0.95rem;
   font-weight: 600;
+  line-height: 1;
+
+  border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
 
   &:hover {
-    background: #eff6ff; 
-    border-color: #2563eb; 
-    color: #2563eb; 
-    box-shadow: 0 2px 15px rgba(37, 99, 235, 0.4); 
+    background-color: #1d4ed8;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    box-shadow: none;
   }
 }
 
+@mixin btnPrimaryBlueTransparent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.7rem 1.6rem;
+  border-radius: $form-border-radius;
+
+  background-color: transparent;
+  color: #2563eb;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+
+  border: 1.5px solid #93c5fd;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    background-color: #f8fafc52;
+    border-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+@mixin btnPrimaryGreenTransparent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.7rem 1.6rem;
+  border-radius: $form-border-radius;
+
+  background-color: transparent;
+  color: #16a34a;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+
+  border: 2px solid #86efac; 
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    color: #fff;
+    background-color: #16a34a !important;
+    border-color: #16a34a;
+    box-shadow: 0 2px 8px rgba(22, 163, 74, 0.15);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+@mixin btnPrimaryRed {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.75rem 1.75rem;
+  border-radius: $form-border-radius;
+
+  background-color: #dc2626; 
+  color: #ffffff;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+
+  border: none;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    background-color: #b91c1c; 
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(220, 38, 38, 0.25);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.35);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+@mixin btnPrimaryRedTransparent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.7rem 1.6rem;
+  border-radius: $form-border-radius;
+
+  background-color: transparent;
+  color: #dc2626;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+
+  border: 2px solid #fca5a5; 
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    color: #fff;
+    background-color: rgba(220, 38, 38, 0.6); 
+    border-color: #dc2626;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.15);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}

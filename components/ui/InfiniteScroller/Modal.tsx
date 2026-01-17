@@ -26,17 +26,30 @@ export default function Modal({ card, setActiveCard }: ModalProps) {
           ×
         </button>
 
-        <Image
-          src={card.image}
-          alt={card.title}
-          fill
-          style={{objectFit: 'cover',
-          }}
-          className={styles.modal__image}
-        />
-        <div className={styles.modal__textContent}><h2 className={styles.modal__title}>{card.title}</h2>
-        <p className={styles.modal__text}>{card.text}</p></div>
-        
+        <div className={styles.modal__body}>
+          <div className={styles.modal__imageWrapper}>
+            <Image
+              src={card.image}
+              alt={card.title}
+              fill
+              style={{ objectFit: 'cover' }}
+              className={styles.modal__image}
+            />
+          </div>
+
+          <div className={styles.modal__textContent}>
+            <h2 className={styles.modal__title}>{card.title}</h2>
+            {card.text.length > 0 ? (
+              <ul className={styles.modal__list}>
+                {card.text.map((line, idx) => (
+                  <li key={idx}>{line}</li>
+                ))}
+              </ul>
+            ) : (
+              <p className={styles.modal__text}>Keine zusätzlichen Informationen.</p>
+            )}
+          </div>
+        </div>
       </motion.div>
     </div>
   );

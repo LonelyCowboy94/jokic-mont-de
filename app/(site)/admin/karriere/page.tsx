@@ -1,6 +1,5 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { headers } from "next/headers";
+import { revalidatePath } from "next/cache";
 import styles from "./page.module.scss";
 
 type Stelle = {
@@ -9,111 +8,106 @@ type Stelle = {
   description: string;
 };
 
-export default function KarriereAdminPage() {
-  const [stellen, setStellen] = useState<Stelle[]>([]);
-  const [title, setTitle] = useState("");
-  const [descr, setDescr] = useState("");
-  const [showForm, setShowForm] = useState(false);
+async function getBaseUrl() {
+  const h = await headers(); 
+  const host = h.get("host");
 
-  // učitavanje podataka
-  async function load() {
-    const res = await fetch("/api/karriere");
-    const data = await res.json();
-    setStellen(data);
+  if (!host) {
+    return "http://localhost:3000";
   }
 
-  // kreiranje nove pozicije
-  async function create() {
-    if (!title || !descr) return;
+  const protocol = host.includes("localhost") ? "http" : "https";
+  return `${protocol}://${host}`;
+}
 
-    await fetch("/api/karriere", {
-      method: "POST",
-      body: JSON.stringify({ title, description: descr }),
-    });
 
-    setTitle("");
-    setDescr("");
-    setShowForm(false);
-    load();
+async function getStellen(): Promise<Stelle[]> {
+  const baseUrl = await getBaseUrl();
+
+  const res = await fetch(`${baseUrl}/api/karriere`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch stellen");
   }
 
-  // brisanje pozicije
-  async function remove(id: string) {
-    await fetch(`/api/karriere?id=${id}`, { method: "DELETE" });
-    load();
-  }
+  return res.json();
+}
 
- useEffect(() => { async function fetchStellen() { const res = await fetch("/api/karriere"); const data = await res.json(); setStellen(data);} fetchStellen(); }, []);
+async function createStelle(formData: FormData) {
+  "use server";
+
+  const title = formData.get("title");
+  const description = formData.get("description");
+  if (!title || !description) return;
+
+  const baseUrl = await getBaseUrl();
+
+  await fetch(`${baseUrl}/api/karriere`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title, description }),
+  });
+
+  revalidatePath("/admin/karriere");
+}
+
+async function deleteStelle(formData: FormData) {
+  "use server";
+
+  const id = formData.get("id");
+  if (!id) return;
+
+  const baseUrl = await getBaseUrl();
+
+  await fetch(`${baseUrl}/api/karriere?id=${id}`, {
+    method: "DELETE",
+  });
+
+  revalidatePath("/admin/karriere");
+}
+
+export default async function KarriereAdminPage() {
+  const stellen = await getStellen();
 
   return (
     <main className={styles.karriere}>
-      {/* Header i statistika */}
-      <header className={styles.karriere__header}>
-        <h1 className={styles.karriere__title}>Offene Stellen verwalten</h1>
-        <div className={styles.karriere__stats}>
-          <span className={styles.karriere__stat}>
-            📝 Total: {stellen.length} Positionen
-          </span>
-          <button className={styles.karriere__btn} onClick={load}>
-            Aktualisieren
-          </button>
-        </div>
-      </header>
+      <h1 className={styles.title}>Offene Stellen verwalten</h1>
 
-      {/* Forma za dodavanje pozicije */}
-      <section className={styles["karriere__form-section"]}>
-        <button
-          className={styles["karriere__toggle-form"]}
-          onClick={() => setShowForm((prev) => !prev)}
-        >
-          {showForm ? "Formular ausblenden" : "Neue Stelle hinzufügen"}
-        </button>
+      <form action={createStelle} className={styles.form}>
+        <input
+          name="title"
+          placeholder="Titel"
+          required
+          className={styles.input}
+        />
+        <textarea
+          name="description"
+          placeholder="Beschreibung"
+          required
+          className={styles.textarea}
+        />
+        <button className={styles.button}>Stelle hinzufügen</button>
+      </form>
 
-        {showForm && (
-          <div className={styles.karriere__form}>
-            <input
-              className={styles.karriere__input}
-              placeholder="Titel"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <textarea
-              className={styles.karriere__textarea}
-              placeholder="Beschreibung"
-              value={descr}
-              onChange={(e) => setDescr(e.target.value)}
-            />
-            <button className={styles.karriere__btn} onClick={create}>
-              Stelle hinzufügen
-            </button>
-          </div>
-        )}
-      </section>
-
-      {/* Lista pozicija */}
-      <ul className={styles.karriere__list}>
+      <ul className={styles.list}>
         {stellen.length > 0 ? (
-          stellen.map((s) => (
-            <li key={s.id} className={styles.karriere__item}>
-              <div className={styles.karriere__content}>
-                <strong className={styles["karriere__item-title"]}>
-                  {s.title}
-                </strong>
-                <p className={styles["karriere__item-text"]}>{s.description}</p>
+          stellen.map((stelle) => (
+            <li key={stelle.id} className={styles.item}>
+              <div className={styles.itemContent}>
+                <h3 className={styles.itemTitle}>{stelle.title}</h3>
+                <p className={styles.itemText}>{stelle.description}</p>
               </div>
-              <div className={styles.karriere__actions}>
-                {/* Edit dugme može biti kasnije implementirano */}
-                <button
-                  className={styles["karriere__delete"]}
-                  onClick={() => remove(s.id)}
-                >
-                  Löschen
-                </button>
-              </div>
+
+              <form action={deleteStelle}>
+                <input type="hidden" name="id" value={stelle.id} />
+                <button className={styles.deleteButton}>Löschen</button>
+              </form>
             </li>
           ))
         ) : (
-          <p className={styles.karriere__empty}>Keine Positionen gefunden.</p>
+          <p>Keine Positionen gefunden.</p>
         )}
       </ul>
     </main>

@@ -1,77 +1,76 @@
 @use "../../../styles/variables" as *;
 @use "../../../styles/mixins" as mix;
-@use "../../../styles/_animations" as *;
 
 .cookiesPage {
   @include mix.sectionLayoutLight;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: clamp(2.5rem, 1.165rem + 5.6958vw, 8rem);
-  
+  padding-top: clamp(3rem, 2vw + 2rem, 6rem);
+
   &__content {
-    max-width: 800px;
+    max-width: 820px;
     width: 100%;
-    padding: 0 0.8rem; 
+    padding: 0 1rem;
+  }
+
+  &__header {
+    margin-bottom: 2rem;
   }
 
   &__title {
     @include mix.font-kanit(600);
-    font-size: clamp(1.6rem, 1.2rem + 0.8vw, 2.4rem); 
-    margin-bottom: 0.8rem;
+    font-size: clamp(1.8rem, 1.4rem + 0.9vw, 2.6rem);
+    margin-bottom: 0.5rem;
     color: $color-font-md;
+  }
+
+  &__intro {
+    @include mix.font-kanit;
+    font-size: calc($paragraph-font-size * 0.9);
+    color: $color-font-md;
+    opacity: 0.85;
+  }
+
+  &__section {
+    margin-top: 2.5rem;
   }
 
   &__subtitle {
     @include mix.font-kanit(500);
-    font-size: clamp(1.2rem, 0.96rem + 0.64vw, 1.6rem); 
-    margin-top: 1.6rem;
-    margin-bottom: 0.8rem;
+    font-size: clamp(1.3rem, 1.1rem + 0.6vw, 1.8rem);
+    margin-bottom: 0.6rem;
     color: $color-font-md;
   }
 
   &__text {
     @include mix.font-kanit;
-    font-size: calc($paragraph-font-size * 0.8); 
-    line-height: 1.44; 
-    margin-bottom: 0.8rem;
+    font-size: calc($paragraph-font-size * 0.85);
+    line-height: 1.7;
     color: $color-font-md;
   }
 
   &__buttons {
+    margin-top: 2.5rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem; 
-    margin-top: 10rem;
+    gap: 1rem;
   }
 
-  &__btn {
+  &__btnPrimary {
     @include mix.btnPrimaryBlue;
-    font-size: clamp(0.9rem, 0.63rem + 0.31vw, 1rem); 
-    padding: clamp(0.7rem, 0.07rem + 0.78vw, 1rem); 
-    display: inline-block;
     text-decoration: none;
     text-align: center;
-     @media screen and (max-width: 500px) {
-      min-width: 260px;
-    }
   }
 
-  &__btnReset {
+  &__btnSecondary {
     @include mix.btnPrimaryBlueTransparent;
-    font-size: clamp(0.9rem, 0.63rem + 0.31vw, 1rem); 
-    padding: clamp(0.7rem, 0.07rem + 0.78vw, 1rem); 
-    color: rgb(128, 164, 241);
-     @media screen and (max-width: 500px) {
-      min-width: 260px;
-    }
+    color: $color-font-li;
   }
 
   &__resetInfo {
-    margin-top: 0.8rem;
+    margin-top: 1rem;
+    font-size: calc($paragraph-font-size * 0.8);
     font-style: italic;
     color: $color-font-md;
-    text-align: center;
   }
 }

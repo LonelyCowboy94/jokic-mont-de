@@ -17,41 +17,64 @@ export default function CookiesRichtlinie() {
   return (
     <>
       <main className={styles.cookiesPage}>
-        <div className={styles.cookiesPage__content}>
-          <h1 className={styles.cookiesPage__title}>Cookie-Richtlinie</h1>
-          <p className={styles.cookiesPage__text}>
-            Auf dieser Website verwenden wir Cookies, um externe Inhalte wie Google Maps anzuzeigen. 
-            Ohne Ihre Zustimmung werden diese Inhalte nicht geladen. 
-          </p>
-
-          <h2 className={styles.cookiesPage__subtitle}>Verwaltung Ihrer Cookies</h2>
-          <p className={styles.cookiesPage__text}>
-            Sie können Ihre Zustimmung jederzeit ändern oder widerrufen. 
-            Nutzen Sie dazu bitte das Cookie-Popup oder löschen Sie die gespeicherten Einstellungen 
-            in Ihrem Browser.
-          </p>
-          
-          <div className={styles.cookiesPage__buttons}>
-            <Link href="/" className={styles.cookiesPage__btn}>
-              Zurück zur Startseite
-            </Link>
-            <button
-              onClick={handleResetConsent}
-              className={styles.cookiesPage__btnReset}
-            >
-              Cookie-Zustimmung zurücksetzen
-            </button>
-          </div>
-<div className='endl'></div>
-          {resetDone && (
-            <p className={styles.cookiesPage__resetInfo}>
-              Die Einstellungen wurden zurückgesetzt. Bitte laden Sie die Seite erneut, um das Pop-up zu sehen.
+        <article className={styles.cookiesPage__content}>
+          <header className={styles.cookiesPage__header}>
+            <h1 className={styles.cookiesPage__title}>Cookie-Richtlinie</h1>
+            <p className={styles.cookiesPage__intro}>
+              Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen.
             </p>
-          )}
-        </div>
-        
+          </header>
+
+          <section className={styles.cookiesPage__section}>
+            <h2 className={styles.cookiesPage__subtitle}>Verwendung von Cookies</h2>
+            <p className={styles.cookiesPage__text}>
+              Diese Website verwendet ausschließlich technisch notwendige Cookies sowie lokale
+              Speichermechanismen, um externe Inhalte wie <strong>Google Maps</strong> darzustellen.
+              Ohne Ihre ausdrückliche Zustimmung werden diese Inhalte nicht geladen.
+            </p>
+          </section>
+
+          <section className={styles.cookiesPage__section}>
+            <h2 className={styles.cookiesPage__subtitle}>Ihre Einwilligung</h2>
+            <p className={styles.cookiesPage__text}>
+              Beim ersten Besuch unserer Website werden Sie gebeten, der Anzeige externer Inhalte
+              zuzustimmen oder diese abzulehnen. Ihre Entscheidung wird lokal in Ihrem Browser
+              gespeichert und kann jederzeit geändert werden.
+            </p>
+          </section>
+
+          <section className={styles.cookiesPage__section}>
+            <h2 className={styles.cookiesPage__subtitle}>Einwilligung verwalten</h2>
+            <p className={styles.cookiesPage__text}>
+              Sie haben jederzeit die Möglichkeit, Ihre Cookie-Einstellungen zurückzusetzen
+              und eine neue Auswahl zu treffen.
+            </p>
+
+            <div className={styles.cookiesPage__buttons}>
+              <Link href="/" className={styles.cookiesPage__btnPrimary}>
+                Zurück zur Startseite
+              </Link>
+
+              <button
+                type="button"
+                onClick={handleResetConsent}
+                className={styles.cookiesPage__btnSecondary}
+              >
+                Cookie-Einwilligung zurücksetzen
+              </button>
+            </div>
+
+            {resetDone && (
+              <p className={styles.cookiesPage__resetInfo}>
+                Ihre Cookie-Einstellungen wurden erfolgreich zurückgesetzt.
+                Beim nächsten Seitenaufruf erscheint das Auswahlfenster erneut.
+              </p>
+            )}
+          </section>
+        </article>
       </main>
-      
+      <hr />
+
       <Footer />
     </>
   );

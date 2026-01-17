@@ -5,87 +5,58 @@
   @include sectionLayoutLight;
   padding: clamp(2rem, 2vw + 1rem, 4rem);
 
-  &__header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 2rem;
-
-    @media (min-width: 768px) {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-
-  &__title {
+  h1 {
     @include font-kanit(600);
     font-size: $title-font-size;
-    margin: 0;
+    margin-bottom: 2rem;
     color: $color-font-md;
+    text-align: left;
   }
 
-  &__stats {
+  .form {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
-    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: $form-border-radius;
+    background: $background-light;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
-    .karriere__stat {
-      font-weight: 600;
-      color: $color-font-li;
+    input,
+    textarea {
+      padding: 0.8rem 1rem;
+      border-radius: $form-border-radius;
+      border: 1px solid #ccc;
+      font-size: $paragraph-font-size;
+      font-family: var(--font-montserrat);
+      width: 100%;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        outline: none;
+      }
     }
 
-    .karriere__btn {
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .button {
+      align-self: flex-start;
       @include btnPrimaryBlue;
     }
   }
 
-  &__form-section {
-    margin-bottom: 2rem;
-
-    .karriere__toggle-form {
-      @include btnPrimaryBlueTransparent;
-      margin-bottom: 1rem;
-    }
-
-    .karriere__form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1rem;
-      border-radius: $form-border-radius;
-      background: $background-light;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-
-      input,
-      textarea {
-        padding: 0.8rem 1rem;
-        border-radius: $form-border-radius;
-        border: 1px solid #ccc;
-        font-size: $paragraph-font-size;
-        font-family: var(--font-montserrat);
-        width: 100%;
-      }
-
-      textarea {
-        resize: vertical;
-        min-height: 80px;
-      }
-
-      .karriere__btn {
-        align-self: flex-start;
-        @include btnPrimaryBlue;
-      }
-    }
-  }
-
-  &__list {
+  .list {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 
-    .karriere__item {
+    .item {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -93,54 +64,79 @@
       background: $background-light;
       border-radius: $form-border-radius;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
 
       &:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
-      &-title {
-        @include font-kanit(500);
-        font-size: $subtitle-font-size;
-        margin-bottom: 0.5rem;
-        color: $color-font-md;
+      .itemContent {
+        margin-bottom: 1rem;
+
+        .itemTitle {
+          @include font-kanit(500);
+          font-size: $subtitle-font-size;
+          color: $color-font-md;
+          margin-bottom: 0.5rem;
+        }
+
+        .itemText {
+          @include font-style-primary;
+          font-size: $paragraph-font-size;
+          line-height: 1.5;
+          color: $color-font-md;
+          margin: 0;
+        }
       }
 
-      &-text {
-        @include font-style-primary;
-        font-size: $paragraph-font-size;
-        line-height: 1.5;
-        margin: 0;
-        color: $color-font-md;
-      }
-
-      .karriere__actions {
+      form {
         display: flex;
-        gap: 0.5rem;
-        margin-top: 1rem;
+        justify-content: flex-end;
 
-        .karriere__delete {
-          @include btnPrimaryPurpleTransparent;
+        .deleteButton {
+          @include btnPrimaryRedTransparent;
         }
       }
     }
   }
 
-  &__empty {
+  p {
     font-size: $paragraph-font-size;
     color: $color-font-md;
-    text-align: center;
-    padding: 1rem;
   }
 
-  @media (max-width: 375px) {
-    padding: 1rem;
+  @media (max-width: 768px) {
+    padding: clamp(1rem, 2vw + 0.5rem, 2rem);
 
-    &__header,
-    &__form,
-    &__list {
-      padding: 0;
+    .form,
+    .list .item {
+      padding: 1rem;
+    }
+
+    .itemContent .itemTitle {
+      font-size: 1rem;
+    }
+
+    .itemContent .itemText {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.8rem;
+
+    .form,
+    .list .item {
+      padding: 0.8rem;
+    }
+
+    .itemContent .itemTitle {
+      font-size: 0.95rem;
+    }
+
+    .itemContent .itemText {
+      font-size: 0.85rem;
     }
   }
 }

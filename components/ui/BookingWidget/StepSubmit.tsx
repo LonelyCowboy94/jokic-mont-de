@@ -127,12 +127,12 @@ else {
           id="message"
           className={styles.stepSubmit__textarea}
           name="message"
-          placeholder="Ihr Anliegen kurz beschreiben, z.B. Art der Arbeiten, Adresse, besondere Wünsche… (optional)"
+          placeholder="Bitte beschreiben Sie kurz Ihr Anliegen (z. B. Art der Arbeiten, Objektadresse) und hinterlassen Sie eine Telefonnummer für die weitere Abstimmung. Vielen Dank!"
           value={form.message}
           onChange={handleChange}
         />
       </div>
-
+          <div className={styles.stepSubmit__buttons}>
       <button
         className={styles.stepSubmit__button}
         type="submit"
@@ -147,6 +147,7 @@ else {
       >
         Zurück
       </button>
+      </div>
     </form>
   );
 }

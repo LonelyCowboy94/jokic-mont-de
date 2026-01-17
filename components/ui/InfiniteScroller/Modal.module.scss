@@ -1,66 +1,82 @@
 .modal {
-  
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
   &__content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
     background: #fff;
-    border: 4px solid rgba(0, 0, 0, 0.685);
-    border-radius: 8px;
-    width: clamp(22.5rem, 12.7913rem + 41.4239vw, 62.5rem);
-    height: 80%;
-    z-index: 4;
-    &::before {
-      position: absolute;
-      content: "";
-      inset: 0;
-      min-width: 200vw;
-      min-height: 200vh;
-      transform: translate(-23%, -10%);
-      background: rgba(0, 0, 0, 0.808);
-      z-index: -1;
-    }
+    border-radius: 12px;
+    max-width: 900px;
+    width: 95%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
 
   &__close {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.548);
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
     border: none;
-    color: #FFF;
-    width: 35px;
-    font-size: 32px;
+    font-size: 2rem;
     cursor: pointer;
-    z-index: 2;
   }
 
-  &__image {
-    width: 100%;
-    border-radius: 2px;
-  }
-  &__textContent {
+  &__body {
     display: flex;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.623);
-    color: #FFF;
+    flex-direction: row;
+    gap: 1.5rem;
+    padding: 1.5rem;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__imageWrapper {
     position: relative;
-    top: 60%;
-    left: 0;
-    height: 40%;
-    padding: 20px;
-    overflow-y: auto;
+    width: 40%;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &__textContent {
+    width: 60%;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
   }
 
   &__title {
-    align-self: flex-end;
-    margin-top: 15px;
-    font-size: 24px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  &__list {
+    list-style: disc;
+    padding-left: 1.25rem;
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
   }
 
   &__text {
-    margin-top: 10px;
-    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
   }
 }

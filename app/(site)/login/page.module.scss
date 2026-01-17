@@ -8,10 +8,12 @@
     width: 100%;
     height: 100vh;
     @include mix.sectionLayoutDark;
-    background: $background-linear-gray;
+    background: $background-header;
     &__form {
         display: flex;
         flex-direction: column;
+        position: absolute;
+        left: clamp(2.5rem, -7.0833rem + 31.9444vw, 31.25rem);
         gap: 10px;
         width: 300px;
         background: rgba(202, 202, 202, 0.315);
@@ -34,5 +36,10 @@
          & button {
                 @include mix.btnPrimaryBlue;
             }
+    }
+    &__logo {
+        position: absolute;
+        left: clamp(10rem, -2.1359rem + 51.7799vw, 60rem);
+        z-index: -1;
     }
 }

@@ -20,7 +20,6 @@ const MobileNavbar = () => {
     { href: "/karriere", label: "KARRIERE" },
     { href: "/aktuell", label: "AKTUELL" },
     { href: "/impressum", label: "IMPRESSUM" },
-    { href: "/datenschutzerklaerung", label: "DATENSCHUTZERKLÄRUNG" },
   ];
 
   return (

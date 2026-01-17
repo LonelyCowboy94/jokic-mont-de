@@ -28,10 +28,16 @@
     font-size: clamp(1rem, 1vw, 1.25rem);
     transition: border-color 0.3s;
     color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
 
     &:focus {
       outline: none;
       border-color: rgb(43, 135, 255);
+    }
+
+     &::placeholder {
+      font-family: 'Montserrat', sans-serif;
+      color: #8a8989;
     }
   }
 

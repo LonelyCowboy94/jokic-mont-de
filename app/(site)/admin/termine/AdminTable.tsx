@@ -1,96 +1,93 @@
-"use client";
-
-import { Appointment } from "@/types";
-import { useState } from "react";
 import styles from "./AdminTable.module.scss";
+import { revalidatePath } from "next/cache";
+import { sql } from "@/lib/db";
 
-interface Props {
-  appointments: Appointment[];
+export type Appointment = {
+  id: string;
+  name: string;
+  email: string;
+  note: string;
+  date: string;
+  time: string;
+  confirmed: boolean;
+  created_at: string;
+};
+
+// === FETCH SERVER-SIDE
+async function getAppointments(): Promise<Appointment[]> {
+  const rows = await sql`
+    SELECT id, name, email, note, date, time, confirmed, created_at
+    FROM appointments
+    ORDER BY date ASC, time ASC
+  `;
+
+  return rows.map((a) => ({
+    id: a.id,
+    name: a.name,
+    email: a.email,
+    note: a.note || "",
+    date: a.date.toISOString(),
+    time: a.time,
+    confirmed: a.confirmed,
+    created_at: a.created_at.toISOString(),
+  }));
 }
 
-export default function AdminTable({ appointments }: Props) {
-  const [terms, setTerms] = useState(appointments);
-  const [loadingId, setLoadingId] = useState<number | null>(null);
+// === SERVER ACTIONS
+export async function confirmAppointment(formData: FormData) {
+  "use server";
 
-  const handleConfirm = async (id: number) => {
-    if (
-      !window.confirm(
-        "Bist du sicher, dass du diesen Termin bestätigen willst?"
-      )
-    )
-      return;
+  const id = formData.get("id");
+  if (!id || typeof id !== "string") return;
 
-    try {
-      setLoadingId(id);
-      const res = await fetch("/api/appointment/confirm", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id }),
-      });
-      if (!res.ok) throw new Error("Failed to confirm");
-      setTerms((prev) =>
-        prev.map((t) => (t.id === id ? { ...t, confirmed: true } : t))
-      );
-    } catch (err) {
-      console.error(err);
-      alert("Fehler beim Bestätigen");
-    } finally {
-      setLoadingId(null);
-    }
-  };
+  await sql`
+    UPDATE appointments
+    SET confirmed = true
+    WHERE id = ${id}
+  `;
 
-  const handleReject = async (id: number) => {
-    if (
-      !window.confirm("Bist du sicher, dass du diesen Termin ablehnen willst?")
-    )
-      return;
+  revalidatePath("/admin/termine");
+}
 
-    try {
-      setLoadingId(id);
-      const res = await fetch("/api/appointment/reject", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id }),
-      });
-      if (!res.ok) throw new Error("Failed to reject");
-      setTerms((prev) => prev.filter((t) => t.id !== id));
-    } catch (err) {
-      console.error(err);
-      alert("Fehler beim Ablehnen");
-    } finally {
-      setLoadingId(null);
-    }
-  };
+export async function rejectAppointment(formData: FormData) {
+  "use server";
 
-  const handleDelete = async (id: number) => {
-    if (
-      !window.confirm("Bist du sicher, dass du diesen Termin löschen willst?")
-    )
-      return;
+  const id = formData.get("id");
+  if (!id || typeof id !== "string") return;
 
-    try {
-      setLoadingId(id);
-      const res = await fetch("/api/appointment/delete", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id }),
-      });
-      if (!res.ok) throw new Error("Failed to delete");
-      setTerms((prev) => prev.filter((t) => t.id !== id));
-    } catch (err) {
-      console.error(err);
-      alert("Fehler beim Löschen");
-    } finally {
-      setLoadingId(null);
-    }
-  };
+  await sql`
+    DELETE FROM appointments
+    WHERE id = ${id}
+  `;
 
-  const waiting = terms.filter((t) => !t.confirmed);
-  const confirmed = terms.filter((t) => t.confirmed);
+  revalidatePath("/admin/termine");
+}
+
+export async function deleteAppointment(formData: FormData) {
+  "use server";
+
+  const id = formData.get("id");
+  if (!id || typeof id !== "string") return;
+
+  await sql`
+    DELETE FROM appointments
+    WHERE id = ${id}
+  `;
+
+  revalidatePath("/admin/termine");
+}
+
+// === SERVER COMPONENT
+export default async function AdminTable() {
+  const appointments = await getAppointments();
+
+  const waiting = appointments.filter((t) => !t.confirmed);
+  const confirmed = appointments.filter((t) => t.confirmed);
 
   return (
     <div className={styles.adminTableWrapper}>
       <h2 className={styles.title}>Wartende Termine</h2>
+      <div className={styles.tableWrapper}>
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr>
@@ -99,52 +96,40 @@ export default function AdminTable({ appointments }: Props) {
             <th>Notiz</th>
             <th>Datum</th>
             <th>Uhrzeit</th>
-            <th>Aktionen</th>
+            <th className={styles.action}>Aktionen</th>
           </tr>
         </thead>
         <tbody>
           {waiting.map((t) => (
-            <tr
-              key={t.id}
-              className={`${styles.tbodyTr} ${styles.tbodyTrHover}`}
-            >
-              <td className={styles.td} data-label="Name">
-                {t.name}
-              </td>
-              <td className={styles.td} data-label="Email">
-                {t.email}
-              </td>
-              <td className={styles.td} data-label="Notiz">
-                {t.note || "(Keine Notiz)"}
-              </td>
-              <td className={styles.td} data-label="Datum">
-                {new Date(t.date).toLocaleDateString("de-DE")}
-              </td>
-              <td className={styles.td} data-label="Uhrzeit">
-                {t.time}
-              </td>
-              <td className={`${styles.td}`} data-label="Aktionen">
+            <tr key={t.id} className={`${styles.tbodyTr} ${styles.tbodyTrHover}`}>
+              <td className={styles.td} data-label="Name">{t.name}</td>
+              <td className={styles.td} data-label="Email">{t.email}</td>
+              <td className={styles.td} data-label="Notiz">{t.note || "(Keine Notiz)"}</td>
+              <td className={styles.td} data-label="Datum">{new Date(t.date).toLocaleDateString("de-DE")}</td>
+              <td className={styles.td} data-label="Uhrzeit">{t.time}</td>
+              <td className={`${styles.td} ${styles.action}`} data-label="Aktionen">
                 <div className={styles.actionBtnWrapper}>
-                  <button
-                    className={`${styles.button} ${styles.buttonConfirm}`}
-                    onClick={() => handleConfirm(t.id)}
-                  >
-                    Bestätigen
-                  </button>
-                  <button
-                    className={`${styles.button} ${styles.buttonReject}`}
-                    onClick={() => handleReject(t.id)}
-                  >
-                    Ablehnen
-                  </button>
+                  <form action={confirmAppointment}>
+                    <input type="hidden" name="id" value={t.id} />
+                    <button className={`${styles.button} ${styles.buttonConfirm}`} type="submit">
+                      Bestätigen
+                    </button>
+                  </form>
+                  <form action={rejectAppointment}>
+                    <input type="hidden" name="id" value={t.id} />
+                    <button className={`${styles.button} ${styles.buttonReject}`} type="submit">
+                      Ablehnen
+                    </button>
+                  </form>
                 </div>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-
+</div>
       <h2 className={styles.title}>Bestätigte Termine</h2>
+      <div className={styles.tableWrapper}>
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr>
@@ -158,38 +143,25 @@ export default function AdminTable({ appointments }: Props) {
         </thead>
         <tbody>
           {confirmed.map((t) => (
-            <tr
-              key={t.id}
-              className={`${styles.tbodyTr} ${styles.tbodyTrHover}`}
-            >
-              <td className={styles.td} data-label="Name">
-                {t.name}
-              </td>
-              <td className={styles.td} data-label="Email">
-                {t.email}
-              </td>
-              <td className={styles.td} data-label="Notiz">
-                {t.note || "(Keine Notiz)"}
-              </td>
-              <td className={styles.td} data-label="Datum">
-                {new Date(t.date).toLocaleDateString("de-DE")}
-              </td>
-              <td className={styles.td} data-label="Uhrzeit">
-                {t.time}
-              </td>
+            <tr key={t.id} className={`${styles.tbodyTr} ${styles.tbodyTrHover}`}>
+              <td className={styles.td} data-label="Name">{t.name}</td>
+              <td className={styles.td} data-label="Email">{t.email}</td>
+              <td className={styles.td} data-label="Notiz">{t.note || "(Keine Notiz)"}</td>
+              <td className={styles.td} data-label="Datum">{new Date(t.date).toLocaleDateString("de-DE")}</td>
+              <td className={styles.td} data-label="Uhrzeit">{t.time}</td>
               <td className={styles.td} data-label="Löschen">
-                <button
-                  className={`${styles.button} ${styles.buttonDelete}`}
-                  onClick={() => handleDelete(t.id)}
-                  disabled={loadingId === t.id}
-                >
-                  {loadingId === t.id ? "..." : "Löschen"}
-                </button>
+                <form action={deleteAppointment}>
+                  <input type="hidden" name="id" value={t.id} />
+                  <button className={`${styles.button} ${styles.buttonDelete}`} type="submit">
+                    Löschen
+                  </button>
+                </form>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }
