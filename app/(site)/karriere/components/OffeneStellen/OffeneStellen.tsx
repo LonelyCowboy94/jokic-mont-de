@@ -1,36 +1,50 @@
+import { headers } from "next/headers";
 import styles from "./OffeneStellen.module.scss";
-import { sql } from "@/lib/db";
 
-export type Position = {
+type Stelle = {
   id: string;
   title: string;
   description: string;
 };
 
-export async function getPositions(): Promise<Position[]> {
-  const rows = await sql`
-    SELECT id, title, description
-    FROM offene_stellen
-    ORDER BY created_at DESC
-  `;
+async function getBaseUrl() {
+  const h = await headers(); 
+  const host = h.get("host");
 
-  return rows.map((r) => ({
-    id: r.id,
-    title: r.title,
-    description: r.description,
-  }));
+  if (!host) {
+    return "http://localhost:3000";
+  }
+
+  const protocol = host.includes("localhost") ? "http" : "https";
+  return `${protocol}://${host}`;
 }
 
-export default async function OffeneStellen() {
-  const positions = await getPositions();
+
+async function getStellen(): Promise<Stelle[]> {
+  const baseUrl = await getBaseUrl();
+
+  const res = await fetch(`${baseUrl}/api/karriere`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch stellen");
+  }
+
+  return res.json();
+}
+
+export default async function KarriereAdminPage() {
+  const stellen = await getStellen();
+
 
   return (
     <section className={styles.stellen}>
       <h2 className={styles["stellen__title"]}>Aktuelle Stellenangebote</h2>
 
       <div className={styles["stellen__grid"]}>
-        {positions.length > 0 ? (
-          positions.map((p) => (
+         {stellen.length > 0 ? (
+          stellen.map((p) => (
             <div className={styles["stellen__card"]} key={p.id}>
               <h3 className={styles["stellen__card-title"]}>{p.title}</h3>
               <p className={styles["stellen__card-text"]}>{p.description}</p>
