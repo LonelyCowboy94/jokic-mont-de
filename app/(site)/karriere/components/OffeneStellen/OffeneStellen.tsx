@@ -1,21 +1,26 @@
-import { revalidatePath } from "next/cache";
-import Link from "next/link";
 import styles from "./OffeneStellen.module.scss";
-import { getPositions, deletePosition, Position } from "@/lib/karriere";
+import { sql } from "@/lib/db";
 
-// === SERVER ACTIONS
-async function deletePositionAction(formData: FormData) {
-  "use server";
+export type Position = {
+  id: string;
+  title: string;
+  description: string;
+};
 
-  const id = formData.get("id");
-  if (!id) return;
+export async function getPositions(): Promise<Position[]> {
+  const rows = await sql`
+    SELECT id, title, description
+    FROM offene_stellen
+    ORDER BY created_at DESC
+  `;
 
-  await deletePosition(id.toString());
-
-  revalidatePath("/offene-stellen"); 
+  return rows.map((r) => ({
+    id: r.id,
+    title: r.title,
+    description: r.description,
+  }));
 }
 
-// === SERVER COMPONENT
 export default async function OffeneStellen() {
   const positions = await getPositions();
 
@@ -25,23 +30,16 @@ export default async function OffeneStellen() {
 
       <div className={styles["stellen__grid"]}>
         {positions.length > 0 ? (
-          positions.map((p: Position) => (
+          positions.map((p) => (
             <div className={styles["stellen__card"]} key={p.id}>
               <h3 className={styles["stellen__card-title"]}>{p.title}</h3>
               <p className={styles["stellen__card-text"]}>{p.description}</p>
-
-              <form action={deletePositionAction}>
-                <input type="hidden" name="id" value={p.id} />
-                <button className={styles["stellen__btn-delete"]}>Löschen</button>
-              </form>
-
-              <Link className={styles["stellen__btn"]} href="/kontakt">
-                Jetzt Bewerben
-              </Link>
             </div>
           ))
         ) : (
-          <p className={styles.stellen_empty}>Zurzeit haben wir keine offenen Stellenangebote.</p>
+          <p className={styles.stellen_empty}>
+            Zurzeit haben wir keine offenen Stellenangebote.
+          </p>
         )}
       </div>
     </section>
