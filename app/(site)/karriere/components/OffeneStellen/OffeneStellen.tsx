@@ -1,9 +1,8 @@
-
 import Link from "next/link";
 import styles from "./OffeneStellen.module.scss";
 import { getPositions, Position } from "@/lib/karriere";
 
-export const revalidate = 0;
+export const revalidate = 0; 
 
 export default async function OffeneStellen() {
   const rows = await getPositions();
